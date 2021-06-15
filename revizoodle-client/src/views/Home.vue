@@ -11,7 +11,7 @@
           <li>Consultez les résultats en 1 clin d'oeil</li>
           <li>100% RGPD</li>
         </ul>
-        <router-link class="button button-primary u-full-width" to="/enseignant">Accès enseignant</router-link>
+        <router-link class="button button-primary u-full-width" to="/teacher">Accès enseignant</router-link>
         <hr>
       </div>
       <div class="one-half column" style="text-align:center; margin-top: 1rem; padding: 1rem;">
