@@ -2,32 +2,35 @@
   <div class="container" align="justify" style="margin-top: 1em">
     <div class="row">
       <div class="two-thirds column">
-        <h4 style="margin-bottom: 1em">Mes cours</h4>
+        <h4 style="margin-bottom: 1em">Mes classes</h4>
       </div>
-      <!--      TODO: activate this code when import function is implemented -->
-      <!--      <div class="one-third column">-->
-      <!--        <button class="button-primary u-full-width">Importer</button>-->
-      <!--      </div>-->
+      <div class="one-third column">
+        <button class="button-primary u-full-width" v-on:click="showCreateForm">Créer</button>
+      </div>
     </div>
 
+    <classroom-create-form v-show="createFormVisible"
+                           @hide="hideCreateForm"
+                           v-on:create-classroom="createClassroom" />
+
     <template v-if="!sortedClassroomList || !sortedClassroomList.length">
-          <p>Vous n'avez créé aucune classe.</p>
+      <p>Vous n'avez créé aucune classe.</p>
     </template>
 
     <template v-if="sortedClassroomList && sortedClassroomList.length">
-    <hr/>
-    <table class="u-full-width">
-      <tbody>
+      <hr/>
+      <table class="u-full-width">
+        <tbody>
 
-      <classroom-index v-for="classRoom in sortedClassroomList"
-                       v-bind:key="'classroom-'+classRoom.id"
-                       :name="classRoom.name"
-                       :id="classRoom.id"
-                       :date="classRoom.date"></classroom-index>
-      </tbody>
-    </table>
+        <classroom-list-item v-for="classRoom in sortedClassroomList"
+                             v-bind:key="'classroom-'+classRoom.id"
+                             :name="classRoom.name"
+                             :id="classRoom.id"
+                             :date="classRoom.date"></classroom-list-item>
+        </tbody>
+      </table>
 
-    <hr/>
+      <hr/>
     </template>
 
   </div>
@@ -36,19 +39,37 @@
 
 
 <script>
-import ClassroomIndex from '@/views/classroom/ClassroomIndex';
+import ClassroomListItem from '@/views/classroom/ClassroomListItem';
+import ClassroomCreateForm from '@/views/classroom/ClassroomCreateForm';
 
 export default {
   name: 'classroom-list',
   components: {
-    'classroom-index': ClassroomIndex,
+    'classroom-create-form': ClassroomCreateForm,
+    'classroom-list-item': ClassroomListItem,
   },
-  props: { value: Array }, // List of classrooms {id, name, date}
+  data() {
+    return {
+      'createFormVisible': false,
+    };
+  },
+  props: {value: Array}, // List of classrooms {id, name, date}
   computed: {
     sortedClassroomList: function() {
       return this.value.slice().sort((a, b) => b.date - a.date);
     },
-  }
+  },
+  methods: {
+    showCreateForm: function() {
+      this.createFormVisible = true;
+    },
+    hideCreateForm: function() {
+      this.createFormVisible = false;
+    },
+    createClassroom(name) {
+      this.$emit('create-classroom', name)
+    }
+  },
 };
 </script>
 

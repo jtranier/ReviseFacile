@@ -11,7 +11,7 @@ import moment from 'moment'
 
 
 export default {
-  name: 'classroom-index',
+  name: 'classroom-list-item',
   props: {
     id: Number,
     name: String,
