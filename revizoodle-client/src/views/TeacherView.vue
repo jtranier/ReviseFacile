@@ -7,7 +7,7 @@ import ClassroomList from '@/views/classroom/ClassroomList';
 import moment from 'moment';
 
 export default {
-  name: 'Teacher',
+  name: 'TeacherView',
   components: { 'classroom-list': ClassroomList },
   data: () => ({
     idSeq: 3,

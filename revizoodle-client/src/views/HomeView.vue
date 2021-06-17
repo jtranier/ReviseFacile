@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'HomeView',
   components: {}
 }
 </script>
