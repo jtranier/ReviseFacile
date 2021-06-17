@@ -1,17 +1,17 @@
 <template>
-  <classroom-list :value="classroomList" v-on:create-classroom="createClassroom" />
+  <course-list :value="courseList" v-on:create-course="createCourse" />
 </template>
 
 <script>
-import ClassroomList from '@/views/classroom/ClassroomList';
+import CourseList from '@/views/course/CourseList';
 import moment from 'moment';
 
 export default {
   name: 'TeacherView',
-  components: { 'classroom-list': ClassroomList },
+  components: { 'course-list': CourseList },
   data: () => ({
     idSeq: 3,
-    classroomList: [
+    courseList: [
       {
         id: 1,
         name: '1S1',
@@ -26,8 +26,8 @@ export default {
     ],
   }),
   methods: {
-    createClassroom: function(name) {
-      this.classroomList.push({
+    createCourse: function(name) {
+      this.courseList.push({
         id: this.idSeq++,
         name: name,
         date: new Date()

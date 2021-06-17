@@ -2,7 +2,7 @@
   <div class="container" align="justify">
 
     <div style="margin-top: 3%;">
-      <h5 style="text-align:center" id="nom_classe">{{ classroom.name }}</h5>
+      <h5 style="text-align:center">{{ course.name }}</h5>
     </div>
 
     <!-- TODO: Uncomment this when add Quiz is implemented -->
@@ -19,15 +19,15 @@ import QuizList from '@/views/quiz/QuizList';
 import moment from 'moment';
 
 export default {
-  name: 'classroom-view',
+  name: 'course-view',
   components: {
     'quiz-list': QuizList
   },
   data() {
     return {
-      classroom: {
-        id: this.$route.params.classroomId,
-        name: 'Test classroom',
+      course: {
+        id: this.$route.params.courseId,
+        name: 'Test course',
         date: new Date()
       },
       quizList: [

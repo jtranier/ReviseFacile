@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ClassroomView from '@/views/classroom/ClassroomView';
+import CourseView from '@/views/course/CourseView';
 import TeacherView from '@/views/TeacherView';
 import HomeView from '@/views/HomeView';
 
@@ -18,9 +18,9 @@ const routes = [
     component: TeacherView
   },
   {
-    path: '/teacher/classroom/:classroomId',
-    name: 'Classroom',
-    component: ClassroomView
+    path: '/teacher/course/:courseId',
+    name: 'CourseView',
+    component: CourseView
   },
 ]
 
