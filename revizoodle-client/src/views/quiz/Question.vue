@@ -1,24 +1,30 @@
 <template>
   <div>
-    <span v-html="statement"></span>
+    <vue-mathjax :formula="statement" :safe="false" />
+
     <div v-for="(answer, index) in answerList" :key="'answer-'+index" >
       <answer :text="answer"
               :correct="index === correctAnswerIndex"
               :feedback="feedbackList[index]"/>
     </div>
     <p><strong>Explication :</strong></p>
-    <span v-html="explanation"></span>
+    <vue-mathjax :formula="explanation" :safe="false" />
     <p style="margin-top: 20px;"><strong>Aide :</strong></p>
-    <span v-html="hint"></span>
+    <vue-mathjax :formula="hint" :safe="false" />
   </div>
 </template>
 
 <script>
 import Answer from '@/views/course/Answer';
+import {VueMathjax} from 'vue-mathjax'
+
 
 export default {
   name: 'question',
-  components: {Answer},
+  components: {
+    Answer,
+    'vue-mathjax': VueMathjax
+  },
   props : {
     statement: String,
     correctAnswerIndex: Number,
