@@ -25,13 +25,21 @@ const routes = [
   },
   {
     path: '/teacher/quiz/:quizId',
+    redirect: '/teacher/quiz/:quizId/question/1',
+  },
+  {
+    path: '/teacher/quiz/:quizId/question/:questionIndex',
     name: 'QuizView',
-    component: QuizView
+    component: QuizView,
+    props: true
   },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior() {
+    return {x: 0, y: 0}
+  },
 })
 
 export default router
