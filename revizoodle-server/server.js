@@ -26,3 +26,10 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+const db = require("./app/models/index");
+
+// Note : force: true is for development mode
+db.sequelize.sync({ force: true}).then(() => {
+  console.log("Drop & re-sync db.")
+});
