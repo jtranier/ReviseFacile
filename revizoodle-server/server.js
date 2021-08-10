@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 require('./app/routes/diffusion.routes')(app);
+require('./app/routes/quiz.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
