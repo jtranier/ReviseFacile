@@ -32,6 +32,6 @@ app.listen(PORT, () => {
 const db = require("./app/models/index");
 
 // Note : force: true is for development mode
-db.sequelize.sync({ force: true}).then(() => {
+db.sequelize.sync().then(() => {
   console.log("Drop & re-sync db.")
 });
