@@ -1,14 +1,15 @@
 version: '3.3'
 services:
-  db:
+  revizoodle-db:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'db'
+      MYSQL_DATABASE: 'revizoodle-db'
       # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
       # You can use whatever password you like
       MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: 'P@ssw0rd!'
       # Just for dev !
       MYSQL_ROOT_HOST: '%'
     ports:
@@ -19,8 +20,8 @@ services:
       - '3306'
       # Where our data will be persisted
     volumes:
-      - my-db:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
       - ./data:/docker-entrypoint-initdb.d
 # Names our volume
 volumes:
-  my-db:
+  mysql-data:

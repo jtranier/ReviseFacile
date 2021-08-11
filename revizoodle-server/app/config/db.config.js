@@ -2,7 +2,7 @@ module.exports = {
   HOST: "localhost",
   USER: "user",
   PASSWORD: "123456",
-  DB: "db",
+  DB: "revizoodle-db",
   dialect: "mysql",
   pool: {
     max: 5,
