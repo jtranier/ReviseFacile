@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 
 require('./app/routes/diffusion.routes')(app);
 require('./app/routes/quiz.routes')(app);
+require('./app/routes/moodleQuiz.routes')(app);
+require('./app/routes/xml.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

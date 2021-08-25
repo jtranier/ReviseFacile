@@ -2,10 +2,10 @@
   <div>
     <vue-mathjax :formula="statement" :safe="false"/>
 
-    <div v-for="(answer, index) in answerList" :key="'answer-'+index">
-      <answer :text="answer"
-              :correct="index === correctAnswerIndex"
-              :feedback="feedbackList[index]"/>
+    <div v-for="(answer, index) in answers" :key="'answer-'+index">
+      <answer :text="answer.text"
+              :correct="answer.score > 0"
+              :feedback="answer.feedback"/>
     </div>
 
     <template v-if="explanation">
@@ -13,10 +13,6 @@
       <vue-mathjax :formula="explanation" :safe="false"/>
     </template>
 
-    <template v-if="hint">
-      <p style="margin-top: 20px;"><strong>Aide :</strong></p>
-      <vue-mathjax :formula="hint" :safe="false"/>
-    </template>
   </div>
 </template>
 
@@ -32,11 +28,8 @@ export default {
   },
   props: {
     statement: String,
-    correctAnswerIndex: Number,
-    answerList: Array,
-    feedbackList: Array,
+    answers: Array,
     explanation: String,
-    hint: String,
   },
 };
 </script>

@@ -1,0 +1,89 @@
+// generalités
+// --> le champ id ne provient pas de Moodle XML. À toi de voir si tu souhaites le garder
+// --> on rajoute le champ "name" qui représente le nom de la question. Cela
+// sera utile lors de la visualisation du questionnaire (afficher le name plutôt)
+// que "question 1, question 2, etc."
+// le champ correctAnswerIndex devient scoreAnswerList --> remarque plus tard
+// le hint n'existe plus
+
+// moodle est particulier : dès fois il rajoute des <br> à la fin des énoncés ou
+// des réponses (ex : feedback de la question 3 du QCU)
+// et en général il entoure le champ text (énoncé ou feedback) d'un <![CDATA[ ]]
+// et dès fois non... ex : text de la réponse 3 du QCU
+
+
+// QCunique vs QCmultiple : les deux sont de type <question type="multichoice">
+// mais une QCU a le champ single à true : <single>true</single>
+
+
+// calcul des scores : Moodle fait des "fraction" pour chacune des questions
+// aucune réponse choisie => score = 0
+// chaque fois que je coche 1 réponse, alors score += fraction de la réponse choisie
+// à la fin score = max(score, 0)
+// on stocke les fraction dans la propriété json scoreAnswerList
+
+// ex : 3 réponses, scoreAnswerList=[50,50,-100]
+// si je coche la réponse 1 et la réponse 2, alors mon score total est de 50+50=100%,
+// si je coche uniquement la réponse 1, alors mon score total est de 50%,
+// si je coche la 1 et la 3, alors mon score est de max(50 - 100, 0) = 0
+
+// remarque : moodle impose que dans les QCM somme des fraction>0 soit égale à 100%.
+// ce n'est pas le cas des QCU. On peut imaginer que la personne fasse un choix non
+// optimale, donc qu'il ai un score de 50% (alors que s'il avait choisi la meilleure
+// des réponses il aurait eu 100%)
+
+
+
+// la question QCU
+// <question type="multichoice">
+// <single>true</single>
+
+{
+"name": "Nom de la QCU",  // <name>
+"statement": "<p>Énoncé de la QCU</p>",  // <questiontext>
+explanation: "<p>Feedback général de la QCM</p>", // <generalfeedback>
+scoreAnswerList: [0, 100, 0],
+answerList: ["<p>Réponse 1 (fausse) de la QCU</p>", "<p>Réponse 2 (correcte) de la QCU</p>", "<p>Réponse 3 (incorrecte) de la QCM</p>"],
+feedbackList: ["<p>Feedback de la réponse 1</p>", "<p>Feedback de la réponse 2</p>", "<p>Feedback de la réponse 3</p>"]
+}
+
+// la question QCM
+// <question type="multichoice">
+// <single>false</single>
+
+{
+"name": "Nom de la QCM",
+"statement": "<p>Énoncé de la QCM</p>",
+explanation: "<p>Feedback général de la QCM</p>",
+scoreAnswerList: [50, 50, 0],
+answerList: ["<p>Réponse 1 (correcte) de la QCM</p>", "<p>Réponse 2 (correcte) de la QCM</p>", "<p>Réponse 3 (incorrecte) de la QCM</p>"],
+feedbackList: ["<p>Feedback de la réponse 1</p>", "<p>Feedback de la réponse 2</p>", "<p>Feedback de la réponse 3</p>"]
+}
+
+// la question Vrai / Faux
+// <question type="truefalse">
+// les énoncés sont forcément Vrai et Faux. Dans le moodle XML c'est en anglais.
+
+// remarque : note le <br> que moodle a ajouté à la fin du feedback de la réponse
+// <![CDATA[<p dir="ltr" style="text-align: left;">Feedback quand la personne répond Faux<br></p>]]>
+// devient : <p>Feedback quand la personne répond Faux</p>
+
+{
+"name": "Nom de la question Vrai/Faux",
+"statement": "<p>Énoncé de la question Vrai/Faux</p>",
+explanation: "<p>Feedback général de la question Vrai/Faux</p>",
+scoreAnswerList: [100, 0],
+answerList: ["Vrai", "Faux"],
+feedbackList: ["<p>Feedback quand la personne répond Vrai</p>", "<p>Feedback quand la personne répond Faux</p>"]
+}
+
+{
+answers: [
+    {
+        score: 100,
+        text: "Vrai",
+        feedback: "<p>Feedback quand la personne répond Vrai</p>"
+    },
+    ...
+]
+}
