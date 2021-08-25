@@ -24,7 +24,6 @@
 <script>
 import Question from '@/views/quiz/Question';
 import QuizService from '@/services/QuizService';
-import QuestionService from '@/services/QuestionService';
 
 export default {
   name: 'quiz-view',
@@ -45,11 +44,6 @@ export default {
       // TODO Error handling when the quiz does not exist
 
       this.quiz = res.data;
-      this.quiz.questions = this.quiz.questions.map(legacyQuestion => {
-        return QuestionService.convertLegacyFormat(
-            JSON.parse(legacyQuestion['contenu_json'])
-        )
-      })
 
     }).catch(e => {
       console.log(e);
