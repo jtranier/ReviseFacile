@@ -1,0 +1,100 @@
+<template>
+  <div class="container" style="margin-top: 1em">
+
+    <div class="row">
+      <h4 style="margin-bottom: 1em">Importer un quiz Moodle</h4>
+    </div>
+
+    <div class="row">
+
+      <form @submit="upload">
+
+        <input type="file"
+               ref="xmlFile"
+               name="xmlFile"
+               @change="onFilePicked"/>
+
+        <label for="inputQuizName">Nom :</label>
+        <input class="u-full-width"
+               type="text"
+               placeholder="1A Phys1 S1"
+               id="inputQuizName"
+               v-model="quizName"/>
+
+        <button type="submit"
+                class="button-primary"
+                :disabled="xmlFile === null">
+          Importer
+        </button>
+      </form>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import http from '../../http-commons';
+
+export default {
+  name: 'MoodleQuizUploadForm',
+  data() {
+    return {
+      'quizName': '',
+      'xmlFileDataUrl': null,
+      'xmlFile': null,
+    };
+  },
+  methods: {
+    upload(e) {
+      e.preventDefault();
+      if(!this.xmlFile) {
+        return false;
+      }
+
+      const formData = new FormData();
+      formData.append("xmlFile", this.xmlFile);  // appending file
+      formData.append('quizName', this.quizName);
+
+      // sending file to the backend
+      http
+      .post("xml/upload", formData)
+      .then(res => {
+        if(res.data.success) {
+          const quizId = res.data.id
+          alert(`Le quiz a bien été importé (id=${quizId})`)
+        }
+        else {
+          alert('Le quiz n\'a pas pu être importé')
+          console.err(res.data.error)
+        }
+      })
+      .catch(err => {
+        // TODO show err
+        console.log(err)
+      });
+    },
+
+    onFilePicked(e) {
+      const files = e.target.files;
+      let filename = files[0].name;
+
+      if (this.quizName === '') {
+        this.quizName = filename;
+      }
+
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        this.xmlFileDataUrl = fileReader.result;
+      });
+
+      fileReader.readAsDataURL(files[0]);
+
+      this.xmlFile = files[0];
+    },
+  },
+};
+</script>
+
+<style scoped>
+
+</style>

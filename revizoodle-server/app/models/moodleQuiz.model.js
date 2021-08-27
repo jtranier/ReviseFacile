@@ -6,6 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       {
         id: {
           primaryKey: true,
+          autoIncrement: true,
           type: Sequelize.BIGINT(11),
         },
         'teacherId': {
@@ -17,8 +18,8 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.TEXT,
           allowNull: false,
         },
-        'questionsSpecification': {
-          type: Sequelize.TEXT,
+        'questions': {
+          type: Sequelize.TEXT, // JSON
           allowNull: false,
         },
       },

@@ -4,15 +4,19 @@ const MoodleQuiz = db.moodleQuiz;
 exports.get = (req, res) => {
   const id = req.params.id;
 
-  MoodleQuiz.findByPk(id).then(data => {
+  MoodleQuiz.findByPk(id, {raw: true}).then(data => {
     if (data === null) {
       res.status(404).send({
         message: `There is no quiz with id ${id}`,
       });
     } else {
 
-      console.log(data);
-      res.send(data);
+      // Parse the JSON representation of questions
+      const quiz = {
+        ...data,
+        questions: JSON.parse(data.questions)
+      }
+      res.send(quiz);
     }
   }).catch(err => {
     res.status(500).send({

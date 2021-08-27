@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Revizoodle application." });
 });
+
+// default options for file upload
+app.use(fileUpload());
 
 require('./app/routes/diffusion.routes')(app);
 require('./app/routes/quiz.routes')(app);

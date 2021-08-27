@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       quiz: {
+        name: '',
         questions: []
       },
     };
@@ -46,7 +47,7 @@ export default {
       this.quiz = res.data;
 
     }).catch(e => {
-      console.log(e);
+      console.error(e);
     });
   },
   computed: {
@@ -62,6 +63,7 @@ export default {
       } else return null;
     },
     nbQuestions: function() {
+
       return this.quiz && this.quiz.questions ? this.quiz.questions.length : 0;
     },
     previousIndex: function() {

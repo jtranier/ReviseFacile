@@ -13,40 +13,36 @@ class MoodleService {
       parser.parseStringPromise(text).then(parsedXml => {
         const questions = parsedXml.quiz.question;
 
-        resolve({
-          id: '123',
-          uuid: 'a-dummy-uuid',
-          'date_creation': '27/07/2020',
-          'nom': 'My XML testing quiz',
-          questions: questions.filter(q => {
-            return [
-              'multichoice',
-              'truefalse',
-            ].includes(q['$'].type)
-          }).map(question => {
+        resolve(
+            {
+              questions: questions.filter(q => {
+                return [
+                  'multichoice',
+                  'truefalse',
+                ].includes(q['$'].type);
+              }).map(question => {
 
-            const answers = question.answer;
+                const answers = question.answer;
 
-            return {
-              name: question['name'][0]['text'][0],
-              statement: question['questiontext'][0]['text'][0],
-              explanation: question['generalfeedback'][0]['text'][0],
-              answers: answers.map(answer => {
                 return {
-                  text: answer['text'][0],
-                  score: answer['$']['fraction'],
-                  feedback: answer['feedback'][0]['text'][0],
-                }
+                  name: question['name'][0]['text'][0],
+                  statement: question['questiontext'][0]['text'][0],
+                  explanation: question['generalfeedback'][0]['text'][0],
+                  answers: answers.map(answer => {
+                    return {
+                      text: answer['text'][0],
+                      score: answer['$']['fraction'],
+                      feedback: answer['feedback'][0]['text'][0],
+                    };
+                  }),
+                };
               }),
-            }
-          }),
-        });
+            });
       }).catch(error => {
-        console.log("Couldn't parse the XML file: " + error);
-        reject(error)
+        console.error('Couldn\'t parse the XML file: ' + error);
+        reject(error);
       });
     });
-
 
   }
 }
