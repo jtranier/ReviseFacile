@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 // simple route
 app.get("/", (req, res) => {

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const moodleService = require('../services/MoodleService');
+const authenticationService = require('../services/AuthenticationService');
 const db = require('../models');
 const MoodleQuiz = db.moodleQuiz;
 
@@ -64,6 +65,14 @@ exports.loadTest = (req, res) => {
 };
 
 exports.uploadMoodleXml = (req, res) => {
+  if(!authenticationService.isAuthenticated(req)) {
+    res.sendStatus(403).json({
+      error: {
+        message: "You are not authenticated"
+      }
+    })
+  }
+
   if (!req.files || !('xmlFile' in req.files)) {
 
     return res.status(400).json({
@@ -81,7 +90,7 @@ exports.uploadMoodleXml = (req, res) => {
       xmlFile.data.toString(),
   ).then(json => {
     MoodleQuiz.create({
-      teacherId: -1, // TODO get the teacher ID
+      teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
       questions: JSON.stringify(json.questions),
     }).then(quiz => {
