@@ -4,6 +4,7 @@ import CourseView from '@/views/course/CourseView';
 import TeacherView from '@/views/TeacherView';
 import HomeView from '@/views/HomeView';
 import QuizView from '@/views/quiz/QuizView';
+import QuizListView from '@/views/quiz/QuizListView';
 import MoodleQuizUploadForm from '@/views/quiz/MoodleQuizUploadForm';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
@@ -36,6 +37,11 @@ const routes = [
     name: 'QuizView',
     component: QuizView,
     props: true
+  },
+  {
+    path: '/teacher/quiz',
+    name: 'QuizListView',
+    component: QuizListView,
   },
   {
     path: '/teacher/moodle-upload',

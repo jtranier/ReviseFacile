@@ -9,19 +9,19 @@
     <!--    <hr style="margin-bottom: 2rem">-->
     <!--    <button class="button-primary u-full-width" onclick="initialisePageAjoutQuestionnaire();">Ajouter</button>-->
 
-    <quiz-list :quiz-list="quizList" />
+    <course-quiz-list :quiz-list="quizList" />
 
   </div>
 </template>
 
 <script>
-import QuizList from '@/views/quiz/QuizList';
+import CourseQuizList from '@/views/quiz/CourseQuizList';
 import moment from 'moment';
 
 export default {
   name: 'course-view',
   components: {
-    'quiz-list': QuizList
+    'course-quiz-list': CourseQuizList
   },
   data() {
     return {

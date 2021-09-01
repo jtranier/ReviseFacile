@@ -4,26 +4,24 @@
 
     <!-- TODO: handle no quiz cases -->
 
-    <quiz-list-item v-for="quiz in sortedQuizList"
+    <course-quiz-list-item v-for="quiz in sortedQuizList"
                     v-bind:key="'quiz'+quiz.id"
                     :id="quiz.id"
                     :name="quiz.name"
                     :date="quiz.date"
                     :nb-questions="quiz.nbQuestions"/>
-
-    <hr>
   </div>
 
 </template>
 
 
 <script>
-import QuizListItem from '@/views/quiz/QuizListItem';
+import CourseQuizListItem from '@/views/quiz/CourseQuizListItem';
 
 export default {
-  name: 'quiz-list',
+  name: 'course-quiz-list',
   components: {
-    'quiz-list-item': QuizListItem,
+    'course-quiz-list-item': CourseQuizListItem,
   },
   props: {
     'quiz-list': Array, // List of quiz {id, name, date, nbQuestions}

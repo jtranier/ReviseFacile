@@ -5,32 +5,27 @@
       <tbody>
       <tr>
         <th>{{ name }}</th>
-        <td style="text-align: right;"><a
-            onclick="alert('TODO');"
-            href="TODO"
-            style="text-decoration: none;">Lien apprenant</a></td>
       </tr>
       </tbody>
     </table>
+
+
     <div class="row">
-      <div class="two-thirds column">
-        <table class="u-full-width">
-          <tbody>
-          <tr>
-            <td>{{ moment(date).format('L') }}</td>
-            <td>{{ nbQuestions }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="one-third column"><p style="text-align: center;">{{ nbQuestions }} questions</p></div>
+
+      <div class="one-third column" v-if="addToCourseId === -1">&nbsp;</div>
+
       <div class="one-third column">
-        <button class="u-full-width"
-                onclick="alert('TODO');">
-          Résultats
-        </button>
+        <router-link :to="'/teacher/quiz/'+id" tag="button" class="u-full-width">Voir</router-link>
+      </div>
+      <div class="one-third column" v-if="addToCourseId !== -1">
+        <button class="u-full-width" >Choisir</button>
       </div>
     </div>
+
   </div>
+
+
 </template>
 
 <script>
@@ -43,7 +38,11 @@ export default {
     id: Number,
     name: String,
     date: Date,
-    nbQuestions: Number
+    nbQuestions: Number,
+    addToCourseId: {
+      type: Number,
+      default: -1
+    }
   },
   methods: { moment }
 };

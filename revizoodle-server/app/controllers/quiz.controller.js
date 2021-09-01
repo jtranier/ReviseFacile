@@ -1,6 +1,7 @@
 const db = require('../models');
 const Quiz = db.questionnaire;
 
+
 exports.get = (req, res) => {
   const id = req.params.id;
 
@@ -34,5 +35,4 @@ exports.get = (req, res) => {
           `Some error occurred while retrieving the quiz id=${id}`,
     });
   });
-}
-;
+};

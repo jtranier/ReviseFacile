@@ -4,6 +4,7 @@ module.exports = app => {
   let router = require('express').Router();
 
   router.get('/:id', moodleQuizController.get);
+  router.get('/', moodleQuizController.list);
 
   app.use('/api/moodle-quiz/', router);
 }

@@ -1,4 +1,5 @@
 const db = require('../models');
+const authenticationService = require('../services/AuthenticationService');
 const MoodleQuiz = db.moodleQuiz;
 
 exports.get = (req, res) => {
@@ -14,8 +15,8 @@ exports.get = (req, res) => {
       // Parse the JSON representation of questions
       const quiz = {
         ...data,
-        questions: JSON.parse(data.questions)
-      }
+        questions: JSON.parse(data.questions),
+      };
       res.send(quiz);
     }
   }).catch(err => {
@@ -24,5 +25,34 @@ exports.get = (req, res) => {
           `Some error occurred while retrieving the quiz id=${id}`,
     });
   });
-}
-;
+};
+
+exports.list = (req, res) => {
+  if (!authenticationService.isAuthenticated(req)) {
+    res.sendStatus(403).json({
+      error: {
+        message: 'You are not authenticated',
+      },
+    });
+  }
+
+  MoodleQuiz.findAll({
+    raw: true,
+    where: {
+      'teacherUuid': authenticationService.getUUID(req),
+      // TODO Paginate
+    },
+  }).then(data => {
+    res.json(
+        data.map(quiz => {
+          return {
+            id: quiz.id,
+            name: quiz.name,
+            nbQuestions: JSON.parse(quiz.questions).length
+          }
+        })
+    );
+  }).catch(error => {
+    res.sendStatus(500).json(error)
+  });
+};
