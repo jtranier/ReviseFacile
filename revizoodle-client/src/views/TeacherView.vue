@@ -5,6 +5,8 @@
 <script>
 import CourseList from '@/views/course/CourseList';
 import moment from 'moment';
+import CourseService from '@/services/CourseService';
+
 
 export default {
   name: 'TeacherView',
@@ -25,6 +27,16 @@ export default {
 
     ],
   }),
+  created() {
+    CourseService.findAllMyCourse()
+    .then(res => {
+      console.log(res.data)
+      this.courseList = res.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  },
   methods: {
     createCourse: function(name) {
       this.courseList.push({

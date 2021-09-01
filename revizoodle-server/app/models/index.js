@@ -32,6 +32,7 @@ db.reponse = require("./reponse.model.js")(sequelize, Sequelize);
 db.reponses_questionnaire = require("./reponses_questionnaire.model.js")(sequelize, Sequelize);
 
 db.moodleQuiz = require("./moodleQuiz.model.js")(sequelize, Sequelize);
+db.course = require("./course.model.js")(sequelize, Sequelize);
 
 // Relations
 db.questionnaire.belongsToMany(
