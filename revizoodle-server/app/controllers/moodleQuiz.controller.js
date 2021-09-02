@@ -1,5 +1,6 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
+const controllerUtil = require('../controllers/ControllerUtil');
 const MoodleQuiz = db.moodleQuiz;
 
 exports.get = (req, res) => {
@@ -28,12 +29,8 @@ exports.get = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  if (!authenticationService.isAuthenticated(req)) {
-    res.sendStatus(403).json({
-      error: {
-        message: 'You are not authenticated',
-      },
-    });
+  if(!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
   }
 
   MoodleQuiz.findAll({

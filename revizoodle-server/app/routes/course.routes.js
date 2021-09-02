@@ -4,6 +4,8 @@ module.exports = app => {
   let router = require('express').Router();
 
   router.get('/', courseController.list);
+  router.post('/', courseController.create);
+  // router.get('/:courseId/add-quiz', courseController.list);
 
   app.use('/api/course/', router);
 }

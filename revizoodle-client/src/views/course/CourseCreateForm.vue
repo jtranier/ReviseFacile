@@ -32,8 +32,11 @@ export default {
         this.errorEmptyName = true;
       }
       else {
-        this.$emit('create-course', this.newCourseName)
-        this.hide();      }
+        const name = this.newCourseName;
+        this.$emit('create-course', name);
+        this.hide();
+        this.newCourseName = '';
+      }
 
     },
     hide() {

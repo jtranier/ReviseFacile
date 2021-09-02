@@ -6,6 +6,7 @@ class AuthenticationService {
     return uuidv4.validate(req.headers.uuid);
   }
 
+
   getUUID(req) {
     return req.headers.uuid;
   }

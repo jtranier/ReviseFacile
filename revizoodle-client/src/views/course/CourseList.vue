@@ -5,13 +5,17 @@
         <h4 style="margin-bottom: 1em">Mes cours</h4>
       </div>
       <div class="one-third column">
-        <button class="button-primary u-full-width" v-on:click="showCreateForm">Créer</button>
+        <button class="button-primary u-full-width"
+                v-on:click="showCreateForm"
+                v-show="!createFormVisible">
+          Créer
+        </button>
       </div>
     </div>
 
     <course-create-form v-show="createFormVisible"
-                           @hide="hideCreateForm"
-                           v-on:create-course="createCourse" />
+                        @hide="hideCreateForm"
+                        v-on:create-course="createCourse"/>
 
     <template v-if="!sortedCourseList || !sortedCourseList.length">
       <p>Vous n'avez créé aucun cours.</p>
@@ -23,10 +27,10 @@
         <tbody>
 
         <course-list-item v-for="course in sortedCourseList"
-                             v-bind:key="'course-'+course.id"
-                             :name="course.name"
-                             :id="course.id"
-                             :date="course.date"></course-list-item>
+                          v-bind:key="'course-'+course.id"
+                          :name="course.name"
+                          :id="course.id"
+                          :date="course.date"></course-list-item>
         </tbody>
       </table>
 
@@ -56,7 +60,7 @@ export default {
   props: {value: Array}, // List of courses {id, name, date}
   computed: {
     sortedCourseList: function() {
-      return this.value.slice().sort((a, b) => b.date - a.date);
+      return this.value.slice().sort((a, b) => b.updatedAt - a.updatedAt);
     },
   },
   methods: {
@@ -67,8 +71,8 @@ export default {
       this.createFormVisible = false;
     },
     createCourse(name) {
-      this.$emit('create-course', name)
-    }
+      this.$emit('create-course', name);
+    },
   },
 };
 </script>
