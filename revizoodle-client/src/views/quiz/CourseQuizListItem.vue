@@ -18,7 +18,7 @@
           <tbody>
           <tr>
             <td>{{ moment(date).format('L') }}</td>
-            <td>{{ nbQuestions }}</td>
+            <td>{{ nbQuestions }} question(s)</td>
           </tr>
           </tbody>
         </table>

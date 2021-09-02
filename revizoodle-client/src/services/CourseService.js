@@ -2,6 +2,10 @@ import http from '../http-commons';
 
 class CourseService {
 
+  get(courseId) {
+    return http.get(`/course/${courseId}`);
+  }
+
   findAllMyCourse() {
     return http.get(`/course`);
   }
@@ -12,7 +16,7 @@ class CourseService {
     return http.post('/course', formData).then(res => {
       return res.data;
     }).catch(error => {
-      console.log(error);
+      console.error(error);
     });
   }
 }

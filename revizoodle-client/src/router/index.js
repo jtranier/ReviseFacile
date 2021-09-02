@@ -26,7 +26,8 @@ const routes = [
   {
     path: '/teacher/course/:courseId',
     name: 'CourseView',
-    component: CourseView
+    component: CourseView,
+    props: true
   },
   {
     path: '/teacher/quiz/:quizId',

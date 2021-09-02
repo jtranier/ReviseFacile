@@ -8,7 +8,7 @@
                     v-bind:key="'quiz'+quiz.id"
                     :id="quiz.id"
                     :name="quiz.name"
-                    :date="quiz.date"
+                    :date="quiz.updatedAt"
                     :nb-questions="quiz.nbQuestions"/>
   </div>
 
@@ -17,6 +17,7 @@
 
 <script>
 import CourseQuizListItem from '@/views/quiz/CourseQuizListItem';
+import moment from 'moment';
 
 export default {
   name: 'course-quiz-list',
@@ -28,7 +29,15 @@ export default {
   },
   computed: {
     sortedQuizList() {
-      return this.quizList.slice().sort((a, b) => b.date - a.date);
+      return this.quizList
+      .map(quiz => {
+
+        return {
+          ...quiz,
+          updatedAt: moment(quiz.updatedAt).toDate(),
+        }
+      })
+      .slice().sort((a, b) => b.updatedAt - a.updatedAt);
     },
   },
 };

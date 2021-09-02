@@ -3,20 +3,60 @@ const authenticationService = require('../services/AuthenticationService');
 const controllerUtil = require('../controllers/ControllerUtil');
 
 const Course = db.course;
+const MoodleQuiz = db.moodleQuiz;
+
+exports.get = (req, res) => {
+  if (!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
+  }
+
+  const id = req.params.id;
+
+  Course.findOne({
+    where: { id },
+    include: {
+      model: MoodleQuiz,
+    },
+  }).then(data => {
+    if(!data) {
+      res.status(404).json({
+        error: {
+          message: `There is no course with id ${id}`
+        }
+      });
+      return;
+    }
+
+    res.json({
+      id: data.dataValues.id,
+      name: data.dataValues.name,
+      updateAt: data.dataValues.updateAt,
+      quizList: data.dataValues.moodleQuizzes.map(quiz => {
+
+        return {
+          id: quiz.id,
+          name: quiz.name,
+          updatedAt: quiz['course_moodleQuiz'].updatedAt,
+          nbQuestions: JSON.parse(quiz.questions).length,
+        }
+      })
+    });
+  }).catch(error => {
+    console.error(error);
+    res.status(500).json({ error });
+  });
+
+};
 
 exports.list = (req, res) => {
-  if (!authenticationService.isAuthenticated(req)) {
-    res.status(403).json({
-      error: {
-        message: 'You are not authenticated',
-      },
-    });
+  if (!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
   }
 
   Course.findAll({
     raw: true,
     order: [
-        ['updatedAt', 'DESC']
+      ['updatedAt', 'DESC'],
     ],
     where: {
       'teacherUuid': authenticationService.getUUID(req),
@@ -35,7 +75,7 @@ exports.create = (req, res) => {
     return;
   }
 
-  console.log(req.body.name)
+  console.log(req.body.name);
   Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: authenticationService.getUUID(req),

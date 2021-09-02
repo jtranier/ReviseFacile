@@ -9,43 +9,43 @@
     <!--    <hr style="margin-bottom: 2rem">-->
     <!--    <button class="button-primary u-full-width" onclick="initialisePageAjoutQuestionnaire();">Ajouter</button>-->
 
-    <course-quiz-list :quiz-list="quizList" />
+    <course-quiz-list :quiz-list="course.quizList" />
 
   </div>
 </template>
 
 <script>
 import CourseQuizList from '@/views/quiz/CourseQuizList';
-import moment from 'moment';
+import CourseService from '@/services/CourseService';
 
 export default {
   name: 'course-view',
   components: {
     'course-quiz-list': CourseQuizList
   },
+  props: {
+    courseId: Number,
+  },
   data() {
     return {
       course: {
-        id: this.$route.params.courseId,
-        name: 'Test course',
-        date: new Date()
+        id: -1,
+        teacherUuid: '',
+        name: '',
+        updatedAt: null,
+        quizList: [],
       },
-      quizList: [
-        {
-          id: 1,
-          name: 'Aérodynamique',
-          date: moment('13/01/2021', 'DD/MM/YYYY').toDate(),
-          nbQuestions: 8,
-        },
-        {
-          id: 2,
-          name: 'Introduction mécanique L1',
-          date: moment('01/09/2020', 'DD/MM/YYYY').toDate(),
-          nbQuestions: 13,
-        },
-      ]
     }
   },
+  created() {
+    CourseService.get(this.courseId)
+    .then(response => {
+      this.course = response.data;
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
 };
 </script>
 
