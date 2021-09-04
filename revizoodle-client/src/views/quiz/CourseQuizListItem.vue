@@ -18,7 +18,7 @@
           <tbody>
           <tr>
             <td>{{ moment(date).format('L') }}</td>
-            <td>{{ nbQuestions }} question(s)</td>
+            <td>{{ nbQuestions }} questions</td>
           </tr>
           </tbody>
         </table>
@@ -40,7 +40,10 @@ import moment from 'moment'
 export default {
   name: 'course-quiz-list-item',
   props: {
-    id: Number,
+    id: {
+      type: [Number, String],
+      required: true
+    },
     name: String,
     date: Date,
     nbQuestions: Number

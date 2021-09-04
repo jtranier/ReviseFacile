@@ -7,7 +7,7 @@ module.exports = app => {
   router.get('/:id', courseController.get);
   router.get('/', courseController.list);
   router.post('/', courseController.create);
-  // router.get('/:courseId/add-quiz', courseController.list);
+  router.post('/:courseId/add-quiz', courseController.addQuiz);
 
   app.use('/api/course/', router);
 }

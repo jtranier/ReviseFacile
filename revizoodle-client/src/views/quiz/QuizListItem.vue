@@ -13,13 +13,13 @@
     <div class="row">
       <div class="one-third column"><p style="text-align: center;">{{ nbQuestions }} questions</p></div>
 
-      <div class="one-third column" v-if="addToCourseId === -1">&nbsp;</div>
+      <div class="one-third column" v-if="!modeAddQuiz">&nbsp;</div>
 
       <div class="one-third column">
         <router-link :to="'/teacher/quiz/'+id" tag="button" class="u-full-width">Voir</router-link>
       </div>
-      <div class="one-third column" v-if="addToCourseId !== -1">
-        <button class="u-full-width" >Choisir</button>
+      <div class="one-third column" v-if="modeAddQuiz">
+        <button class="button-primary u-full-width" v-on:click="addQuizToCourse">Choisir</button>
       </div>
     </div>
 
@@ -39,12 +39,17 @@ export default {
     name: String,
     date: Date,
     nbQuestions: Number,
-    addToCourseId: {
-      type: Number,
-      default: -1
+    modeAddQuiz: {
+      type: Boolean,
+      default: false,
     }
   },
-  methods: { moment }
+  methods: {
+    moment,
+    addQuizToCourse() {
+      this.$emit('add-quiz-to-course', this.id);
+    }
+  }
 };
 </script>
 

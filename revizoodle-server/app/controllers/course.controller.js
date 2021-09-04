@@ -4,6 +4,7 @@ const controllerUtil = require('../controllers/ControllerUtil');
 
 const Course = db.course;
 const MoodleQuiz = db.moodleQuiz;
+const Course_MoodleQuiz = db.course_moodleQuiz;
 
 exports.get = (req, res) => {
   if (!controllerUtil.checkIsAuthenticated(req, res)) {
@@ -75,7 +76,6 @@ exports.create = (req, res) => {
     return;
   }
 
-  console.log(req.body.name);
   Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: authenticationService.getUUID(req),
@@ -88,5 +88,22 @@ exports.create = (req, res) => {
 };
 
 exports.addQuiz = (req, res) => {
+  if (!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
+  }
+  const courseId = req.params.courseId;
+  const quizId = req.body.quizId;
+
+  Course_MoodleQuiz.create({
+    courseId: courseId,
+    moodleQuizId: quizId
+  }).then(() => {
+    res.json({
+      success: true
+    });
+  }).catch(error => {
+    console.log(error);
+    res.status(500).send(error);
+  });
 
 };

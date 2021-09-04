@@ -29,8 +29,13 @@ export default {
   name: 'quiz-view',
   components: {Question},
   props: {
-    quizId: String,
-    questionIndex: String,
+    quizId: {
+      type: [Number, String],
+      required: true
+    },
+    questionIndex: {
+      type: [Number, String],
+    },
   },
   data() {
     return {

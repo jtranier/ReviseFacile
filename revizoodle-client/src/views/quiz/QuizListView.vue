@@ -17,6 +17,12 @@ export default {
   components: {
     'quiz-list': QuizList
   },
+  props: {
+    courseId: {
+      type: Number,
+      default: -1
+    }
+  },
   data() {
     return {
       quizList: [],
@@ -32,7 +38,9 @@ export default {
     })
   },
   computed: {
-
+    isAddQuizMode() {
+      return this.courseId > 0;
+    }
   },
 };
 </script>

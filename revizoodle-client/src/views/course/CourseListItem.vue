@@ -13,7 +13,10 @@ import moment from 'moment'
 export default {
   name: 'course-list-item',
   props: {
-    id: Number,
+    id: {
+      type: [Number, String],
+      required: true
+    },
     name: String,
     date: Date
   },

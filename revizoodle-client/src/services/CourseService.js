@@ -12,10 +12,25 @@ class CourseService {
 
   create(name) {
     const formData = new FormData();
-    formData.append('name', name);  // appending file
-    return http.post('/course', formData).then(res => {
+    formData.append('name', name);
+    return http.post('/course', formData)
+    .then(res => {
       return res.data;
     }).catch(error => {
+      console.error(error);
+    });
+  }
+
+  addQuiz(courseId, quizId) {
+    const formData = new FormData();
+    formData.append('quizId', quizId);
+    return http.post(`/course/${courseId}/add-quiz`, formData)
+    .then(res => {
+      console.log({
+        success: true
+      });
+    })
+    .catch(error => {
       console.error(error);
     });
   }

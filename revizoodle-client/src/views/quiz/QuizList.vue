@@ -6,10 +6,12 @@
 
     <quiz-list-item v-for="quiz in sortedQuizList"
                     v-bind:key="'quiz'+quiz.id"
+                    v-on:add-quiz-to-course="addQuizToCourse"
                     :id="quiz.id"
                     :name="quiz.name"
                     :date="quiz.date"
-                    :nb-questions="quiz.nbQuestions"/>
+                    :nb-questions="quiz.nbQuestions"
+                    :mode-add-quiz="modeAddQuiz" />
 
     <hr>
   </div>
@@ -27,11 +29,20 @@ export default {
   },
   props: {
     'quiz-list': Array, // List of quiz {id, name, date, nbQuestions}
+    'modeAddQuiz': {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     sortedQuizList() {
       return this.quizList.slice().sort((a, b) => b.date - a.date);
     },
+  },
+  methods: {
+    addQuizToCourse(quizId) {
+      this.$emit('add-quiz-to-course', quizId);
+    }
   },
 };
 </script>

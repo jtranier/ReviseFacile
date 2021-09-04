@@ -5,11 +5,16 @@
       <h5 style="text-align:center">{{ course.name }}</h5>
     </div>
 
-    <!-- TODO: Uncomment this when add Quiz is implemented -->
-    <!--    <hr style="margin-bottom: 2rem">-->
-    <!--    <button class="button-primary u-full-width" onclick="initialisePageAjoutQuestionnaire();">Ajouter</button>-->
+    <hr style="margin-bottom: 2rem">
 
-    <course-quiz-list :quiz-list="course.quizList" />
+    <router-link
+        tag="button"
+        class="button-primary u-full-width"
+        :to="`/teacher/course/${course.id}/add-quiz-action`">
+      Ajouter
+    </router-link>
+
+    <course-quiz-list :quiz-list="course.quizList"/>
 
   </div>
 </template>
@@ -21,10 +26,13 @@ import CourseService from '@/services/CourseService';
 export default {
   name: 'course-view',
   components: {
-    'course-quiz-list': CourseQuizList
+    'course-quiz-list': CourseQuizList,
   },
   props: {
-    courseId: Number,
+    courseId: {
+      type: [Number, String],
+      required: true
+    },
   },
   data() {
     return {
@@ -35,17 +43,15 @@ export default {
         updatedAt: null,
         quizList: [],
       },
-    }
+    };
   },
   created() {
-    CourseService.get(this.courseId)
-    .then(response => {
+    CourseService.get(this.courseId).then(response => {
       this.course = response.data;
-    })
-    .catch(error => {
+    }).catch(error => {
       console.error(error);
-    })
-  }
+    });
+  },
 };
 </script>
 

@@ -8,6 +8,7 @@ import QuizListView from '@/views/quiz/QuizListView';
 import MoodleQuizUploadForm from '@/views/quiz/MoodleQuizUploadForm';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import CourseAddQuizView from '@/views/quiz/CourseAddQuizView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -27,6 +28,12 @@ const routes = [
     path: '/teacher/course/:courseId',
     name: 'CourseView',
     component: CourseView,
+    props: true
+  },
+  {
+    path: '/teacher/course/:courseId/add-quiz-action',
+    name: 'CourseAddQuizAction',
+    component: CourseAddQuizView,
     props: true
   },
   {
