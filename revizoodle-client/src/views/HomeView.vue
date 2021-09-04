@@ -23,7 +23,7 @@
           <li>Entrainez-vous encore et encore</li>
           <li>100% RGPD</li>
         </ul>
-        <router-link class="button button-primary u-full-width" to="/etudiant">Accès étudiant</router-link>
+        <router-link class="button button-primary u-full-width" to="/learner">Accès étudiant</router-link>
         <hr>
       </div>
     </div>

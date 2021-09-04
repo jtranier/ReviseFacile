@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.BIGINT(11),
         },
         'teacherUuid': {
-          type: Sequelize.TEXT,
+          type: Sequelize.Sequelize.STRING(40),
           allowNull: false,
         },
 

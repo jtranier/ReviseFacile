@@ -9,6 +9,8 @@ import MoodleQuizUploadForm from '@/views/quiz/MoodleQuizUploadForm';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import CourseAddQuizView from '@/views/quiz/CourseAddQuizView';
+import LearnerView from '@/views/LearnerView';
+import LearnerCourseView from '@/views/course/LearnerCourseView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -66,6 +68,17 @@ const routes = [
     name: 'MoodleQuizUploadForm',
     component: MoodleQuizUploadForm,
   },
+  {
+    path: '/learner',
+    name: 'LearnerView',
+    component: LearnerView
+  },
+  {
+    path: '/learner/course/:courseId',
+    name: 'LearnerCourseView',
+    component: LearnerCourseView,
+    props: true,
+  }
 ]
 
 const router = new VueRouter({

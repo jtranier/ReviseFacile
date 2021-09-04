@@ -1,15 +1,15 @@
 <template>
-  <course-list :value="courseList" v-on:create-course="createCourse" />
+  <teacher-course-list :value="courseList" v-on:create-course="createCourse" />
 </template>
 
 <script>
-import CourseList from '@/views/course/CourseList';
+import TeacherCourseList from '@/views/course/TeacherCourseList';
 import CourseService from '@/services/CourseService';
 
 
 export default {
   name: 'TeacherView',
-  components: { 'course-list': CourseList },
+  components: { 'teacher-course-list': TeacherCourseList },
   data: () => ({
     courseList: [],
   }),

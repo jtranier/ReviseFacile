@@ -47,7 +47,7 @@ import CourseListItem from '@/views/course/CourseListItem';
 import CourseCreateForm from '@/views/course/CourseCreateForm';
 
 export default {
-  name: 'course-list',
+  name: 'teacher-course-list',
   components: {
     'course-create-form': CourseCreateForm,
     'course-list-item': CourseListItem,

@@ -1,4 +1,5 @@
 import http from '../http-commons';
+import moment from 'moment';
 
 class CourseService {
 
@@ -6,8 +7,25 @@ class CourseService {
     return http.get(`/course/${courseId}`);
   }
 
-  findAllMyCourse() {
+  findAllMyCourse() { // for teacher
     return http.get(`/course`);
+  }
+
+  findAllMyRegisteredCourse() { // for learner
+    return new Promise((resolve, reject) => {
+      return http.get(`/learner/course`).then(res => {
+        resolve(
+            res.data.map(course => {
+              return {
+                ...course,
+                date: moment(course.date).toDate()
+              }
+            })
+        );
+      }).catch(error => {
+        reject(error);
+      });
+    });
   }
 
   create(name) {

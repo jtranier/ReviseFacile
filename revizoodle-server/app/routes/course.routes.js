@@ -1,4 +1,4 @@
-const courseController = require('../controllers/course.controller');
+
 module.exports = app => {
   const courseController = require('../controllers/course.controller');
 

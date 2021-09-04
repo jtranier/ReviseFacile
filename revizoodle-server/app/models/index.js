@@ -34,11 +34,12 @@ db.reponses_questionnaire = require("./reponses_questionnaire.model.js")(sequeli
 db.moodleQuiz = require("./moodleQuiz.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
 db.course_moodleQuiz = require("./course_moodleQuiz.model")(sequelize, Sequelize);
+db.course_registration = require("./course_registration")(sequelize, Sequelize);
 
 db.course.belongsToMany(db.moodleQuiz, {through: db.course_moodleQuiz})
 db.moodleQuiz.belongsToMany(db.course, {through: db.course_moodleQuiz})
 
-
+db.course_registration.belongsTo(db.course, {foreignKey: 'courseId'})
 
 // Relations
 db.questionnaire.belongsToMany(

@@ -25,7 +25,6 @@
 <script>
 import QuizService from '@/services/QuizService';
 import QuizList from '@/views/quiz/QuizList';
-import moment from 'moment';
 
 export default {
   name: 'quiz-list-view',
