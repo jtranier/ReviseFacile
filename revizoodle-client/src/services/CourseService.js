@@ -25,8 +25,10 @@ class CourseService {
     const formData = new FormData();
     formData.append('quizId', quizId);
     return http.post(`/course/${courseId}/add-quiz`, formData)
-    .then({
-      success: true
+    .then(() => {
+      return {
+        success: true
+      }
     })
     .catch(error => {
       console.error(error);
