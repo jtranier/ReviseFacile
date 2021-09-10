@@ -45,7 +45,8 @@ exports.list = (req, res) => {
           return {
             id: quiz.id,
             name: quiz.name,
-            nbQuestions: JSON.parse(quiz.questions).length
+            nbQuestions: JSON.parse(quiz.questions).length,
+            date: quiz.updatedAt,
           }
         })
     );

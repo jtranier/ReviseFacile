@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container" align="justify">
+  <div class="container">
     <h5 style="text-align:center">Ajouter un quiz au cours "{{ course.name }}"</h5>
 
     <quiz-list :quiz-list="quizList"
@@ -39,7 +39,6 @@ export default {
 
     CourseService.get(this.courseId)
     .then(res => {
-      console.info(res.data)
       this.course = res.data;
     })
     .catch(error => {

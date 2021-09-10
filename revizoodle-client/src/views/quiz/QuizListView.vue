@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <quiz-list :quiz-list="quizList" />
+    <quiz-list :quiz-list="quizList"/>
   </div>
 
 </template>
@@ -22,17 +22,18 @@
 <script>
 import QuizService from '@/services/QuizService';
 import QuizList from '@/views/quiz/QuizList';
+import moment from 'moment';
 
 export default {
   name: 'quiz-list-view',
   components: {
-    'quiz-list': QuizList
+    'quiz-list': QuizList,
   },
   props: {
     courseId: {
       type: Number,
-      default: -1
-    }
+      default: -1,
+    },
   },
   data() {
     return {
@@ -40,18 +41,20 @@ export default {
     };
   },
   created() {
-    QuizService.findAllMyQuiz()
-    .then(res => {
-      this.quizList = res.data;
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    QuizService.findAllMyQuiz().then(res => {
+      this.quizList =
+          res.data.map(quiz => {
+            quiz.date = moment(quiz.date).toDate()
+            return quiz;
+          }).slice().sort((a, b) => b.date - a.date);
+    }).catch(error => {
+      console.log(error);
+    });
   },
   computed: {
     isAddQuizMode() {
       return this.courseId > 0;
-    }
+    },
   },
 };
 </script>
