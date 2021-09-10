@@ -1,7 +1,18 @@
 <template>
 
-  <div class="container" align="justify">
-    <h5 style="text-align:center">Mes quiz</h5>
+  <div class="container" style="margin-top: 1em">
+    <div class="row">
+      <div class="two-thirds column">
+        <h4 style="margin-bottom: 1em">Mes quiz</h4>
+      </div>
+      <div class="one-third column">
+        <router-link tag="button"
+                     to="/teacher/moodle-upload"
+                     class="button-primary u-full-width">
+          Importer
+        </router-link>
+      </div>
+    </div>
 
     <quiz-list :quiz-list="quizList" />
   </div>

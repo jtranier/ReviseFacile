@@ -45,6 +45,7 @@ export default {
     };
   },
   methods: {
+
     upload(e) {
       e.preventDefault();
       if(!this.xmlFile) {
@@ -60,8 +61,7 @@ export default {
       .post("xml/upload", formData)
       .then(res => {
         if(res.data.success) {
-          const quizId = res.data.id
-          alert(`Le quiz a bien été importé (id=${quizId})`)
+          this.$router.push('/teacher/quiz')
         }
         else {
           alert('Le quiz n\'a pas pu être importé')
@@ -70,7 +70,7 @@ export default {
       })
       .catch(err => {
         // TODO show err
-        console.log(err)
+        console.error(err)
       });
     },
 
