@@ -2,6 +2,12 @@
   <div class="container" align="justify">
 
     <div style="margin-top: 3%;">
+      <router-link tag="div"
+                   to="/teacher"
+                   class="bouton-retour">
+        <h5>&lt;</h5>
+      </router-link>
+
       <h5 style="text-align:center">{{ course.name }}</h5>
     </div>
 
