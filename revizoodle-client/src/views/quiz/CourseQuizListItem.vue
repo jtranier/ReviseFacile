@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hr>
+
     <table class="u-full-width">
       <tbody>
       <tr>

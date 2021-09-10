@@ -2,7 +2,9 @@
 
   <div id="liste_questionnaires">
 
-    <!-- TODO: handle no quiz cases -->
+    <hr/>
+
+    <p v-if="sortedQuizList.length === 0">Ce cours ne contient aucun quiz pour l'instant.</p>
 
     <course-quiz-list-item v-for="quiz in sortedQuizList"
                     v-bind:key="'quiz'+quiz.id"
@@ -10,6 +12,8 @@
                     :name="quiz.name"
                     :date="quiz.updatedAt"
                     :nb-questions="quiz.nbQuestions"/>
+
+    <hr/>
   </div>
 
 </template>
