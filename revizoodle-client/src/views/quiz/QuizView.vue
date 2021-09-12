@@ -7,12 +7,21 @@
     <div style="margin-top: 3%;">
       <div class="row">
         <div class="one-half column">
-          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+previousIndex" tag="button" class="u-full-width">
-            &lt;
+          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+previousIndex"
+                       custom
+                       v-slot="{ navigate }">
+            <button class="u-full-width" @click="navigate">
+              &lt;
+            </button>
           </router-link>
         </div>
         <div class="one-half column">
-          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+nextIndex" tag="button" class="u-full-width"> &gt;
+          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+nextIndex"
+                       custom
+                       v-slot="{ navigate }">
+            <button class="u-full-width" @click="navigate">
+              &gt;
+            </button>
           </router-link>
         </div>
       </div>

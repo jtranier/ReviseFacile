@@ -6,15 +6,17 @@
     <hr style="margin-bottom: 2rem">
 
     <router-link
-        tag="button"
-        class="button-primary u-full-width"
-        :to="{ name: 'MoodleQuizUploadForm', query: { courseId: courseId } }">
-      Importer un quiz Moodle
+        :to="{ name: 'MoodleQuizUploadForm', query: { courseId: courseId } }"
+        custom
+        v-slot="{ navigate  }">
+      <button @click="navigate" class="button-primary u-full-width">
+        Importer un quiz Moodle
+      </button>
     </router-link>
 
     <quiz-list :quiz-list="quizList"
                v-on:add-quiz-to-course="addQuizToCourse"
-               :mode-add-quiz="true" />
+               :mode-add-quiz="true"/>
   </div>
 
 </template>
@@ -28,13 +30,13 @@ import router from '@/router';
 export default {
   name: 'coure-add-quiz-view',
   components: {
-    'quiz-list': QuizList
+    'quiz-list': QuizList,
   },
   props: {
     courseId: {
       type: [Number, String],
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -46,33 +48,27 @@ export default {
   },
   created() {
 
-    CourseService.get(this.courseId)
-    .then(res => {
+    CourseService.get(this.courseId).then(res => {
       this.course = res.data;
-    })
-    .catch(error => {
+    }).catch(error => {
       console.error(error);
-    })
+    });
 
-    QuizService.findAllMyQuiz()
-    .then(quizList => {
+    QuizService.findAllMyQuiz().then(quizList => {
       this.quizList = quizList.slice().sort((a, b) => b.date - a.date);
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    }).catch(error => {
+      console.log(error);
+    });
   },
   methods: {
     addQuizToCourse(quizId) {
-      CourseService.addQuiz(this.courseId, quizId)
-      .then(() => {
+      CourseService.addQuiz(this.courseId, quizId).then(() => {
         router.push(`/teacher/course/${this.courseId}`);
-      })
-      .catch(error => {
+      }).catch(error => {
         console.error(error);
-      })
-    }
-  }
+      });
+    },
+  },
 };
 </script>
 

@@ -2,10 +2,13 @@
   <div class="container">
 
     <div style="margin-top: 3%;">
-      <router-link tag="div"
-                   to="/teacher"
-                   class="bouton-retour">
-        <h5>&lt;</h5>
+      <router-link to="/teacher"
+                   custom
+                   v-slot="{ navigate }">
+        <div class="bouton-retour" @click="navigate">
+          <h5>&lt;</h5>
+        </div>
+
       </router-link>
 
       <h5 style="text-align:center">{{ course.name }}</h5>
@@ -14,10 +17,13 @@
     <hr style="margin-bottom: 2rem">
 
     <router-link
-        tag="button"
-        class="button-primary u-full-width"
-        :to="`/teacher/course/${course.id}/add-quiz-action`">
-      Ajouter
+        :to="`/teacher/course/${course.id}/add-quiz-action`"
+        custom
+        v-slot="{ navigate }">
+      <button class="button-primary u-full-width"
+              @click="navigate">
+        Ajouter
+      </button>
     </router-link>
 
     <course-quiz-list :quiz-list="course.quizList"/>
@@ -37,7 +43,7 @@ export default {
   props: {
     courseId: {
       type: [Number, String],
-      required: true
+      required: true,
     },
   },
   data() {

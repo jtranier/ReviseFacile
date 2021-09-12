@@ -16,7 +16,12 @@
       <div class="one-third column" v-if="!modeAddQuiz">&nbsp;</div>
 
       <div class="one-third column">
-        <router-link :to="'/teacher/quiz/'+id" tag="button" class="u-full-width">Voir</router-link>
+        <router-link :to="'/teacher/quiz/'+id"
+                     custom v-slot="{ navigate }">
+          <button class="u-full-width" @click="navigate">
+            Voir
+          </button>
+        </router-link>
       </div>
       <div class="one-third column" v-if="modeAddQuiz">
         <button class="button-primary u-full-width" v-on:click="addQuizToCourse">Choisir</button>

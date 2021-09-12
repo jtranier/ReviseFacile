@@ -6,10 +6,13 @@
         <h4 style="margin-bottom: 1em">Mes quiz</h4>
       </div>
       <div class="one-third column">
-        <router-link tag="button"
-                     to="/teacher/moodle-upload"
-                     class="button-primary u-full-width">
-          Importer
+        <router-link to="/teacher/moodle-upload"
+                     custom
+                     v-slot="{ navigate }">
+          <button class="button-primary u-full-width"
+                  @click="navigate">
+            Importer
+          </button>
         </router-link>
       </div>
     </div>
