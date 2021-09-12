@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container" align="justify">
+  <div class="container">
     <h5 style="text-align:center">Question {{ currentQuestionIndex }} / {{ nbQuestions }}</h5>
     <question v-bind="currentQuestion"/>
 

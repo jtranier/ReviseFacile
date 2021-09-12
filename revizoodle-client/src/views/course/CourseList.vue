@@ -1,5 +1,5 @@
 <template>
-  <div class="container" align="justify" style="margin-top: 1em">
+  <div class="container" style="margin-top: 1em">
     <div class="row">
       <div class="two-thirds column">
         <h4 style="margin-bottom: 1em">Mes cours</h4>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" align="justify" style="margin-top: 5%">
+  <div class="container" style="margin-top: 5%">
     <h2 class="title" style="text-align: center">ReviZoodle</h2>
     <div class="row">
       <div class="one-half column" style="text-align:center; margin-top: 1rem; padding: 1rem;">
