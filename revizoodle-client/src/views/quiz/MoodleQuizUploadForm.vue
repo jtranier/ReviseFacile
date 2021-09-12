@@ -42,7 +42,13 @@ export default {
       'quizName': '',
       'xmlFileDataUrl': null,
       'xmlFile': null,
+      courseId: null, // defined when the quiz is imported for a specific course
     };
+  },
+  created() {
+    if(this.$route.query.courseId) {
+      this.courseId = this.$route.query.courseId;
+    }
   },
   methods: {
 
@@ -61,7 +67,12 @@ export default {
       .post("xml/upload", formData)
       .then(res => {
         if(res.data.success) {
-          this.$router.push('/teacher/quiz')
+          if(this.courseId) {
+            this.$router.push(`/teacher/course/${this.courseId}/add-quiz-action`)
+          }
+          else {
+            this.$router.push('/teacher/quiz')
+          }
         }
         else {
           alert('Le quiz n\'a pas pu être importé')

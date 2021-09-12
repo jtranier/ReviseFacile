@@ -1,7 +1,16 @@
 <template>
 
   <div class="container">
-    <h5 style="text-align:center">Ajouter un quiz au cours "{{ course.name }}"</h5>
+    <h5 style="text-align:center; margin-top: 3%;">Ajouter un quiz au cours "{{ course.name }}"</h5>
+
+    <hr style="margin-bottom: 2rem">
+
+    <router-link
+        tag="button"
+        class="button-primary u-full-width"
+        :to="{ name: 'MoodleQuizUploadForm', query: { courseId: courseId } }">
+      Importer un quiz Moodle
+    </router-link>
 
     <quiz-list :quiz-list="quizList"
                v-on:add-quiz-to-course="addQuizToCourse"
@@ -46,8 +55,8 @@ export default {
     })
 
     QuizService.findAllMyQuiz()
-    .then(res => {
-      this.quizList = res.data;
+    .then(quizList => {
+      this.quizList = quizList.slice().sort((a, b) => b.date - a.date);
     })
     .catch(error => {
       console.log(error)

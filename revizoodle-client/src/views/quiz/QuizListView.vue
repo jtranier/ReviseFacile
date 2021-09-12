@@ -41,12 +41,9 @@ export default {
     };
   },
   created() {
-    QuizService.findAllMyQuiz().then(res => {
+    QuizService.findAllMyQuiz().then(quizList => {
       this.quizList =
-          res.data.map(quiz => {
-            quiz.date = moment(quiz.date).toDate()
-            return quiz;
-          }).slice().sort((a, b) => b.date - a.date);
+          quizList.slice().sort((a, b) => b.date - a.date);
     }).catch(error => {
       console.log(error);
     });

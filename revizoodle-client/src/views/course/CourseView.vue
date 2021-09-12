@@ -1,5 +1,5 @@
 <template>
-  <div class="container" align="justify">
+  <div class="container">
 
     <div style="margin-top: 3%;">
       <router-link tag="div"
