@@ -7,16 +7,19 @@
     <div style="margin-top: 3%;">
       <div class="row">
         <div class="one-half column">
-          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+previousIndex"
+          <router-link v-if="questionIndex  > 1"
+                       :to="'/teacher/quiz/'+quizId+'/question/'+previousIndex"
                        custom
                        v-slot="{ navigate }">
             <button class="u-full-width" @click="navigate">
               &lt;
             </button>
           </router-link>
+          <div class="u-full-width">&nbsp;</div>
         </div>
         <div class="one-half column">
-          <router-link :to="'/teacher/quiz/'+quizId+'/question/'+nextIndex"
+          <router-link v-if="questionIndex < nbQuestions"
+                       :to="'/teacher/quiz/'+quizId+'/question/'+nextIndex"
                        custom
                        v-slot="{ navigate }">
             <button class="u-full-width" @click="navigate">
