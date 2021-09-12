@@ -1,7 +1,19 @@
 <template>
 
   <div class="container">
-    <h5 style="text-align:center">Question {{ currentQuestionIndex }} / {{ nbQuestions }}</h5>
+    <div style="margin-top: 3%;">
+      <router-link :to="backRouterLink"
+                   custom
+                   v-slot="{ navigate }">
+        <div class="bouton-retour" @click="navigate">
+          <h5>&lt;</h5>
+        </div>
+
+      </router-link>
+
+      <h5 style="text-align:center">Question {{ currentQuestionIndex }} / {{ nbQuestions }}</h5>
+    </div>
+
     <question v-bind="currentQuestion"/>
 
     <div style="margin-top: 3%;">
@@ -41,9 +53,13 @@ export default {
   name: 'quiz-view',
   components: {Question},
   props: {
+    courseId: {
+      type: [Number, String],
+      default: null,
+    },
     quizId: {
       type: [Number, String],
-      required: true
+      required: true,
     },
     questionIndex: {
       type: [Number, String],
@@ -53,11 +69,23 @@ export default {
     return {
       quiz: {
         name: '',
-        questions: []
+        questions: [],
       },
+      backRouterLink: {
+        name: 'QuizListView'
+      }
     };
   },
   created() {
+    if(this.courseId) {
+      this.backRouterLink = {
+        name: "CourseAddQuizAction",
+        params: {
+          courseId: this.courseId,
+        }
+      };
+    }
+
     QuizService.get(this.quizId).then(res => {
       // TODO Error handling when the quiz does not exist
 

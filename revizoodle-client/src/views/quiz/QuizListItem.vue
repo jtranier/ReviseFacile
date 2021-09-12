@@ -16,7 +16,7 @@
       <div class="one-third column" v-if="!modeAddQuiz">&nbsp;</div>
 
       <div class="one-third column">
-        <router-link :to="'/teacher/quiz/'+id"
+        <router-link :to="quizLink"
                      custom v-slot="{ navigate }">
           <button class="u-full-width" @click="navigate">
             Voir
@@ -40,6 +40,10 @@ import moment from 'moment'
 export default {
   name: 'quiz-list-item',
   props: {
+    courseId: {
+      type: [Number, String],
+      default: null,
+    },
     id: Number,
     name: String,
     date: Date,
@@ -53,6 +57,14 @@ export default {
     moment,
     addQuizToCourse() {
       this.$emit('add-quiz-to-course', this.id);
+    }
+  },
+  computed: {
+    quizLink() {
+      return this.courseId === null ?
+          `/teacher/quiz/${this.id}` :
+          `/teacher/course/${this.courseId}/quiz/${this.id}`
+
     }
   }
 };

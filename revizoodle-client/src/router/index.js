@@ -47,6 +47,16 @@ const routes = [
     props: true
   },
   {
+    path: '/teacher/course/:courseId/quiz/:quizId',
+    name: 'CourseQuizView',
+    redirect: '/teacher/course/:courseId/quiz/:quizId/question/1'
+  },
+  {
+    path: '/teacher/course/:courseId/quiz/:quizId/question/:questionIndex',
+    component: QuizView,
+    props: true
+  },
+  {
     path: '/teacher/quiz',
     name: 'QuizListView',
     component: QuizListView,

@@ -15,6 +15,7 @@
     </router-link>
 
     <quiz-list :quiz-list="quizList"
+               :courseId="courseId"
                v-on:add-quiz-to-course="addQuizToCourse"
                :mode-add-quiz="true"/>
   </div>
