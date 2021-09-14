@@ -5,6 +5,7 @@ module.exports = app => {
   let router = require('express').Router();
 
   router.get('/', learnerCourseController.findAllRegistered);
+  router.get('/:courseId', learnerCourseController.findAllTrainingsForCourse);
 
   app.use('/api/learner/course/', router);
 }

@@ -4,8 +4,7 @@
 
 <script>
 import LearnerCourseList from '@/views/course/LearnerCourseList';
-import CourseService from '@/services/CourseService';
-
+import TrainingService from '@/services/TrainingService';
 
 export default {
   name: 'LearnerView',
@@ -14,7 +13,7 @@ export default {
     courseList: [],
   }),
   created() {
-    CourseService.findAllMyRegisteredCourse()
+    TrainingService.findAllMyRegisteredCourse()
     .then(courseList => {
       this.courseList = courseList;
     })

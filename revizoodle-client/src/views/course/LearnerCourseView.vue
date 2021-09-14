@@ -2,7 +2,7 @@
   <div class="container">
 
     <div style="margin-top: 3%;">
-      <router-link to="/teacher"
+      <router-link to="/learner"
                    custom
                    v-slot="{ navigate }">
         <div class="bouton-retour" @click="navigate">
@@ -11,22 +11,25 @@
 
       </router-link>
 
-      <h5 style="text-align:center">{{ course.name }}</h5>
+      <h5 style="text-align:center"> Mes entraînements <br/>sur le cours "{{ course.name }}"</h5>
     </div>
 
     <hr style="margin-bottom: 2rem">
 
-    TODO ***
+    <training-list :training-list="quizTrainingList" />
 
   </div>
 </template>
 
 <script>
 import CourseService from '@/services/CourseService';
+import TrainingService from '@/services/TrainingService';
+import TrainingList from '@/views/training/TrainingList';
 
 export default {
   name: 'course-view',
   components: {
+    'training-list': TrainingList
   },
   props: {
     courseId: {
@@ -43,12 +46,21 @@ export default {
         updatedAt: null,
         quizList: [],
       },
+      quizTrainingList: [],
     };
   },
   created() {
+    // TODO should I use CourseService here ?
     CourseService.get(this.courseId).then(response => {
       this.course = response.data;
     }).catch(error => {
+      console.error(error);
+    });
+
+    TrainingService.findAllTrainingsForCourse(this.courseId).then(data => {
+      this.quizTrainingList = data;
+    })
+    .catch(error => {
       console.error(error);
     });
   },

@@ -8,9 +8,11 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING(40),
           allowNull: false,
         },
-        'course_id': {
-          type: Sequelize.BIGINT(11),
-        }
+        // associated to Course
+        // TODO *** check & remove
+        // 'course_id': {
+        //   type: Sequelize.BIGINT(11),
+        // }
       },
   );
 };

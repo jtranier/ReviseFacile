@@ -11,7 +11,7 @@ exports.get = (req, res) => {
     return;
   }
 
-  const id = req.params.id;
+  const id = req.params.id || -1;
 
   Course.findOne({
     where: { id },

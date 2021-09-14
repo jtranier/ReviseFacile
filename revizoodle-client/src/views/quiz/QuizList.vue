@@ -1,6 +1,6 @@
 <template>
 
-  <div id="liste_questionnaires">
+  <div>
 
     <!-- TODO: handle no quiz cases -->
 
