@@ -1,11 +1,11 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
+const {where} = require('sequelize');
 
 const Course = db.course;
 const CourseRegistration = db.course_registration;
 const Training = db.training;
 const Quiz = db.moodleQuiz;
-
 
 /**
  * Get the last training of a learner on a quiz
@@ -49,7 +49,7 @@ exports.findAllTrainingsForCourse = (req, res) => {
     include: [
       {
         model: Course,
-        through: {where: {courseId: courseId}},
+        where: {id: courseId},
         attributes: ['id'],
       },
       {
@@ -61,23 +61,24 @@ exports.findAllTrainingsForCourse = (req, res) => {
         required: false,
       },
     ],
+
     order: [['updatedAt', 'desc'], ['trainings', 'updatedAt', 'desc']],
-  }).then(data => {
+  }).
+      then(data => {
+        res.json(
+            data.map(quiz => {
+              return {
+                quizId: quiz['id'],
+                quizTitle: quiz['name'],
+                quizDate: quiz['updatedAt'],
+                quizNbQuestions: JSON.parse(quiz['questions']).length || 0,
+                nbTrainings: quiz['trainings'].length,
+                score: lastTraining(quiz) ? lastTraining(quiz).score : null,
+              };
+            }),
+        );
 
-    res.json(
-        data.map(quiz => {
-          return {
-            quizId: quiz['id'],
-            quizTitle: quiz['name'],
-            quizDate: quiz['updatedAt'],
-            quizNbQuestions: JSON.parse(quiz['questions']).length || 0,
-            nbTrainings: quiz['trainings'].length,
-            score: lastTraining(quiz) ? lastTraining(quiz).score : null
-          }
-        })
-    );
-
-  }).catch(error => {
+      }).catch(error => {
     console.error(error);
     res.status(500).send(error);
   });

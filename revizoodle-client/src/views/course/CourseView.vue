@@ -14,6 +14,15 @@
       <h5 style="text-align:center">{{ course.name }}</h5>
     </div>
 
+    <hr/>
+
+    <router-link :to="{name:'RegisterCourse', params: {courseId: courseId}}"
+                 v-slot="{ href, route }">
+      <code>{{ url }}/#{{ route.fullPath }}</code>
+
+
+    </router-link>
+
     <hr style="margin-bottom: 2rem">
 
     <router-link
@@ -48,6 +57,7 @@ export default {
   },
   data() {
     return {
+      url: window.location.host,
       course: {
         id: -1,
         teacherUuid: '',

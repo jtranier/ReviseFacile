@@ -43,7 +43,9 @@ db.course.belongsToMany(db.moodleQuiz, {through: db.course_moodleQuiz});
 db.moodleQuiz.belongsToMany(db.course, {through: db.course_moodleQuiz});
 // TODO hasMany
 
+
 db.course_registration.belongsTo(db.course, {foreignKey: 'courseId'});
+db.course.hasMany(db.course_registration, {foreignKey: 'courseId'});
 
 db.training.belongsTo(db.moodleQuiz, { foreignKey: 'quizId' });
 db.moodleQuiz.hasMany(db.training, { foreignKey: 'quizId' });

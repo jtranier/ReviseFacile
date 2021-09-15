@@ -5,10 +5,7 @@
       <tbody>
       <tr>
         <th>{{ name }}</th>
-        <td style="text-align: right;"><a
-            onclick="alert('TODO');"
-            href="TODO"
-            style="text-decoration: none;">Lien apprenant</a></td>
+        <td style="text-align: right;"></td>
       </tr>
       </tbody>
     </table>

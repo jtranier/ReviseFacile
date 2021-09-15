@@ -11,6 +11,7 @@ import VueAxios from 'vue-axios';
 import CourseAddQuizView from '@/views/quiz/CourseAddQuizView';
 import LearnerView from '@/views/LearnerView';
 import LearnerCourseView from '@/views/course/LearnerCourseView';
+import RegisterCourseView from '@/views/course/RegisterCourseView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -78,7 +79,13 @@ const routes = [
     name: 'LearnerCourseView',
     component: LearnerCourseView,
     props: true,
-  }
+  },
+  {
+    path: '/learner/course/:courseId/register',
+    name: 'RegisterCourse',
+    component: RegisterCourseView,
+    props: true,
+  },
 ]
 
 const router = new VueRouter({

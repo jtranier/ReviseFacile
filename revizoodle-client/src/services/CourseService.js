@@ -13,8 +13,7 @@ class CourseService {
   create(name) {
     const formData = new FormData();
     formData.append('name', name);
-    return http.post('/course', formData)
-    .then(res => {
+    return http.post('/course', formData).then(res => {
       return res.data;
     }).catch(error => {
       console.error(error);
@@ -24,14 +23,26 @@ class CourseService {
   addQuiz(courseId, quizId) {
     const formData = new FormData();
     formData.append('quizId', quizId);
-    return http.post(`/course/${courseId}/add-quiz`, formData)
-    .then(() => {
+    return http.post(`/course/${courseId}/add-quiz`, formData).then(() => {
       return {
-        success: true
-      }
-    })
-    .catch(error => {
+        success: true,
+      };
+    }).catch(error => {
       console.error(error);
+    });
+  }
+
+  register(courseId) {
+    return new Promise((resolve, reject) => {
+      http.post(`/course/${courseId}/register`).then(response => {
+        if(!response.data.success) {
+          throw response.data
+        }
+
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
     });
   }
 }

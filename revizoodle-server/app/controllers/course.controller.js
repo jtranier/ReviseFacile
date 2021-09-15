@@ -5,6 +5,7 @@ const controllerUtil = require('../controllers/ControllerUtil');
 const Course = db.course;
 const MoodleQuiz = db.moodleQuiz;
 const Course_MoodleQuiz = db.course_moodleQuiz;
+const CourseRegistration = db.course_registration;
 
 exports.get = (req, res) => {
   if (!controllerUtil.checkIsAuthenticated(req, res)) {
@@ -14,16 +15,16 @@ exports.get = (req, res) => {
   const id = req.params.id || -1;
 
   Course.findOne({
-    where: { id },
+    where: {id},
     include: {
       model: MoodleQuiz,
     },
   }).then(data => {
-    if(!data) {
+    if (!data) {
       res.status(404).json({
         error: {
-          message: `There is no course with id ${id}`
-        }
+          message: `There is no course with id ${id}`,
+        },
       });
       return;
     }
@@ -39,12 +40,12 @@ exports.get = (req, res) => {
           name: quiz.name,
           updatedAt: quiz['course_moodleQuiz'].updatedAt,
           nbQuestions: JSON.parse(quiz.questions).length,
-        }
-      })
+        };
+      }),
     });
   }).catch(error => {
     console.error(error);
-    res.status(500).json({ error });
+    res.status(500).json({error});
   });
 
 };
@@ -96,13 +97,57 @@ exports.addQuiz = (req, res) => {
 
   Course_MoodleQuiz.create({
     courseId: courseId,
-    moodleQuizId: quizId
+    moodleQuizId: quizId,
   }).then(() => {
     res.json({
-      success: true
+      success: true,
     });
   }).catch(error => {
     console.log(error);
+    res.status(500).send(error);
+  });
+
+};
+
+exports.register = (req, res) => {
+  if (!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
+  }
+
+  const courseId = req.params.courseId || -1;
+  const learnerUuid = authenticationService.getUUID(req);
+
+  Course.findByPk(courseId, {
+    include: {
+      model: CourseRegistration,
+      where: {
+        'learner_uuid': learnerUuid,
+      },
+      required: false,
+    },
+  }).then(course => {
+    if (course === null) {
+      res.status(404).
+          json({error: {message: `There is no course with id ${courseId}`}});
+    }
+    else if(course['course_registrations'].length > 0) {
+      res.json({ success: true }); // Already registered
+
+    }
+    else {
+      CourseRegistration.create({
+        'learner_uuid': learnerUuid,
+        courseId: courseId
+      }).then(() => {
+        res.json({ success: true });
+      }).catch(error => {
+        console.error(error);
+        res.status(500).send(error);
+      })
+
+    }
+  }).catch(error => {
+    console.error(error);
     res.status(500).send(error);
   });
 
