@@ -10,6 +10,7 @@ import './assets/styles/normalize.css'
 import './assets/styles/skeleton.css'
 import './assets/styles/extensionBoutons.css'
 import './assets/styles/boutonsAdele.css'
+import './assets/styles/revizoodle.css'
 
 Vue.config.productionTip = false
 

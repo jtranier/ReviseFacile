@@ -79,10 +79,7 @@ export default {
           console.err(res.data.error)
         }
       })
-      .catch(err => {
-        // TODO show err
-        console.error(err)
-      });
+      .catch(console.error);
     },
 
     onFilePicked(e) {

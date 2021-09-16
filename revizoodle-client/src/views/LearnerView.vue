@@ -17,9 +17,7 @@ export default {
     .then(courseList => {
       this.courseList = courseList;
     })
-    .catch(error => {
-      console.log(error)
-    })
+    .catch(console.error)
   },
 
 };

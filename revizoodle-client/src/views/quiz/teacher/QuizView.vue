@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Question from '@/views/quiz/Question';
+import Question from '@/views/quiz/teacher/Question';
 import QuizService from '@/services/QuizService';
 
 export default {
@@ -87,13 +87,8 @@ export default {
     }
 
     QuizService.get(this.quizId).then(res => {
-      // TODO Error handling when the quiz does not exist
-
       this.quiz = res.data;
-
-    }).catch(e => {
-      console.error(e);
-    });
+    }).catch(console.error);
   },
   computed: {
     currentQuestionIndex: function() {

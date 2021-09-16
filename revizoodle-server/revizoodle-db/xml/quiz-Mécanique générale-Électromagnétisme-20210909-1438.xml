@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Électromagnétisme</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 53870  -->
+  <question type="multichoice">
+    <name>
+      <text>359</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Une onde électromagnétique s'écrit</p><p>$$\overrightarrow{E}=\overrightarrow{E_0}\,e^{-i\left(\omega t-\overrightarrow{k}\cdot\overrightarrow{r}\right)}$$</p><p>On suppose que $$\overrightarrow{E_0}$$ est un vecteur fixe selon $$+\overrightarrow{e_x}$$. Dans quelle direction se déplace l'onde ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>la direction $$x$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>la direction radiale $$\overrightarrow{r}$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>dans une direction perpendiculaire à $$\overrightarrow{e_x}$$ et $$\overrightarrow{k}$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>dans la direction $$\overrightarrow{k}$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Aucune des solutions précédentes</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53871  -->
+  <question type="multichoice">
+    <name>
+      <text>674</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On approche un baton chargé positivement d'une boule conductrice reliée à la masse. Quelle charge va apparaître sur la boule?</p><p><img src="https://jfparmentier.fr/question_pictures/3/1841e4200.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Des électrons de la masse vont rejoindre la boule bleue par influence, et ainsi charger globalement celle-ci.</p><p><img src="/question_pictures/3/18720f661.png" class="u-max-full-width"></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>positive</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>négative</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>une partie de la boule est de charge négative tandis qu'une autre partie est de charge positive, mais la boule reste globalement neutre</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La boule est de charge nulle en tout point</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53872  -->
+  <question type="multichoice">
+    <name>
+      <text>675</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Une charge $$\text{Q}&gt;0$$ est disposée à proximité d'une sphère métallique neutre.</p><p><img src="https://jfparmentier.fr/question_pictures/3/185912823.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La boule bleue est conductrice. Sour l'influence du champ électrique créé par la charge $$\text{Q}$$, elle va se polariser. Les électrons, libres de se déplacer dans le conducteur, vont se rapprocher de la charge $$\text{Q}$$, laissant des charges positives sur la droite. Ainsi, puisque la force de Coulomb décroît en $$1/r^2$$, la force d'attraction entre $$\text{Q}$$ et les électrons qui lui font fassent sera plus grande que la force de répulsion avec les charges positives à droite de la boule bleu. Au final, il y a donc une force attractive.</p><p><img src="/question_pictures/3/186962c2f.png" class="u-max-full-width"></p><p>À noter, à l'équilibre, le champ électrique est nulle dans la boule bleu, et résulte de la superposition du champ cré par la charge $$Q$$ et de celui créé par la répartition des charges sur la surfce de la boule bleue/</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>aucune force n'agit sur la charge $$\text{Q}$$</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Bien que la boule bleue soit globalement neutre, elle va se polariser, c'est-à-dire qu'elle va acquérir des charges (surfaciques) locales. Ces charges seront à l'origine de forces qui ne se compensent pas.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$\text{Q}$$ subit une force répulsive</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$\text{Q}$$ subit une force attractive</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53873  -->
+  <question type="multichoice">
+    <name>
+      <text>676</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On considère une boule conductrice chargée. Le potentiel électrostatique du conducteur est</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>plus important au centre</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>plus important à la surface</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>plus important quelque part entre le centre et la surface</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>constant dans tout le volume</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53874  -->
+  <question type="multichoice">
+    <name>
+      <text>678</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Le potentiel électrostatique à la surface d'un conducteur est plus élevé au voisinage des pointes.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Puisqu ele champ électrique dans un conducteur à l'équilibre est nul, le potentiel est uniforme sur tout le conducteur, quelque soit sa forme (cela inclu la surface).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Vrai</text>
+      <feedback format="html">
+        <text><![CDATA[<p>C'est le champ électrique qui est plus important (effet de pointe), non pas le potentiel.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Faux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53875  -->
+  <question type="multichoice">
+    <name>
+      <text>724</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On considère un fil de cuivre (conducteur), parcouru par un courant $$I$$ positif et constant. Choisir une des réponses suivantes concernant la densité volumique de charge $$\rho$$ d'un volume élémentaire de ce volume.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[Puisque le courant est positif et que $$I=\text{d} q/\text{d} t$$, la densité volumique de charge doit l'être également, donc $$\rho>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>En dépit de la présence du courant (stationnaire), les charges positives et négatives s'équilibrent de telle sorte que $$\rho=0$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[Le courant de conduction est dû à des électrons, donc $$\rho<0$$.]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53876  -->
+  <question type="multichoice">
+    <name>
+      <text>726</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Deux conducteurs différents sont associés selon la géométrie ci-dessous. Les extrémités sont connectées à un générateur qui délivre un courant constant.</p><p><img src="https://jfparmentier.fr/question_pictures/3/231a0ea95.png" class="u-max-full-width"></p><p>Quelle région est soumise au plus grand courant ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Le courant étant constant, on est dans l'ARQS et ainsi on peut conclure sur le fait que $$\text{div}\overrightarrow{\jmath}=0$$, donc le courant se conserve. Cela traduit la conservation du débit de charge dans une situation stationnaire.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>région 1</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>région 2</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>il n'y a pas assez d'information pour conclure</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53877  -->
+  <question type="multichoice">
+    <name>
+      <text>728</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Deux conducteurs différents sont associés selon la géométrie ci-dessous. Les extrémités sont connectées à un générateur qui délivre un courant constant.</p><p><img src="https://jfparmentier.fr/question_pictures/3/233027552.png" class="u-max-full-width"></p><p>Quelle région est soumise au plus grand champ électrique ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Le courant se conserve, $$I_1=I_2$$. Or, puisque $$I=\jmath S$$ et $$\jmath=\gamma E$$, on a</p><p>$$E_1=E_2\frac{\gamma_2}{\gamma_1}\frac{S_2}{S_1}$$</p><p>Puisqu'on ne dit rien sur le rapport $$\gamma_2/\gamma_1$$, on ne peut pas trancher sur le rapport $$E_1/E_2$$.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>région 1</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>région 2</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>il n'y a pas assez d'information pour conclure</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53878  -->
+  <question type="multichoice">
+    <name>
+      <text>729</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Deux conducteurs de conductivités différentes ($$\gamma_1\neq\gamma_2$$) mais de même taille (même longueur, même largeur, même hauteur) sont associés selon les géométries ci-dessous. Les extrémités sont connectées à un générateur fournissant un courant $$I$$ constant.</p><p><img src="https://jfparmentier.fr/question_pictures/3/234c6fecd.png" class="u-max-full-width"></p><p>La densité volumique de courant est identique dans les deux conducteurs ($$\overrightarrow{\jmath _1}=\overrightarrow{\jmath _2}$$) pour</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>la situation (a)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>la situation (b)</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux situations</text>
+      <feedback format="html">
+        <text><![CDATA[<p>ce n'est pas possible pour la situation (a) par continuité de la composante parallèle du champ électrique, qui impose $$E_1=E_2$$ donc $$\jmath_1/\gamma_1=\jmath_2/\gamma_2$$. Puisque $$\gamma_1\neq\gamma_2$$, on est déduit que les densités volutmique de courant doivent différer.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucune des deux situations</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53879  -->
+  <question type="multichoice">
+    <name>
+      <text>730</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un courant électrique stationnaire circule dans un conducteur.</p><p><img src="https://jfparmentier.fr/question_pictures/3/237d932ff.png" class="u-max-full-width"></p><p>Que dire du champ électrique au voisinage immédiat du conducteur, à l'extérieur ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Il suffit d'invoquer la conservation de la composante parallèle du champ électrique à l'interface entre le conducteur, où le champ électrique est tangent à la surface (d'après la loi d'Ohm $$\overrightarrow{\jmath}=\gamma\overrightarrow{E}$$ et le fait qu'il n'y a pas de charge surfacique car le conducteur est globalement neutre, donc la composnte perpendiculaire $$\sigma/\varepsilon_0$$ est nulle) et le vide.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$\overrightarrow{E}$$ est nul</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$\overrightarrow{E}$$ est normal à la surface</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$\overrightarrow{E}$$ est tangent à la surface</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>il manque des informations pour conclure</text>
+      <feedback format="html">
+        <text><![CDATA[<p>On peut conclure car le circuit étant relié à la masse, le conducteur est globalement neutre.</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53880  -->
+  <question type="multichoice">
+    <name>
+      <text>958</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On considère le champ de vecteur ci-dessous.</p><p><img src="https://jfparmentier.fr/question_pictures/3/367e56b81.png" class="u-max-full-width"></p><p>Ce champ de vecteur possède-t-il de la divergence?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Le flux total à travers une petite surface fermée est nul, donc il n'y a pas de vivergence. On rappelle que ce flux élémentaire $$\mathrm{d}\phi$$ est relié à la divergence par</p><p>$$\mathrm{d}\phi=\mathrm{div}\, \overrightarrow{f}\,\mathrm{d}\tau$$</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>oui</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>non</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>impossible de conclure</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53881  -->
+  <question type="multichoice">
+    <name>
+      <text>959</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Le champ de vecteur ci-dessous peut-il représenter un champ magnétique ?</p><p><img src="https://jfparmentier.fr/question_pictures/3/3682ace10.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Un chmp magnétique doit vérifier $$\mathrm{div}\,\overrightarrow{B}=0$$. Or, ce champ de vecteur possède de la divergence.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>oui</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>non</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>impossible de conclure</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53882  -->
+  <question type="multichoice">
+    <name>
+      <text>961</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On considère le champ de vecteur ci-dessous. </p><p><img src="https://jfparmentier.fr/question_pictures/3/370bb3b79.png" class="u-max-full-width"></p><p>À l'intérieur de la zone hachurée, la divergence du champ de vecteur est  </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Nous avons l'information sur la direction du vecteur, mais pas d'indication sur sa norme, donc il est impossible de conclure. Si on savait que ce champ est un champ électrostatique, on pourrait alors déduire qu'en l'absence de charge dans les pointillés, la divergene est nulle (théorème de Gauss).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>nulle partout</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>non-nulle partout</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>nulle à certains endroits et non-nulle à d'autres</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>impossible de conclure sans plus d'information</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

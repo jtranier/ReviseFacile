@@ -27,8 +27,6 @@ exports.findAllRegistered = (req, res) => {
     },
     include: Course,
   }).then(data => {
-    console.log(data);
-
     res.json(data.map(registration => {
       return {
         id: registration['course.id'],

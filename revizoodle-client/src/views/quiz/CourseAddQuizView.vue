@@ -57,9 +57,7 @@ export default {
 
     QuizService.findAllMyQuiz().then(quizList => {
       this.quizList = quizList.slice().sort((a, b) => b.date - a.date);
-    }).catch(error => {
-      console.log(error);
-    });
+    }).catch(console.error);
   },
   methods: {
     addQuizToCourse(quizId) {

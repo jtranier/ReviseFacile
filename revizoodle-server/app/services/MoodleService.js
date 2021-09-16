@@ -22,16 +22,18 @@ class MoodleService {
                 ].includes(q['$'].type);
               }).map(question => {
 
-                const answers = question.answer;
+                const answers = question['answer'];
+
 
                 return {
                   name: question['name'][0]['text'][0],
                   statement: question['questiontext'][0]['text'][0],
                   explanation: question['generalfeedback'][0]['text'][0],
+                  type: resolveType(question),
                   answers: answers.map(answer => {
                     return {
                       text: answer['text'][0],
-                      score: answer['$']['fraction'],
+                      scoreFraction: Number.parseInt(answer['$']['fraction']),
                       feedback: answer['feedback'][0]['text'][0],
                     };
                   }),
@@ -45,6 +47,13 @@ class MoodleService {
     });
 
   }
+}
+
+const resolveType = function(moodleQuestion) {
+
+  if(moodleQuestion['$']['type'] === 'multichoice' && moodleQuestion['single'][0] === 'true')
+    return 'singlechoice'
+  else return moodleQuestion['$']['type'];
 }
 
 module.exports = new MoodleService();

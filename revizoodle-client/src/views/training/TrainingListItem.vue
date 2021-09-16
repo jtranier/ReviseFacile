@@ -20,10 +20,18 @@
         </table>
       </div>
       <div class="one-third column">
-        <button v-if="score === null" class="button-warning u-full-width">
-          Continuer
-        </button>
-        <button v-if="score !== null" class="button-primary u-full-width">
+        <router-link v-if="score === null"
+                     :to="{ name: 'PlayQuiz', params: { courseId: 1, quizId: quizId, questionIndex: 1 } }"
+                     custom
+                     v-slot="{ navigate }">
+          <button @click="navigate"  class="button-warning u-full-width">
+            Continuer
+          </button>
+        </router-link>
+
+        <button v-if="score !== null"
+                class="button-primary u-full-width"
+                @click="redoTraining">
           Refaire
         </button>
       </div>
@@ -36,6 +44,7 @@
 
 <script>
 import moment from 'moment';
+import TrainingService from '@/services/TrainingService';
 
 export default {
   name: 'training-list-item',
@@ -52,7 +61,17 @@ export default {
     }
   },
   methods: {
-    moment
+    moment,
+    redoTraining() {
+      TrainingService.redoTraining(this.quizId)
+      .then(() => {
+        this.$router.push({
+          name: 'PlayQuiz',
+          // TODO *** update the courseId here & upward
+          params: { courseId: 1, quizId: this.quizId, questionIndex: 1 }
+        });
+      }).catch(console.error);
+    },
   }
 };
 </script>

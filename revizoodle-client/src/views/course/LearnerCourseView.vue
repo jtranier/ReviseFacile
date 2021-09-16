@@ -11,7 +11,7 @@
 
       </router-link>
 
-      <h5 style="text-align:center"> Mes entraînements <br/>sur le cours "{{ course.name }}"</h5>
+      <h5 style="text-align:center">{{ course.name }}</h5>
     </div>
 
     <hr style="margin-bottom: 2rem">
@@ -50,19 +50,14 @@ export default {
     };
   },
   created() {
-    // TODO should I use CourseService here ?
     CourseService.get(this.courseId).then(response => {
       this.course = response.data;
-    }).catch(error => {
-      console.error(error);
-    });
+    }).catch(console.error);
 
     TrainingService.findAllTrainingsForCourse(this.courseId).then(data => {
       this.quizTrainingList = data;
     })
-    .catch(error => {
-      console.error(error);
-    });
+    .catch(console.error);
   },
 };
 </script>

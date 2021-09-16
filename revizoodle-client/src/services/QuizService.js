@@ -6,6 +6,18 @@ class QuizService {
     return http.get(`/moodle-quiz/${id}`);
   }
 
+  /**
+   * Get a quiz, with the latest training data on this quiz for a learner
+   * @param id
+   */
+  getWithLastTraining(id) {
+    return new Promise((resolve, reject) => {
+      http.get(`/moodle-quiz/${id}/latest-training`).then(res => {
+        resolve(res.data)
+      }).catch(reject);
+    });
+  }
+
   findAllMyQuiz() {
     return new Promise((resolve, reject) =>
         http.get(`/moodle-quiz`).then(res => {

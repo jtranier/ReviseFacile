@@ -6,6 +6,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   dialect: dbConfig.dialect,
   operatorsAliases: false,
   define: {
+    charset: 'utf8mb4',
     freezeTableName: true
   },
 

@@ -18,9 +18,7 @@ export default {
     .then(res => {
       this.courseList = res.data
     })
-    .catch(error => {
-      console.log(error)
-    })
+    .catch(console.error)
   },
   methods: {
     createCourse: function(name) {
@@ -29,9 +27,7 @@ export default {
       .then(data => {
         this.courseList.unshift(data);
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(console.error);
     }
   }
 };

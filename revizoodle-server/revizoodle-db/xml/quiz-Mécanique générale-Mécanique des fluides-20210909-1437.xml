@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Mécanique des fluides</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 53606  -->
+  <question type="multichoice">
+    <name>
+      <text>321</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>La pression dans un fluide est représentée sur la figure. Plus la couleur est bleue foncée, plus la pression est élevée. Quelle flèche représente le gradient de pression ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/10f17d25.png" class="u-max-full-width">​​​​​​​</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>La flèche A</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La flèche B</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La flèche C</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La flèche D</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53607  -->
+  <question type="multichoice">
+    <name>
+      <text>322</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Les blocs de glace A et B sont identiques mais le bloc B est maintenu sous l'eau plus profondément. La force nécessaire pour maintenir le bloc B est :</p><p><img src="https://jfparmentier.fr/question_pictures/4/126018da.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>plus forte que celle sur le bloc A.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>plus faible que celle sur le bloc A.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>égale à celle sur le bloc A.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53608  -->
+  <question type="multichoice">
+    <name>
+      <text>323</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Le bloc de glace et de fer ont le même volume. Le bloc de glace flotte et celui de fer coule. Lequel subit la plus grande force d'Archimède ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/143d5884.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>le bloc de glace.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>le bloc de fer.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux subissent la même force.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53609  -->
+  <question type="multichoice">
+    <name>
+      <text>324</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Archimède voulu verifier si une couronne est en or pur. Il l'équilibra sur une balance avec un objet en or pur puis plongea les deux corps dans l'eau. Que peut-on conclure sur la couronne ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/17c65385.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>elle est plus dense que l'or.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>elle est moins dense que l'or.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>on ne peut rien en conclure sur sa densité.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53610  -->
+  <question type="multichoice">
+    <name>
+      <text>347</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un camion roule à vitesse constante sur une autoroute. Il transporte un aquarium rempli d’eau. Soudain il décide de doubler et accélère. L’accélération est constante. Comment la surface libre de l’eau devient-elle ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/197c1d38.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>Comme dans le cas 1</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Comme dans le cas 2</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Comme dans le cas 3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53611  -->
+  <question type="multichoice">
+    <name>
+      <text>348</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un ballon d’Hélium est accroché dans une voiture initialement à l’arrêt. Soudain la voiture accélère. Dans quel sens va se déplacer le ballon d’Helium (dans le référentiel de la voiture) ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/20fad6dc.jpg" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>Il va s’incliner vers l’avant.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Il va s’incliner vers l’arrière.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Il va rester vertical.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53612  -->
+  <question type="multichoice">
+    <name>
+      <text>349</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un cadre fabriqué en fil de fer sur lequel est posé un barreau métallique a été plongé dans l'eau savoneuse. Le cadre est recouvert d'un film de savon de part et d'autre du barreau métallique.</p><p><img src="https://jfparmentier.fr/question_pictures/4/21811c9b.jpg" class="u-max-full-width"></p><p>Que se passe-t-il si je perce le film de gauche ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>Le barreau va rester sur place.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Le barreau va se déplacer vers la droite.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Le barreau va se déplacer vers la gauche.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53613  -->
+  <question type="multichoice">
+    <name>
+      <text>350</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En apesanteur, un astronaute crée 2 gouttes d’eau pour boire. L’une est plus grosse que l’autre. Dans quelle goutte la pression est-elle la plus forte ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/232f692e.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>La pression $$P_1$$ est plus grande que la pression $$P_2$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>La pression $$P_2$$ est plus grande que la pression $$P_1$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Les deux pressions $$P_1$$ et $$P_2$$ sont égales</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53614  -->
+  <question type="multichoice">
+    <name>
+      <text>351</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un tube capillaire est plongé dans de l’eau. L’eau monte d’une hauteur $$h$$. Comparez la pression atmosphérique $$P_a$$ à la pression de l’eau $$P_e$$ à la surface :</p><p><img src="https://jfparmentier.fr/question_pictures/4/256276ef.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>La pression $$P_e$$ est inférieure à la pression atmosphérique $$P_a$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La pression $$P_e$$ est supérieure à la pression atmosphérique $$P_a$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La pression $$P_e$$ est égale à la pression atmosphérique $$P_a$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53615  -->
+  <question type="multichoice">
+    <name>
+      <text>352</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>J’ouvre progressivement le robinet d’une conduite et l’eau coule de plus en plus vite. Pendant l’ouverture du robinet, l'écoulement dans la conduite est en régime :</p><p><img src="https://jfparmentier.fr/question_pictures/4/26746bfa.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>permanent</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>uniforme</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucun des deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53616  -->
+  <question type="multichoice">
+    <name>
+      <text>353</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>L’écoulement autour du cylindre de la vidéo ci-dessous est en régime :</p><p><iframe src="https://www.youtube-nocookie.com/embed/qb2jC6boQg0?rel=0&amp;showinfo=0" allowfullscreen="" width="560" height="315" frameborder="0"></iframe></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>permanent</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>uniforme</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucun des deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53617  -->
+  <question type="multichoice">
+    <name>
+      <text>354</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans un circuit hydraulique, un tronçon de conduite cylindrique a du être remplacé par un tronçon de diamètre inférieur. L’eau circule de la gauche vers la droite, comme indiqué par les flèches. Dans quelle(s) partie(s) la <strong>vitesse</strong> est-elle la plus faible ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/28c71054.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>le tronçon 1</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>le tronçon 2</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>le tronçon 3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les tronçons 1 et 3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>la vitesse est la même dans tous les tronçons</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53618  -->
+  <question type="multichoice">
+    <name>
+      <text>355</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans un circuit hydraulique, un tronçon de conduite cylindrique a du être remplacé par un tronçon de diamètre inférieur. L’eau circule de la gauche vers la droite, comme indiqué par les flèches. Dans quelle(s) partie(s) le <strong>débit</strong> est-il le plus faible ?</p><p><img src="https://jfparmentier.fr/question_pictures/4/29c0559f.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>le tronçon 1</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>le tronçon 2</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>le tronçon 3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les tronçons 1 et 3</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>le débit est la même dans tous les tronçons</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53619  -->
+  <question type="multichoice">
+    <name>
+      <text>357</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>À l’instant de la photo, les lignes blanches représentent :</p><p><iframe src="https://www.youtube-nocookie.com/embed/KnFzExr2TsU?rel=0&amp;showinfo=0" allowfullscreen="" width="560" height="315" frameborder="0"></iframe></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>la trajectoire de particules fluides</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les lignes de courant.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les lignes d’émission.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53620  -->
+  <question type="multichoice">
+    <name>
+      <text>365</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans un circuit de chauffage d’eau, l’eau coule dans un tuyau et est réchauffée par les parois. Le circuit fonctionne depuis plusieurs jours.</p><p><img src="https://jfparmentier.fr/question_pictures/4/328f3251.png" class="u-max-full-width"></p><p>Si on note T le champ de température dans l'eau alors on a :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$\frac{D T}{Dt} = 0$$ et $$\frac{\partial T}{\partial t} = 0$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$\frac{D T}{Dt} = 0$$ et $$\frac{\partial T}{\partial t} \neq 0$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$\frac{D T}{Dt} \neq 0$$ et $$\frac{\partial T}{\partial t} = 0$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$\frac{D T}{Dt} \neq 0$$ et $$\frac{\partial T}{\partial t} \neq 0$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53621  -->
+  <question type="multichoice">
+    <name>
+      <text>367</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>L’écoulement autour du cylindre de la vidéo ci-dessous est en régime :</p><p><iframe src="https://www.youtube-nocookie.com/embed/qb2jC6boQg0?rel=0&amp;showinfo=0" allowfullscreen="" width="560" height="315" frameborder="0"></iframe></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>permanent</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>uniforme</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucun des deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 53622  -->
+  <question type="multichoice">
+    <name>
+      <text>373</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>L’écoulement autour du cylindre de la vidéo ci-dessous est en régime :</p><p><iframe src="https://www.youtube-nocookie.com/embed/qb2jC6boQg0?rel=0&amp;showinfo=0" allowfullscreen="" width="560" height="315" frameborder="0"></iframe></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>permanent</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>uniforme</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucun des deux</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

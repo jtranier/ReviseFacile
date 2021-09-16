@@ -2,6 +2,7 @@
   <div>
     <training-list-item v-for="training in trainingList"
                         v-bind:key="`training-${training.quizId}`"
+                        :quiz-id="training.quizId"
                         :quiz-title="training.quizTitle"
                         :quiz-date="training.quizDate"
                         :quiz-nb-questions="training.quizNbQuestions"

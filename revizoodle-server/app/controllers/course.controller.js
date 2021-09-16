@@ -67,7 +67,7 @@ exports.list = (req, res) => {
   }).then(data => {
     res.json(data);
   }).catch(error => {
-    console.log(error);
+    console.error(error);
     res.status(500).send(error);
   });
 };
@@ -103,7 +103,7 @@ exports.addQuiz = (req, res) => {
       success: true,
     });
   }).catch(error => {
-    console.log(error);
+    console.error(error);
     res.status(500).send(error);
   });
 

@@ -2,8 +2,6 @@
 
   <div>
 
-    <!-- TODO: handle no quiz cases -->
-
     <quiz-list-item v-for="quiz in sortedQuizList"
                     v-bind:key="'quiz'+quiz.id"
                     v-on:add-quiz-to-course="addQuizToCourse"

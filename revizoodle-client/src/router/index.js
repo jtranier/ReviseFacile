@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import CourseView from '@/views/course/CourseView';
 import TeacherView from '@/views/TeacherView';
 import HomeView from '@/views/HomeView';
-import QuizView from '@/views/quiz/QuizView';
+import QuizView from '@/views/quiz/teacher/QuizView';
 import QuizListView from '@/views/quiz/QuizListView';
 import MoodleQuizUploadForm from '@/views/quiz/MoodleQuizUploadForm';
 import axios from 'axios';
@@ -12,6 +12,7 @@ import CourseAddQuizView from '@/views/quiz/CourseAddQuizView';
 import LearnerView from '@/views/LearnerView';
 import LearnerCourseView from '@/views/course/LearnerCourseView';
 import RegisterCourseView from '@/views/course/RegisterCourseView';
+import LearnerQuizView from '@/views/quiz/learner/LearnerQuizView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -84,6 +85,12 @@ const routes = [
     path: '/learner/course/:courseId/register',
     name: 'RegisterCourse',
     component: RegisterCourseView,
+    props: true,
+  },
+  {
+    path: '/learner/course/:courseId/quiz/:quizId',
+    name: 'PlayQuiz',
+    component: LearnerQuizView,
     props: true,
   },
 ]

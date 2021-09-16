@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Answer from '@/views/course/Answer';
+import Answer from '@/views/quiz/Answer';
 import {VueMathjax} from 'vue-mathjax';
 
 export default {
