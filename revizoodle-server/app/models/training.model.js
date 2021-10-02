@@ -17,6 +17,11 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.TINYINT,
           allowNull: true,
         },
+        currentQuestion: { // null if the training is not started
+          type: Sequelize.TINYINT,
+          allowNull: true,
+          default: null,
+        },
         'answers': {
           type: Sequelize.TEXT,
           allowNull: false,

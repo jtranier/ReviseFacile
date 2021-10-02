@@ -13,6 +13,7 @@ exports.update = (req, res) => {
 
   Training.update(
       {
+        currentQuestion: questionIndex,
         answers: JSON.stringify(learnerAnswers),
       },
       {

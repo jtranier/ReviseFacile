@@ -14,11 +14,10 @@
               v-on:unselectChoice="unselectChoice" />
     </div>
 
-    <template v-if="learnerAnswer.submitted && explanation">
+    <div style="margin-top: 3%;" v-if="learnerAnswer.submitted && feedbacks.length > 0">
       <p><strong>Explication :</strong></p>
-      <vue-mathjax :formula="explanation" :safe="false"/>
-    </template>
-
+      <vue-mathjax v-for="(feedback, index) in feedbacks" v-bind:key="index" :formula="feedback" :safe="false"/>
+    </div>
 
     <div style="margin-top: 3%;" v-if="!learnerAnswer.submitted">
       <div class="row">
@@ -49,7 +48,16 @@ export default {
   computed: {
     isMultipleChoice() {
       return this.type === 'multichoice';
-    }
+    },
+    feedbacks() {
+      if(!this.learnerAnswer.submitted) return [];
+
+      return this.answers.filter((answer, index) => {
+        return this.learnerAnswer.choices[index] && answer.feedback
+      }).map(answer => {
+        return answer.feedback;
+      });
+    },
   },
   methods: {
     selectChoice(index) {

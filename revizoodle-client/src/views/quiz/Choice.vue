@@ -11,9 +11,6 @@
        class="bouton-reponse u-full-width">
       <vue-mathjax :formula="text" :safe="false"/>
     </a>
-    <small v-if="feedback && showAnswer">
-      <vue-mathjax :formula="feedback" :safe="false"/>
-    </small>
   </div>
 </template>
 

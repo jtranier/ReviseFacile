@@ -1,7 +1,5 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
-const {where} = require('sequelize');
-
 const Course = db.course;
 const CourseRegistration = db.course_registration;
 const Training = db.training;
@@ -12,7 +10,7 @@ const Quiz = db.moodleQuiz;
  * @param quiz Quiz object entity
  * @returns {null|*}
  */
-const lastTraining = (quiz) => {
+const getLastTraining = (quiz) => {
   return !quiz['trainings'] || !quiz['trainings'].length ?
       null :
       quiz['trainings'][0];
@@ -26,6 +24,7 @@ exports.findAllRegistered = (req, res) => {
       // TODO Paginate
     },
     include: Course,
+    order: [['course', 'updatedAt', 'DESC']],
   }).then(data => {
     res.json(data.map(registration => {
       return {
@@ -65,13 +64,19 @@ exports.findAllTrainingsForCourse = (req, res) => {
       then(data => {
         res.json(
             data.map(quiz => {
+              const lastTraining = getLastTraining(quiz);
+
               return {
                 quizId: quiz['id'],
                 quizTitle: quiz['name'],
                 quizDate: quiz['updatedAt'],
+                lastTrainingCurrentQuestion:
+                    lastTraining ?
+                        lastTraining['currentQuestion'] :
+                        null,
                 quizNbQuestions: JSON.parse(quiz['questions']).length || 0,
                 nbTrainings: quiz['trainings'].length,
-                score: lastTraining(quiz) ? lastTraining(quiz).score : null,
+                score: lastTraining ? lastTraining.score : null,
               };
             }),
         );

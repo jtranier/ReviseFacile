@@ -3,7 +3,7 @@
   <div>
     <div class="container" v-if="state !== States.COMPLETED && currentQuestionIndex > 0">
       <div style="margin-top: 3%;">
-        <router-link :to="backRouterLink"
+        <router-link :to="{ name: 'LearnerCourseView', params: { courseId } }"
                      custom
                      v-slot="{ navigate }">
           <div class="bouton-retour" @click="navigate">
@@ -85,9 +85,6 @@ export default {
       },
 
       currentQuestionIndex: -1,
-      backRouterLink: {
-        name: 'LearnerView',
-      },
     };
   },
   created() {

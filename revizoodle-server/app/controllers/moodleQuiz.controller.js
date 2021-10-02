@@ -9,7 +9,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
 
   const createEmptyLearnerAnswer = function(question) {
     return {
-      submitted: false,
+      submitted: false, // TODO replace by score ?
       nbChoice: question.answers.length,
       choices: question.answers.reduce((result, answer, index) => {
         result[index] = false;

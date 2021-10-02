@@ -16,7 +16,7 @@
 
     <hr style="margin-bottom: 2rem">
 
-    <training-list :training-list="quizTrainingList" />
+    <training-list :training-list="quizTrainingList" :course-id="courseId" />
 
   </div>
 </template>

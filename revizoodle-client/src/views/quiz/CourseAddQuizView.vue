@@ -1,6 +1,15 @@
 <template>
 
   <div class="container">
+    <router-link :to="{ name: 'CourseView', params: { courseId } }"
+                 custom
+                 v-slot="{ navigate }">
+      <div class="bouton-retour" @click="navigate">
+        <h5>&lt;</h5>
+      </div>
+
+    </router-link>
+
     <h5 style="text-align:center; margin-top: 3%;">Ajouter un quiz au cours "{{ course.name }}"</h5>
 
     <hr style="margin-bottom: 2rem">
@@ -29,7 +38,7 @@ import CourseService from '@/services/CourseService';
 import router from '@/router';
 
 export default {
-  name: 'coure-add-quiz-view',
+  name: 'course-add-quiz-view',
   components: {
     'quiz-list': QuizList,
   },
