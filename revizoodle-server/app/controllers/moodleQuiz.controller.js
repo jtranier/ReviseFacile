@@ -1,6 +1,8 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const controllerUtil = require('../controllers/ControllerUtil');
+const {Sequelize, Op} = require('sequelize');
+const e = require('express');
 const MoodleQuiz = db.moodleQuiz;
 const Training = db.training;
 
@@ -179,10 +181,93 @@ exports.redoTraining = (req, res) => {
 
         createEmptyTrainingForQuiz(data, learnerUuid).then(result => {
           res.json(result);
-        }).catch(error => { throw error});
+        }).catch(error => {
+          throw error;
+        });
       },
   ).catch(error => {
     console.error(error);
     res.status(500).send(error);
   });
+};
+
+exports.getResults = (req, res) => {
+  const quizId = req.params.id || -1;
+
+  if (!controllerUtil.checkIsAuthenticated(req, res)) {
+    return;
+  }
+
+  MoodleQuiz.findByPk(quizId, {
+    attributes: ['id', 'name', 'nbQuestions'],
+  }).then(quiz => {
+    if (quiz === null) {
+      res.status(404).send({
+        message: `There is no quiz with id ${quizId}`,
+      });
+    } else {
+      Training.findAll({
+        where: {
+          quizId: quizId,
+          score: {[Op.ne]: null},
+        },
+        include: {
+          model: MoodleQuiz,
+          attributes: ['name'],
+        },
+        order: [
+          ['id', 'ASC'],
+        ],
+      }).then(data => {
+        console.info(data);
+
+        const nbAttempts = data.length;
+        const learners = new Set();
+        let data1stAttempt = Array.from({length: quiz.nbQuestions}, () => []);
+
+        data.forEach(training => {
+          if (!learners.has(training['learner_uuid'])) {
+            learners.add(training['learner_uuid']);
+
+            const currentTrainingAnswers = JSON.parse(training['answers']);
+            for (let [questionIndex, value] of Object.entries(
+                currentTrainingAnswers)) {
+
+              data1stAttempt[Number.parseInt(questionIndex)].push(
+                  value['score']);
+            }
+
+          }
+        });
+        const nbLearners = learners.size;
+
+        res.json({
+          quizId: quiz.id,
+          quizName: quiz.name,
+          nbAttempts,
+          nbLearners,
+          results1stAttempt: data1stAttempt.map(questionResult => {
+            return Math.floor(
+                questionResult.reduce((a, b) => {
+                  return a + b;
+                }, 0) / nbAttempts,
+            );
+          }),
+        });
+      }).catch(err => {
+        console.error(err);
+        res.status(500).send({
+          message: err.message ||
+              `Some error occurred while retrieving the results of the quiz id=${quizId}`,
+        });
+      });
+    }
+  }).catch(err => {
+    console.error(err);
+    res.status(500).send({
+      message: err.message ||
+          `Some error occurred while retrieving the quiz id=${quizId}`,
+    });
+  });
+
 };

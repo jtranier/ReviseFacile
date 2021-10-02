@@ -16,7 +16,8 @@
 
     <hr/>
 
-    <router-link :to="{name:'RegisterCourse', params: {courseId: courseId}}"
+    <router-link :to="{name:'RegisterCourse', params: {courseId }}"
+                 custom
                  v-slot="{ href, route }">
       <code>{{ url }}/#{{ route.fullPath }}</code>
 
@@ -35,7 +36,7 @@
       </button>
     </router-link>
 
-    <course-quiz-list :quiz-list="course.quizList"/>
+    <course-quiz-list :quiz-list="course.quizList" :course-id="courseId" />
 
   </div>
 </template>

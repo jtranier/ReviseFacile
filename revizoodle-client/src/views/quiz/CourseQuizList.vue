@@ -7,11 +7,12 @@
     <p v-if="sortedQuizList.length === 0">Ce cours ne contient aucun quiz pour l'instant.</p>
 
     <course-quiz-list-item v-for="quiz in sortedQuizList"
-                    v-bind:key="'quiz'+quiz.id"
-                    :id="quiz.id"
-                    :name="quiz.name"
-                    :date="quiz.updatedAt"
-                    :nb-questions="quiz.nbQuestions"/>
+                           v-bind:key="'quiz'+quiz.id"
+                           :quiz-id="quiz.id"
+                           :course-id="courseId"
+                           :name="quiz.name"
+                           :date="quiz.updatedAt"
+                           :nb-questions="quiz.nbQuestions"/>
 
     <hr/>
   </div>
@@ -30,18 +31,20 @@ export default {
   },
   props: {
     'quiz-list': Array, // List of quiz {id, name, date, nbQuestions}
+    courseId: {
+      type: [Number, String],
+      required: true,
+    },
   },
   computed: {
     sortedQuizList() {
-      return this.quizList
-      .map(quiz => {
+      return this.quizList.map(quiz => {
 
         return {
           ...quiz,
           updatedAt: moment(quiz.updatedAt).toDate(),
-        }
-      })
-      .slice().sort((a, b) => b.updatedAt - a.updatedAt);
+        };
+      }).slice().sort((a, b) => b.updatedAt - a.updatedAt);
     },
   },
 };

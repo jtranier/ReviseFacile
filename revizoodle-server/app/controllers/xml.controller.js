@@ -92,6 +92,7 @@ exports.uploadMoodleXml = (req, res) => {
     MoodleQuiz.create({
       teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
+      nbQuestions: json.questions.length,
       questions: JSON.stringify(json.questions),
     }).then(quiz => {
       res.json({

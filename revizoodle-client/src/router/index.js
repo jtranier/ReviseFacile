@@ -13,6 +13,8 @@ import LearnerView from '@/views/LearnerView';
 import LearnerCourseView from '@/views/course/LearnerCourseView';
 import RegisterCourseView from '@/views/course/RegisterCourseView';
 import LearnerQuizView from '@/views/quiz/learner/LearnerQuizView';
+import QuizResultsView from '@/views/quiz/teacher/QuizResultsView';
+import SingleQuestionView from '@/views/quiz/teacher/SingleQuestionView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -35,6 +37,12 @@ const routes = [
     props: true
   },
   {
+    path: '/teacher/course/:courseId/quiz/:quizId/results',
+    name: 'QuizResultsView',
+    component: QuizResultsView,
+    props: true
+  },
+  {
     path: '/teacher/course/:courseId/add-quiz-action',
     name: 'CourseAddQuizAction',
     component: CourseAddQuizView,
@@ -48,6 +56,12 @@ const routes = [
     path: '/teacher/quiz/:quizId/question/:questionIndex',
     name: 'QuizView',
     component: QuizView,
+    props: true
+  },
+  {
+    path: '/teacher/course/:courseId/quiz/:quizId/question/:questionIndex',
+    name: 'SingleQuestionView',
+    component: SingleQuestionView,
     props: true
   },
   {

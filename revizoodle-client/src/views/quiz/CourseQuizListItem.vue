@@ -21,31 +21,36 @@
         </table>
       </div>
       <div class="one-third column">
-        <button class="u-full-width"
-                onclick="alert('TODO');">
-          Résultats
-        </button>
+        <router-link :to="{name: 'QuizResultsView', params: { courseId: courseId, quizId:quizId }}" custom v-slot="{ navigate }">
+          <button class="u-full-width"
+                  @click="navigate">
+            Résultats
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
-
+import moment from 'moment';
 
 export default {
   name: 'course-quiz-list-item',
   props: {
-    id: {
+    quizId: {
       type: [Number, String],
-      required: true
+      required: true,
+    },
+    courseId: {
+      type: [Number, String],
+      required: true,
     },
     name: String,
     date: Date,
-    nbQuestions: Number
+    nbQuestions: Number,
   },
-  methods: { moment }
+  methods: {moment},
 };
 </script>
 

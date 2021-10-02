@@ -9,16 +9,20 @@ module.exports = (sequelize, Sequelize) => {
           autoIncrement: true,
           type: Sequelize.BIGINT(11),
         },
-        'teacherUuid': {
+        teacherUuid: {
           type: Sequelize.Sequelize.STRING(40),
           allowNull: false,
         },
 
-        'name': {
+        name: {
           type: Sequelize.TEXT,
           allowNull: false,
         },
-        'questions': {
+        nbQuestions: {
+          type: Sequelize.TINYINT,
+          allowNull: false,
+        },
+        questions: {
           type: Sequelize.TEXT, // JSON
           allowNull: false,
         },

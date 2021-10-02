@@ -4,7 +4,8 @@
 
     <div v-for="(answer, index) in answers" :key="'answer-'+index">
       <answer :text="answer.text"
-              :correct="answer.score > 0"
+              :score-fraction="answer.scoreFraction"
+              :multichoice="type === 'multichoice'"
               :feedback="answer.feedback"/>
     </div>
 
@@ -30,6 +31,7 @@ export default {
     statement: String,
     answers: Array,
     explanation: String,
+    type: String,
   },
 };
 </script>

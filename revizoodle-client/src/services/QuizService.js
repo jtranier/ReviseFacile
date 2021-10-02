@@ -34,6 +34,14 @@ class QuizService {
         }),
     );
   }
+
+  getResults(id) {
+    return new Promise((resolve, reject) => {
+      http.get(`/moodle-quiz/${id}/results`).then(res => {
+        resolve(res.data);
+      }).catch(reject);
+    });
+  }
 }
 
 export default new QuizService();
