@@ -20,11 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Revizoodle application." });
-});
-
 // default options for file upload
 app.use(fileUpload());
 
@@ -36,15 +31,22 @@ require('./app/routes/course.routes')(app);
 require('./app/routes/learnerCourse.routes')(app);
 require('./app/routes/xml.routes')(app);
 
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
 const db = require("./app/models/index");
 
 // Note : force: true is for development mode
 db.sequelize.sync(/*{force: true}*/).then(() => {
   console.log("Drop & re-sync db.")
+});
+
+// Views
+const path = __dirname + '/app/views/';
+app.use(express.static(path));
+app.get('/', function (req,res) {
+  res.sendFile(path + "index.html");
+});
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
