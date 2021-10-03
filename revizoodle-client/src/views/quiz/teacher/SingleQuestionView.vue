@@ -26,7 +26,7 @@ import Question from '@/views/quiz/teacher/Question';
 import QuizService from '@/services/QuizService';
 
 export default {
-  name: 'quiz-view',
+  name: 'single-quiz-view',
   components: {Question},
   props: {
     courseId: {

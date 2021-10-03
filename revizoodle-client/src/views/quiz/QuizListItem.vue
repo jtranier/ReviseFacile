@@ -16,8 +16,9 @@
       <div class="one-third column" v-if="!modeAddQuiz">&nbsp;</div>
 
       <div class="one-third column">
-        <router-link :to="quizLink"
-                     custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'QuizView', params: { courseId, quizId: id, questionIndex: 1 } }"
+                     custom
+                     v-slot="{ navigate }">
           <button class="u-full-width" @click="navigate">
             Voir
           </button>
@@ -57,14 +58,6 @@ export default {
     moment,
     addQuizToCourse() {
       this.$emit('add-quiz-to-course', this.id);
-    }
-  },
-  computed: {
-    quizLink() {
-      return this.courseId === null ?
-          `/teacher/quiz/${this.id}` :
-          `/teacher/course/${this.courseId}/quiz/${this.id}`
-
     }
   }
 };
