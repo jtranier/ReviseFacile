@@ -2,6 +2,10 @@
   <div class="question-container">
     <vue-mathjax :formula="statement" :safe="false"/>
 
+    <p v-if="type === 'multichoice'" style="font-style: italic; margin-bottom: 2em; margin-top: 1em;">
+      Sélectionnez toutes les réponses correctes
+    </p>
+
     <div v-for="(answer, index) in answers" :key="'answer-'+index">
       <choice :choice-index="index"
               :text="answer.text"
