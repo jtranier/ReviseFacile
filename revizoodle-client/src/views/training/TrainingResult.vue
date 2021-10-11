@@ -4,7 +4,7 @@
     <p>Votre score est de <strong><span id="valeur_score_bilan">{{ score }}</span>%</strong>.
       Que voulez-vous faire ?</p>
     <button class="button-primary u-full-width" @click="redoTraining">Recommencer</button>
-    <router-link to="/learner"
+    <router-link :to="{name: 'LearnerCourseView', params:  { courseId }}"
                  custom
                  v-slot="{ navigate }">
       <button @click="navigate" class="button u-full-width">Changer de thème</button>
@@ -21,6 +21,7 @@ export default {
   props: {
     score: Number,
     quizId: [Number, String],
+    courseId: [Number, String],
   },
   data() {
     return {

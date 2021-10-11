@@ -36,7 +36,8 @@
     </div>
     <training-result v-if="state === States.COMPLETED"
                      :score="trainingScore"
-                     :quiz-id="quizId" v-on:restart-training="startTraining"/>
+                     :quiz-id="quizId" v-on:restart-training="startTraining"
+                     :course-id="courseId"/>
   </div>
 
 
