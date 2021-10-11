@@ -250,7 +250,7 @@ exports.getResults = (req, res) => {
             return Math.floor(
                 questionResult.reduce((a, b) => {
                   return a + b;
-                }, 0) / nbAttempts,
+                }, 0) / questionResult.length,
             );
           }),
         });
