@@ -14,9 +14,10 @@
               v-on:unselectChoice="unselectChoice" />
     </div>
 
-    <div style="margin-top: 3%;" v-if="learnerAnswer.submitted && feedbacks.length > 0">
+    <div style="margin-top: 3%;" v-if="learnerAnswer.submitted && (feedbacks.length > 0 || explanation)">
       <p><strong>Explication :</strong></p>
       <vue-mathjax v-for="(feedback, index) in feedbacks" v-bind:key="index" :formula="feedback" :safe="false"/>
+      <vue-mathjax :formula="explanation" :safe="false"/>
     </div>
 
     <div style="margin-top: 3%;" v-if="!learnerAnswer.submitted">
