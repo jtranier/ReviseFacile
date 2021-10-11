@@ -11,8 +11,20 @@ const Quiz = db.moodleQuiz;
  * @returns {null|*}
  */
 const getLastTraining = (quiz) => {
-  return !quiz['trainings'] || !quiz['trainings'].length ?
-      null :
+  if(!quiz['trainings'] || !quiz['trainings'].length) {
+    return null
+  }
+
+  if(quiz['trainings'].length === 1) {
+    return quiz['trainings'][0];
+  }
+
+  const lastScoredTraining = quiz['trainings'].find(training => {
+    return training.score !== null;
+  });
+
+  return lastScoredTraining ?
+      lastScoredTraining :
       quiz['trainings'][0];
 };
 
