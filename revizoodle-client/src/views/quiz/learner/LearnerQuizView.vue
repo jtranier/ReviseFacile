@@ -140,7 +140,9 @@ export default {
 
         this.currentQuestionIndex = 1 + (
             // Look for the 1st question not answered
-            Object.keys(this.quiz.learnerAnswers).sort().findIndex(index => {
+
+            Object.keys(this.quiz.learnerAnswers).sort((a, b) => { return Number.parseInt(a) - Number.parseInt(b) })
+            .findIndex(index => {
               return this.quiz.learnerAnswers[index].submitted === false;
             })
         );

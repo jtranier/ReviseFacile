@@ -219,8 +219,6 @@ exports.getResults = (req, res) => {
           ['id', 'ASC'],
         ],
       }).then(data => {
-        console.info(data);
-
         const nbAttempts = data.length;
         const learners = new Set();
         let data1stAttempt = Array.from({length: quiz.nbQuestions}, () => []);
