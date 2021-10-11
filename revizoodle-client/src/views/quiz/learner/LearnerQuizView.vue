@@ -22,7 +22,7 @@
 
       <div style="margin-top: 3%;" v-if="state === States.SUBMITTED && currentQuestionIndex < nbQuestions">
         <div class="row">
-          <button class="button-primary u-full-width" @click="nextQuestion">Passer à la question suivante</button>
+          <button class="button-primary u-full-width" @click="nextQuestion">Question suivante</button>
         </div>
       </div>
 
