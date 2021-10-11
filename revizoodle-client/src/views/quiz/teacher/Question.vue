@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <vue-mathjax :formula="statement" :safe="false"/>
+  <div ref="questionEl" class="question-container">
+    <span v-html="statement"></span>
 
     <div v-for="(answer, index) in answers" :key="'answer-'+index">
       <answer :text="answer.text"
@@ -10,8 +10,8 @@
     </div>
 
     <template v-if="explanation">
-      <p><strong>Explication :</strong></p>
-      <vue-mathjax :formula="explanation" :safe="false"/>
+      <p style="margin-top: 2em;"><strong>Explication :</strong></p>
+      <span v-html="explanation"></span>
     </template>
 
   </div>
@@ -19,19 +19,34 @@
 
 <script>
 import Answer from '@/views/quiz/Answer';
-import {VueMathjax} from 'vue-mathjax';
 
 export default {
   name: 'question',
   components: {
     Answer,
-    'vue-mathjax': VueMathjax,
+
   },
   props: {
+    name: String,
     statement: String,
     answers: Array,
     explanation: String,
     type: String,
+  },
+  mounted() {
+    this.renderMathJax();
+  },
+  updated() {
+    this.renderMathJax();
+  },
+  methods: {
+    renderMathJax() {
+      window.MathJax.Hub.Queue([
+        'Typeset',
+        window.MathJax.Hub,
+        this.$refs.questionEl
+      ]);
+    }
   },
 };
 </script>

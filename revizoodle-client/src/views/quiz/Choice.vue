@@ -8,14 +8,13 @@
         'bouton-jaune': scoreColor === 'partially-correct',
         'bouton-orange': scoreColor === 'incorrect',
       }"
-       class="bouton-reponse u-full-width">
-      <vue-mathjax :formula="text" :safe="false"/>
+       class="bouton-reponse u-full-width" v-html="text">
     </a>
   </div>
 </template>
 
 <script>
-import {VueMathjax} from 'vue-mathjax';
+
 
 export default {
   name: 'choice',
@@ -27,9 +26,6 @@ export default {
     feedback: String,
     scoreFraction: Number,
     multichoice: Boolean,
-  },
-  components: {
-    'vue-mathjax': VueMathjax,
   },
   computed: {
     scoreColor() {

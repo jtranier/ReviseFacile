@@ -1,6 +1,6 @@
 <template>
   <div class="question-container">
-    <vue-mathjax :formula="statement" :safe="false"/>
+    <span v-html="statement"></span>
 
     <p v-if="type === 'multichoice'" style="font-style: italic; margin-bottom: 2em; margin-top: 1em;">
       Sélectionnez toutes les réponses correctes
@@ -20,8 +20,8 @@
 
     <div style="margin-top: 3%;" v-if="learnerAnswer.submitted && (feedbacks.length > 0 || explanation)">
       <p><strong>Explication :</strong></p>
-      <vue-mathjax v-for="(feedback, index) in feedbacks" v-bind:key="index" :formula="feedback" :safe="false"/>
-      <vue-mathjax :formula="explanation" :safe="false"/>
+      <p v-for="(feedback, index) in feedbacks" v-bind:key="index" v-html="feedback"></p>
+      <p v-html="explanation"></p>
     </div>
 
     <div style="margin-top: 3%;" v-if="!learnerAnswer.submitted">
@@ -34,13 +34,11 @@
 
 <script>
 import Choice from '@/views/quiz/Choice';
-import {VueMathjax} from 'vue-mathjax';
 
 export default {
   name: 'learner-question',
   components: {
     Choice,
-    'vue-mathjax': VueMathjax,
   },
   props: {
     index: Number,
@@ -64,6 +62,12 @@ export default {
       });
     },
   },
+  mounted() {
+    this.renderMathJax();
+  },
+  updated() {
+    this.renderMathJax();
+  },
   methods: {
     selectChoice(index) {
       if(!this.isMultipleChoice) { // Reset previous choice
@@ -86,6 +90,13 @@ export default {
       this.learnerAnswer.score = computeQuestionScore(this.answers, this.learnerAnswer);
       this.$emit('submitLearnerAnswer' , this.learnerAnswer);
     },
+    renderMathJax() {
+      window.MathJax.Hub.Queue([
+        'Typeset',
+        window.MathJax.Hub,
+        this.$refs.questionEl
+      ]);
+    }
   }
 };
 
