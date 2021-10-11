@@ -4,7 +4,7 @@
       <tbody>
       <tr>
         <th>{{ quizTitle }}</th>
-        <td style="text-align: right;"><strong>{{ displayedStatus }}</strong></td>
+        <td style="text-align: right; min-width: 9em;"><strong>{{ displayedStatus }}</strong></td>
       </tr>
       </tbody>
     </table>
