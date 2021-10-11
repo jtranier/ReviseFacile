@@ -27,6 +27,9 @@
               &lt;
             </button>
           </router-link>
+          <button v-if="questionIndex  <= 1" class="u-full-width" disabled>
+            &lt;
+          </button>
           <div class="u-full-width">&nbsp;</div>
         </div>
         <div class="one-half column">
@@ -38,6 +41,9 @@
               &gt;
             </button>
           </router-link>
+          <button v-if="questionIndex >= nbQuestions" class="u-full-width" disabled>
+            &gt;
+          </button>
         </div>
       </div>
     </div>
