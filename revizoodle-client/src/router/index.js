@@ -15,6 +15,7 @@ import RegisterCourseView from '@/views/course/RegisterCourseView';
 import LearnerQuizView from '@/views/quiz/learner/LearnerQuizView';
 import QuizResultsView from '@/views/quiz/teacher/QuizResultsView';
 import SingleQuestionView from '@/views/quiz/teacher/SingleQuestionView';
+import UuidView from '@/views/user/UuidView';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -106,6 +107,11 @@ const routes = [
     name: 'PlayQuiz',
     component: LearnerQuizView,
     props: true,
+  },
+  {
+    path: '/uuid',
+    name: 'UuidView',
+    component: UuidView,
   },
 ]
 
