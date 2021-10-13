@@ -95,11 +95,8 @@ export default {
   },
   computed: {
     roleLabel() {
-      switch (this.isTeacher) {
-        case null: return '-';
-        case false: return 'Étudiant';
-        case true: return 'Enseignant';
-      }
+      if(this.isTeacher === null) return '-';
+      else return this.isTeacher ? 'Enseignant' : 'Étudiant'
     }
   },
   methods: {
