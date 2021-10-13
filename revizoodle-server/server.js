@@ -30,6 +30,7 @@ require('./app/routes/training.routes')(app);
 require('./app/routes/course.routes')(app);
 require('./app/routes/learnerCourse.routes')(app);
 require('./app/routes/xml.routes')(app);
+require('./app/routes/user.routes')(app);
 
 const db = require("./app/models/index");
 

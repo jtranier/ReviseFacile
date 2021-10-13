@@ -88,5 +88,10 @@ new Vue({
 
     // Set the uuid permanently into the header
     http.defaults.headers.uuid = this.$cookies.get('uuid');
+
+    // Set the teacherToken if defined permanently into the header
+    http.defaults.headers.teachertoken = this.$cookies.get('teacherToken');
+
+
   },
 }).$mount('#app')
