@@ -16,10 +16,11 @@
 
     <hr/>
 
+    <label>Lien étudiant :</label>
     <router-link :to="{name:'RegisterCourse', params: {courseId }}"
                  custom
                  v-slot="{ href, route }">
-      <code>{{ url }}/#{{ route.fullPath }}</code>
+      <code class="u-full-width">{{ url }}/#{{ route.fullPath }}</code>
 
 
     </router-link>
