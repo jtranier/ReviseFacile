@@ -1,8 +1,17 @@
 <template>
   <div class="container" style="margin-top: 1em">
 
-    <div class="row">
-      <h4 style="margin-bottom: 1em">Importer un quiz Moodle</h4>
+    <div style="margin-top: 3%;">
+      <router-link :to="{ name: 'CourseAddQuizAction', params: { courseId } }"
+                   custom
+                   v-slot="{ navigate }">
+        <div class="bouton-retour" @click="navigate">
+          <h5>&lt;</h5>
+        </div>
+
+      </router-link>
+
+      <h5 style="text-align:center">Importer un quiz Moodle</h5>
     </div>
 
     <div class="row">
