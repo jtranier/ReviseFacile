@@ -18,6 +18,7 @@ exports.get = (req, res) => {
     where: {id},
     include: {
       model: MoodleQuiz,
+      order: [['updatedAt', 'desc']],
     },
   }).then(data => {
     if (!data) {
