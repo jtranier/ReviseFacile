@@ -19,7 +19,7 @@
       </div>
       <div class="one-half column"><p><strong>Nombre d'essais : </strong>{{ nbAttempts ? nbAttempts : '-' }}</p></div>
     </div>
-    <p><strong>Moyenne (au premier essai) : </strong>{{ mean1stTry ? `${mean1stTry} %` : '-' }}</p>
+    <p><strong>Moyenne (au premier essai) : </strong>{{ mean1stTry !== null ? `${mean1stTry} %` : '-' }}</p>
 
     <hr/>
 
@@ -63,13 +63,15 @@ export default {
       this.nbLearners = quizResults.nbLearners;
       this.nbAttempts = quizResults.nbAttempts;
       this.results1stAttempt = quizResults.results1stAttempt;
-      if (this.results1stAttempt.length > 0) {
+
+
+      if (this.results1stAttempt.length > 0 && quizResults.nbAttempts > 0) {
         this.mean1stTry = Math.floor(
             this.results1stAttempt.reduce((a, b) => {
               return a + b;
             }, 0) / this.results1stAttempt.length,
         );
-      }
+      } else this.mean1stTry = null;
     }).catch(console.error);
   },
 };
