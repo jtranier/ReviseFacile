@@ -29,6 +29,8 @@
         </router-link>
       </div>
     </div>
+
+    <hr/>
   </div>
 </template>
 

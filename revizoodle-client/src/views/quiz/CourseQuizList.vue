@@ -14,7 +14,6 @@
                            :date="quiz.updatedAt"
                            :nb-questions="quiz.nbQuestions"/>
 
-    <hr/>
   </div>
 
 </template>
