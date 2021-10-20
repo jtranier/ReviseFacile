@@ -99,7 +99,8 @@ export default {
       const files = e.target.files;
       let filename = files[0].name;
 
-      this.quizName = filename;
+      // Filename without extension
+      this.quizName = filename.replace(/\.[^/.]+$/, '');
 
       const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {
