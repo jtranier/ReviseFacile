@@ -35,10 +35,7 @@
 
     <div class="row">
       <strong>Rôle</strong> : {{ isTeacher ? 'Enseignant' : 'Étudiant' }}
-      <button class="u-pull-right"
-              v-if="isTeacher === false"
-              @click="showTeacherAccessForm">Accès enseignant
-      </button>
+      <span v-if="isTeacher === false">(<a href="#" @click.prevent="showTeacherAccessForm">changer de rôle</a>)</span>
     </div>
 
     <div class="row" style="margin-top: 3em;" v-if="teacherAccessFormVisible">
