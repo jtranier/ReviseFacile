@@ -30,7 +30,7 @@ export default {
         return 'correct';
       }
 
-      if (this.scoreFraction === 0) {
+      if (this.scoreFraction <= 0) {
         return 'incorrect';
       }
 

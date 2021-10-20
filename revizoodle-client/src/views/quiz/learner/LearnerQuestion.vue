@@ -87,7 +87,7 @@ export default {
     },
 
     submit() {
-      this.learnerAnswer.score = computeQuestionScore(this.answers, this.learnerAnswer);
+      this.learnerAnswer.score = computeQuestionScore(this.answers, this.learnerAnswer, this.isMultipleChoice);
       this.$emit('submitLearnerAnswer' , this.learnerAnswer);
     },
     renderMathJax() {
@@ -100,11 +100,14 @@ export default {
   }
 };
 
-const computeQuestionScore = function(answers, learnerAnswer) {
+const computeQuestionScore = function(answers, learnerAnswer, isMultipleChoice) {
 
-  return answers.reduce((acc, currentAnswer, index) => {
+  const score = answers.reduce((acc, currentAnswer, index) => {
     return learnerAnswer.choices[index] ? acc + currentAnswer.scoreFraction : acc;
   }, 0);
+
+  return isMultipleChoice ? Math.max(0, score) : score
+
 }
 </script>
 
