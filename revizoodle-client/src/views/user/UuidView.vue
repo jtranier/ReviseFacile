@@ -1,14 +1,9 @@
 <template>
   <div class="container">
     <div style="margin-top: 3%;">
-      <router-link to="/"
-                   custom
-                   v-slot="{ navigate }">
-        <div class="bouton-retour" @click="navigate">
-          <h5>&lt;</h5>
-        </div>
-
-      </router-link>
+      <div class="bouton-retour" @click="$router.go(-1)">
+        <h5>&lt;</h5>
+      </div>
 
       <h5 style="text-align:center">Compte utilisateur</h5>
     </div>
@@ -95,9 +90,9 @@ export default {
   },
   computed: {
     roleLabel() {
-      if(this.isTeacher === null) return '-';
-      else return this.isTeacher ? 'Enseignant' : 'Étudiant'
-    }
+      if (this.isTeacher === null) return '-';
+      else return this.isTeacher ? 'Enseignant' : 'Étudiant';
+    },
   },
   methods: {
     changeUuid() {
@@ -110,7 +105,7 @@ export default {
         this.isTeacher = null;
         UserService.isTeacher().then(isTeacher => {
           this.isTeacher = isTeacher;
-        }).catch(console.error)
+        }).catch(console.error);
       } else {
         this.errorUuid = true;
       }
@@ -127,17 +122,14 @@ export default {
         http.defaults.headers.teachertoken = this.$cookies.get('teacherToken');
         this.isTeacher = true;
         this.teacherAccessFormVisible = false;
-      })
-      .catch(error => {
-        if(error.response) {
+      }).catch(error => {
+        if (error.response) {
           this.teacherAccessFormErrorMessage = error.response.data.error.message;
-        }
-        else {
-          this.teacherAccessFormErrorMessage = "L'opération n'a pas pu aboutir pour une raison inconnue. Veuillez réessayer."
+        } else {
+          this.teacherAccessFormErrorMessage = 'L\'opération n\'a pas pu aboutir pour une raison inconnue. Veuillez réessayer.';
         }
 
       });
-
 
     },
   },
