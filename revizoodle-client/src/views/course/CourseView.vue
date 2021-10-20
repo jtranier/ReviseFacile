@@ -16,7 +16,7 @@
 
     <hr/>
 
-    <label>Lien étudiant :</label>
+    <label>Lien à communiquer à vos étudiants :</label>
     <router-link :to="{name:'RegisterCourse', params: {courseId }}"
                  custom
                  v-slot="{ href, route }">
