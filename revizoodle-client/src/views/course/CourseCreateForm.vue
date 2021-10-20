@@ -11,7 +11,7 @@
         <p><em>Veuillez saisir un nom.</em></p>
       </div>
       <button class="button-success u-full-width" type="submit">Valider</button>
-      <button class="button-warning u-full-width" v-on:click="hide">Annuler</button>
+      <span class="button button-warning u-full-width" v-on:click="hide">Annuler</span>
     </form>
   </div>
 </template>
