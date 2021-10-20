@@ -26,7 +26,7 @@
     <table class="u-full-width">
       <tbody id="body_table_scores_questions">
       <tr v-for="(result1stAttemptQi, index) in results1stAttempt" v-bind:key="index">
-        <th>Question {{ index }}</th>
+        <th>Question {{ index + 1 }}</th>
         <td>{{ result1stAttemptQi !== null ? `${result1stAttemptQi} %` : '-' }}</td>
         <router-link :to="{ name: 'SingleQuestionView', params: {courseId, quizId, questionIndex: index + 1 }}" custom v-slot="{ navigate }">
           <td style="text-align: right;" class="bouton-avance" @click="navigate">&gt;</td>
