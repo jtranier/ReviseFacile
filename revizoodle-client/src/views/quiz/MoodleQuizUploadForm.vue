@@ -18,7 +18,6 @@
 
       <form @submit="upload">
 
-        <button class="button-primary u-full-width" @click="onPickFile">Sélectionner un Quiz</button>
         <input type="file"
                style="display: none;"
                ref="xmlFile"
@@ -64,8 +63,11 @@ export default {
       this.courseId = this.$route.query.courseId;
     }
   },
+  mounted() {
+    this.pickFile();
+  },
   methods: {
-    onPickFile() {
+    pickFile() {
       this.$refs.xmlFile.click();
     },
     upload(e) {
