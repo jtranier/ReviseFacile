@@ -45,7 +45,7 @@ export default {
   methods: {
     addQuizToCourse(quizId) {
       this.$emit('add-quiz-to-course', quizId);
-    }
+    },
   },
 };
 </script>

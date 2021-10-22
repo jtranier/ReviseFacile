@@ -88,7 +88,8 @@ export default {
         name: "CourseAddQuizAction",
         params: {
           courseId: this.courseId,
-        }
+        },
+        hash: `#quiz-${this.quizId}`
       };
     }
 

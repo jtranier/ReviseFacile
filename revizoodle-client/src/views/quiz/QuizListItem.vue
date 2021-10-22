@@ -10,7 +10,7 @@
     </table>
 
 
-    <div class="row">
+    <div class="row" id="`quiz-${id}`" :ref="`quiz-${id}`">
       <div class="one-third column"><p style="text-align: center;">{{ nbQuestions }} questions</p></div>
 
       <div class="one-third column" v-if="!modeAddQuiz">&nbsp;</div>
@@ -35,8 +35,7 @@
 </template>
 
 <script>
-import moment from 'moment'
-
+import moment from 'moment';
 
 export default {
   name: 'quiz-list-item',
@@ -58,7 +57,8 @@ export default {
     moment,
     addQuizToCourse() {
       this.$emit('add-quiz-to-course', this.id);
-    }
+    },
+
   }
 };
 </script>
