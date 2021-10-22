@@ -24,12 +24,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Entities
-db.question = require("./question.model.js")(sequelize, Sequelize);
-db.questionnaire = require("./questionnaire.model.js")(sequelize, Sequelize);
-db.questionnaire_question = require("./questionnaire_question.model.js")(sequelize, Sequelize);
 db.reponse = require("./reponse.model.js")(sequelize, Sequelize);
-db.reponses_questionnaire = require("./reponses_questionnaire.model.js")(sequelize, Sequelize);
-
 db.moodleQuiz = require("./moodleQuiz.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
 db.course_moodleQuiz = require("./course_moodleQuiz.model")(sequelize, Sequelize);
