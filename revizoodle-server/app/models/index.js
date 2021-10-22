@@ -27,8 +27,6 @@ db.sequelize = sequelize;
 db.question = require("./question.model.js")(sequelize, Sequelize);
 db.questionnaire = require("./questionnaire.model.js")(sequelize, Sequelize);
 db.questionnaire_question = require("./questionnaire_question.model.js")(sequelize, Sequelize);
-db.diffusion = require("./diffusion.model.js")(sequelize, Sequelize);
-db.diffusion_question = require("./diffusion_question.model.js")(sequelize, Sequelize);
 db.reponse = require("./reponse.model.js")(sequelize, Sequelize);
 db.reponses_questionnaire = require("./reponses_questionnaire.model.js")(sequelize, Sequelize);
 
