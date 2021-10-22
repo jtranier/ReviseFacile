@@ -1,8 +1,18 @@
 <template>
   <div class="container" style="margin-top: 1em">
+
+
     <div class="row">
       <div class="two-thirds column">
-        <h4 style="margin-bottom: 1em">Mes cours</h4>
+        <router-link to="/"
+                     custom
+                     v-slot="{ navigate }">
+          <div class="bouton-retour" @click="navigate">
+            <h5>&lt;</h5>
+          </div>
+
+        </router-link>
+        <h4 style="margin-bottom: 1em; margin-left: 1em;">Mes cours</h4>
       </div>
       <div class="one-third column">
         <button class="button-primary u-full-width"

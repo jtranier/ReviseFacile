@@ -1,6 +1,14 @@
 <template>
   <div class="container" style="margin-top: 1em">
-    <h4 style="margin-bottom: 1em">Mes cours</h4>
+    <router-link to="/"
+    custom
+    v-slot="{ navigate }">
+    <div class="bouton-retour" @click="navigate">
+      <h5>&lt;</h5>
+    </div>
+
+    </router-link>
+    <h5 style="text-align:center; margin-top: 3%;">Mes cours</h5>
 
     <template v-if="!sortedCourseList || !sortedCourseList.length">
       <p>Vous n'êtes abonné aucun cours.</p>
