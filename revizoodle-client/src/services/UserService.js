@@ -5,6 +5,10 @@ class UserService {
 
   cookie = null;
 
+  getUUID($cookies) {
+    return $cookies.get('uuid');
+  }
+
   changeUuid(uuid, $cookies) {
     if (uuidValidate(uuid)) {
       $cookies.set('uuid', uuid, Infinity);

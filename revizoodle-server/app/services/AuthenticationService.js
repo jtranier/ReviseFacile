@@ -2,13 +2,20 @@ const uuidv4 = require('uuid');
 const CryptoJs = require('crypto-js');
 const userConfig = require('../config/user.config.js');
 
-class AuthenticationService {
-
-  isAuthenticated(req) {
+  isAuthenticated = (req) => {
     return uuidv4.validate(req.headers.uuid);
   }
 
-  isTeacher(req) {
+  checkIsTeacher = (req, res, next) => {
+    if(isTeacher(req)) {
+      next();
+    }
+    else {
+      res.sendStatus(401);
+    }
+  }
+  
+  isTeacher = (req) => {
     const uuid = req.headers.uuid;
     const teacherToken = req.headers.teachertoken;
 
@@ -21,9 +28,14 @@ class AuthenticationService {
     return uuid === bytes.toString(CryptoJs.enc.Utf8);
   }
 
-  getUUID(req) {
+  getUUID = (req) => {
     return req.headers.uuid;
   }
-}
 
-module.exports = new AuthenticationService();
+
+module.exports = {
+  isAuthenticated,
+  checkIsTeacher,
+  isTeacher,
+  getUUID,
+};

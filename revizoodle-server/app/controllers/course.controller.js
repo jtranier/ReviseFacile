@@ -8,10 +8,6 @@ const Course_MoodleQuiz = db.course_moodleQuiz;
 const CourseRegistration = db.course_registration;
 
 exports.get = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   const id = req.params.id || -1;
 
   Course.findOne({
@@ -27,23 +23,22 @@ exports.get = (req, res) => {
           message: `There is no course with id ${id}`,
         },
       });
-      return;
+    } else {
+      res.json({
+        id: data.dataValues.id,
+        name: data.dataValues.name,
+        updateAt: data.dataValues.updateAt,
+        quizList: data.dataValues.moodleQuizzes.map(quiz => {
+
+          return {
+            id: quiz.id,
+            name: quiz.name,
+            updatedAt: quiz['course_moodleQuiz'].updatedAt,
+            nbQuestions: JSON.parse(quiz.questions).length,
+          };
+        }),
+      });
     }
-
-    res.json({
-      id: data.dataValues.id,
-      name: data.dataValues.name,
-      updateAt: data.dataValues.updateAt,
-      quizList: data.dataValues.moodleQuizzes.map(quiz => {
-
-        return {
-          id: quiz.id,
-          name: quiz.name,
-          updatedAt: quiz['course_moodleQuiz'].updatedAt,
-          nbQuestions: JSON.parse(quiz.questions).length,
-        };
-      }),
-    });
   }).catch(error => {
     console.error(error);
     res.status(500).json({error});
@@ -52,9 +47,6 @@ exports.get = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
 
   Course.findAll({
     raw: true,
@@ -63,7 +55,6 @@ exports.list = (req, res) => {
     ],
     where: {
       'teacherUuid': authenticationService.getUUID(req),
-      // TODO Paginate
     },
   }).then(data => {
     res.json(data);
@@ -74,9 +65,6 @@ exports.list = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
 
   Course.create({
     name: req.body.name, // TODO check validity
@@ -90,9 +78,6 @@ exports.create = (req, res) => {
 };
 
 exports.addQuiz = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
@@ -130,21 +115,19 @@ exports.register = (req, res) => {
     if (course === null) {
       res.status(404).
           json({error: {message: `There is no course with id ${courseId}`}});
-    }
-    else if(course['course_registrations'].length > 0) {
-      res.json({ success: true }); // Already registered
+    } else if (course['course_registrations'].length > 0) {
+      res.json({success: true}); // Already registered
 
-    }
-    else {
+    } else {
       CourseRegistration.create({
         'learner_uuid': learnerUuid,
-        courseId: courseId
+        courseId: courseId,
       }).then(() => {
-        res.json({ success: true });
+        res.json({success: true});
       }).catch(error => {
         console.error(error);
         res.status(500).send(error);
-      })
+      });
 
     }
   }).catch(error => {

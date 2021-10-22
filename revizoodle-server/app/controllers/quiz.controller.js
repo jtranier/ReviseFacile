@@ -2,6 +2,7 @@ const db = require('../models');
 const Quiz = db.questionnaire;
 
 
+// TODO *** Remove this controller
 exports.get = (req, res) => {
   const id = req.params.id;
 

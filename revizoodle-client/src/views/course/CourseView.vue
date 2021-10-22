@@ -45,6 +45,7 @@
 <script>
 import CourseQuizList from '@/views/quiz/CourseQuizList';
 import CourseService from '@/services/CourseService';
+import UserService from '@/services/UserService';
 
 export default {
   name: 'course-view',
@@ -71,6 +72,10 @@ export default {
   },
   created() {
     CourseService.get(this.courseId).then(response => {
+      if(response.data.teacherUuid !== UserService.getUUID(this.$cookies)) {
+        throw "You're not the owner of this course";
+      }
+
       this.course = response.data;
     }).catch(error => {
       console.error(error);

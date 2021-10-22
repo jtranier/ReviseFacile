@@ -2,6 +2,7 @@ const db = require('../models');
 const Diffusion = db.diffusion;
 const Op = db.Sequelize.Op;
 
+// TODO *** Remove this controller
 exports.findAllByTheme = (req, res) => {
   const themeId = req.query.thematique;
 

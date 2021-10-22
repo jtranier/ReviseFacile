@@ -1,8 +1,7 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const controllerUtil = require('../controllers/ControllerUtil');
-const {Sequelize, Op} = require('sequelize');
-const e = require('express');
+const {Op} = require('sequelize');
 const MoodleQuiz = db.moodleQuiz;
 const Training = db.training;
 
@@ -48,14 +47,15 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
 exports.get = (req, res) => {
   const id = req.params.id || -1;
 
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   MoodleQuiz.findByPk(id, {raw: true}).then(data => {
     if (data === null) {
       res.status(404).send({
         message: `There is no quiz with id ${id}`,
+      });
+
+    } else if (data.teacherUuid !== authenticationService.getUUID(req)) {
+      res.status(401).send({
+        message: `You are not the owner of the quiz ${id}`,
       });
     } else {
 
@@ -131,9 +131,6 @@ exports.getWithLatestTraining = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
 
   MoodleQuiz.findAll({
     raw: true,
@@ -194,16 +191,16 @@ exports.redoTraining = (req, res) => {
 exports.getResults = (req, res) => {
   const quizId = req.params.id || -1;
 
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   MoodleQuiz.findByPk(quizId, {
-    attributes: ['id', 'name', 'nbQuestions'],
+    attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
   }).then(quiz => {
     if (quiz === null) {
       res.status(404).send({
         message: `There is no quiz with id ${quizId}`,
+      });
+    } else if (quiz.teacherUuid !== authenticationService.getUUID(req)) {
+      res.status(401).send({
+        message: `You are not the owner of the quiz ${quizId}`,
       });
     } else {
       Training.findAll({
