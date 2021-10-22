@@ -43,20 +43,5 @@ db.course.hasMany(db.course_registration, {foreignKey: 'courseId'});
 db.training.belongsTo(db.moodleQuiz, { foreignKey: 'quizId' });
 db.moodleQuiz.hasMany(db.training, { foreignKey: 'quizId' });
 
-// Relations
-db.questionnaire.belongsToMany(
-    db.question,
-    {
-      through: 'questionnaire_question',
-      foreignKey: 'questionnaire_id',
-    }
-);
-db.question.belongsToMany(
-    db.questionnaire,
-    {
-      through: 'questionnaire_question',
-      foreignKey: 'question_id',
-    }
-);
 
 module.exports = db;
