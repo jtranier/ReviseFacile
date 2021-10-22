@@ -1,8 +1,30 @@
 import http from '../http-commons';
+import {validate as uuidValidate} from 'uuid';
 
 class UserService {
 
-  isTeacher() {
+  cookie = null;
+
+  changeUuid(uuid, $cookies) {
+    if (uuidValidate(uuid)) {
+      $cookies.set('uuid', uuid, Infinity);
+      http.defaults.headers.uuid = $cookies.get('uuid');
+      return true;
+    }
+
+    return false;
+  }
+
+  saveTeacherTocken(teacherTocken, $cookies) {
+    $cookies.set('teacherToken', teacherTocken, Infinity);
+    http.defaults.headers.teachertoken = $cookies.get('teacherToken');
+  }
+
+  isTeacher($cookies) {
+    return !!$cookies.get('teacherToken');
+  }
+
+  checkIsTeacherOnServer() {
     return new Promise((resolve, reject) => {
       http.get('/user/is-teacher').then(response => {
         resolve(response.data.isTeacher);

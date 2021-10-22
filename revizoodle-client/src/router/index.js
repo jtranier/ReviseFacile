@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import CourseView from '@/views/course/CourseView';
 import TeacherView from '@/views/TeacherView';
 import HomeView from '@/views/HomeView';
@@ -16,9 +16,20 @@ import LearnerQuizView from '@/views/quiz/learner/LearnerQuizView';
 import QuizResultsView from '@/views/quiz/teacher/QuizResultsView';
 import SingleQuestionView from '@/views/quiz/teacher/SingleQuestionView';
 import UuidView from '@/views/user/UuidView';
+import UserService from '@/services/UserService';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+
+const ifTeacher = (to, from, next) => {
+  if(UserService.isTeacher(router.app.$cookies)) {
+    next();
+  }
+  else next({
+    name: 'UuidView',
+    query: { needTeacherAccess: true},
+  });
+};
 
 const routes = [
   {
@@ -29,61 +40,72 @@ const routes = [
   {
     path: '/teacher',
     name: 'TeacherView',
-    component: TeacherView
+    component: TeacherView,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId',
     name: 'CourseView',
     component: CourseView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId/quiz/:quizId/results',
     name: 'QuizResultsView',
     component: QuizResultsView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId/add-quiz-action',
     name: 'CourseAddQuizAction',
     component: CourseAddQuizView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/quiz/:quizId',
     redirect: '/teacher/quiz/:quizId/question/1',
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/quiz/:quizId/question/:questionIndex',
     name: 'QuizView',
     component: QuizView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId/quiz/:quizId/question/:questionIndex',
     name: 'SingleQuestionView',
     component: SingleQuestionView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId/quiz/:quizId',
     name: 'CourseQuizView',
-    redirect: '/teacher/course/:courseId/quiz/:quizId/question/1'
+    redirect: '/teacher/course/:courseId/quiz/:quizId/question/1',
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/course/:courseId/quiz/:quizId/question/:questionIndex',
     component: QuizView,
-    props: true
+    props: true,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/quiz',
     name: 'QuizListView',
     component: QuizListView,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/teacher/moodle-upload',
     name: 'MoodleQuizUploadForm',
     component: MoodleQuizUploadForm,
+    beforeEnter: ifTeacher,
   },
   {
     path: '/learner',
@@ -112,6 +134,9 @@ const routes = [
     path: '/uuid',
     name: 'UuidView',
     component: UuidView,
+    props: {
+      aze: false
+    }
   },
 ]
 

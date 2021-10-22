@@ -8,6 +8,10 @@
       <h5 style="text-align:center">Compte utilisateur</h5>
     </div>
 
+    <div class="row" v-if="needTeacherAccess">
+      <p>Vous essayer d'accéder à une page qui requiert le rôle "Enseignant".</p>
+    </div>
+
     <div class="row">
       <form @submit.prevent="changeUuid">
         <p>L'identifiant ci-dessous vous permet de retrouver vos données <em>Revizoodle</em> sur un autre appareil.
@@ -62,8 +66,6 @@
 </template>
 
 <script>
-import {validate as uuidValidate} from 'uuid';
-import http from '@/http-commons';
 import UserService from '@/services/UserService';
 
 export default {
@@ -77,13 +79,13 @@ export default {
       teacherPassword: '',
       teacherAccessFormVisible: false,
       teacherAccessFormErrorMessage: null,
+      needTeacherAccess: false,
     };
   },
   created() {
     this.uuid = this.$cookies.get('uuid');
-    UserService.isTeacher().then(isTeacher => {
-      this.isTeacher = isTeacher;
-    }).catch(console.error);
+    this.isTeacher = UserService.isTeacher(this.$cookies);
+    this.needTeacherAccess = !! this.$route.query.needTeacherAccess;
   },
   computed: {
     roleLabel() {
@@ -93,17 +95,13 @@ export default {
   },
   methods: {
     changeUuid() {
-      if (uuidValidate(this.uuid)) {
-        // TODO Move to a dedicated service
-        this.$cookies.set('uuid', this.uuid, Infinity);
-        http.defaults.headers.uuid = this.$cookies.get('uuid');
+      if(UserService.changeUuid(this.uuid, this.$cookies)) {
         this.errorUuid = false;
         this.updateUuidSuccessful = true;
         this.isTeacher = null;
-        UserService.isTeacher().then(isTeacher => {
-          this.isTeacher = isTeacher;
-        }).catch(console.error);
-      } else {
+        this.isTeacher = UserService.isTeacher(this.$cookies);
+      }
+      else {
         this.errorUuid = true;
       }
     },
@@ -114,9 +112,7 @@ export default {
       this.teacherAccessFormErrorMessage = null;
 
       UserService.requestTeacherAccess(this.teacherPassword).then(response => {
-        // TODO Move to a dedicated service
-        this.$cookies.set('teacherToken', response.data.teacherToken, Infinity);
-        http.defaults.headers.teachertoken = this.$cookies.get('teacherToken');
+        UserService.saveTeacherTocken(response.data.teacherToken, this.$cookies)
         this.isTeacher = true;
         this.teacherAccessFormVisible = false;
       }).catch(error => {
