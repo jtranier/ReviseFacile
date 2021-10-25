@@ -25,10 +25,10 @@ exports.get = (req, res) => {
       });
     } else {
       res.json({
-        id: data.dataValues.id,
-        name: data.dataValues.name,
-        updateAt: data.dataValues.updateAt,
-        quizList: data.dataValues.quizzes.map(quiz => {
+        id: data.id,
+        name: data.name,
+        updateAt: data.updateAt,
+        quizList: data.quizzes.map(quiz => {
 
           return {
             id: quiz.id,

@@ -37,7 +37,7 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
   return new Promise((resolve, reject) => {
     // Create training on the fly if needed
     if (quiz['trainings'].length > 0) {
-      resolve(quiz['trainings'][0]['dataValues']);
+      resolve(quiz['trainings'][0]);
     } else {
       createEmptyTrainingForQuiz(quiz, learnerUuid).then(resolve).catch(reject);
     }
@@ -106,7 +106,7 @@ exports.getWithLatestTraining = (req, res) => {
       return;
     }
 
-    const quiz = data['dataValues'];
+    const quiz = data;
 
     getOrCreateLastTraining(quiz, learnerUuid).then(lastTraining => {
       const questions = JSON.parse(quiz.questions);
