@@ -1,6 +1,4 @@
 const db = require('../models');
-const authenticationService = require('../services/AuthenticationService');
-const controllerUtil = require('../controllers/ControllerUtil');
 const Training = db.training;
 
 // TODO Rename into updateAnswers

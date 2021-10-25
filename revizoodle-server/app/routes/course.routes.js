@@ -6,11 +6,19 @@ module.exports = app => {
 
   router.get('/:id', courseController.get);
   router.get('/', AuthenticationService.checkIsTeacher, courseController.list);
-  router.post('/', AuthenticationService.checkIsTeacher,
-      courseController.create);
-  router.post('/:courseId/add-quiz', AuthenticationService.checkIsTeacher,
-      courseController.addQuiz);
-  router.post('/:courseId/register', courseController.register);
+  router.post('/',
+      AuthenticationService.checkIsTeacher,
+      courseController.create
+  );
+  router.post(
+      '/:courseId/add-quiz',
+      AuthenticationService.checkIsTeacher,
+      courseController.addQuiz
+  );
+  router.post('/:courseId/register',
+      AuthenticationService.checkIsAuthenticated,
+      courseController.register
+  );
 
   app.use('/api/course/', router);
 };

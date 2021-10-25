@@ -1,6 +1,5 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
-const controllerUtil = require('../controllers/ControllerUtil');
 const {Op} = require('sequelize');
 const Quiz = db.quiz;
 const Training = db.training;
@@ -72,10 +71,6 @@ exports.get = (req, res) => {
 };
 
 exports.getWithLatestTraining = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   const id = req.params.id || -1;
   const learnerUuid = authenticationService.getUUID(req);
 
@@ -151,10 +146,6 @@ exports.list = (req, res) => {
 };
 
 exports.redoTraining = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   const id = req.params.id || -1;
   const learnerUuid = authenticationService.getUUID(req);
 

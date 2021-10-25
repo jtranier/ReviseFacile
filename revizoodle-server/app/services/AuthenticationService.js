@@ -6,6 +6,19 @@ const userConfig = require('../config/user.config.js');
     return uuidv4.validate(req.headers.uuid);
   }
 
+  checkIsAuthenticated = (req, res, next) => {
+    if(isAuthenticated(req)) {
+      next();
+    }
+    else {
+      res.status(403).json({
+        error: {
+          message: 'You are not authenticated',
+        },
+      });
+    }
+  }
+
   checkIsTeacher = (req, res, next) => {
     if(isTeacher(req)) {
       next();
@@ -35,6 +48,7 @@ const userConfig = require('../config/user.config.js');
 
 module.exports = {
   isAuthenticated,
+  checkIsAuthenticated,
   checkIsTeacher,
   isTeacher,
   getUUID,

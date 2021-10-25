@@ -1,6 +1,5 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
-const controllerUtil = require('../controllers/ControllerUtil');
 
 const Course = db.course;
 const Quiz = db.quiz;
@@ -96,10 +95,6 @@ exports.addQuiz = (req, res) => {
 };
 
 exports.register = (req, res) => {
-  if (!controllerUtil.checkIsAuthenticated(req, res)) {
-    return;
-  }
-
   const courseId = req.params.courseId || -1;
   const learnerUuid = authenticationService.getUUID(req);
 
