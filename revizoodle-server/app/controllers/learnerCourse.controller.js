@@ -47,7 +47,7 @@ exports.findAllRegistered = (req, res) => {
     }));
   }).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 };
 
@@ -95,6 +95,6 @@ exports.findAllTrainingsForCourse = (req, res) => {
 
       }).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 };

@@ -60,7 +60,7 @@ exports.list = (req, res) => {
     res.json(data);
   }).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 };
 
@@ -72,7 +72,7 @@ exports.create = (req, res) => {
   }).then(course => {
     res.json(course['dataValues']);
   }).catch(error => {
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 
 };
@@ -90,7 +90,7 @@ exports.addQuiz = (req, res) => {
     });
   }).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 
 };
@@ -126,13 +126,13 @@ exports.register = (req, res) => {
         res.json({success: true});
       }).catch(error => {
         console.error(error);
-        res.status(500).send(error);
+        res.status(500).json(error);
       });
 
     }
   }).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 
 };
