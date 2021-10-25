@@ -1,16 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import VueCookies from 'vue-cookies'
-import { v4 as uuidv4 } from 'uuid';
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import VueCookies from 'vue-cookies';
+import {v4 as uuidv4} from 'uuid';
 import http from './http-commons';
 
-import './assets/styles/font-Raleway.css'
-import './assets/styles/normalize.css'
-import './assets/styles/skeleton.css'
-import './assets/styles/extensionBoutons.css'
-import './assets/styles/boutonsAdele.css'
-import './assets/styles/revizoodle.css'
+import './assets/styles/font-Raleway.css';
+import './assets/styles/normalize.css';
+import './assets/styles/skeleton.css';
+import './assets/styles/extensionBoutons.css';
+import './assets/styles/boutonsAdele.css';
+import './assets/styles/revizoodle.css';
 import moment from 'moment';
 
 moment.locale('fr', {
@@ -74,7 +74,7 @@ moment.locale('fr', {
   }
 });
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.use(VueCookies)
 
