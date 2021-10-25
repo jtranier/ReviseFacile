@@ -133,10 +133,8 @@ exports.getWithLatestTraining = (req, res) => {
 exports.list = (req, res) => {
 
   Quiz.findAll({
-    raw: true,
     where: {
       'teacherUuid': authenticationService.getUUID(req),
-      // TODO Paginate
     },
   }).then(data => {
     res.json(

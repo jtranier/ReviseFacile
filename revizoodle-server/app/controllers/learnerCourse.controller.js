@@ -30,17 +30,18 @@ const getLastTraining = (quiz) => {
 
 exports.findAllRegistered = (req, res) => {
   CourseRegistration.findAll({
-    raw: true,
     where: {
       'learnerUuid': authenticationService.getUUID(req),
     },
     include: Course,
     order: [['course', 'updatedAt', 'DESC']],
   }).then(data => {
+
     res.json(data.map(registration => {
+
       return {
-        id: registration['course.id'],
-        name: registration['course.name'],
+        id: registration['course'].id,
+        name: registration['course'].name,
         date: registration['updatedAt'],
       };
     }));
