@@ -1,6 +1,3 @@
-/**
- * Model to store Moodle Quiz
- */
 module.exports = (sequelize, Sequelize) => {
   return sequelize.define('course',
       {
@@ -19,8 +16,5 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false,
         },
       },
-      // {
-      //   timestamps: false,
-      // }
-      );
+  );
 };

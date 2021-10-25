@@ -1,6 +1,6 @@
 const moodleService = require('../services/MoodleService');
 const db = require('../models');
-const MoodleQuiz = db.moodleQuiz;
+const Quiz = db.quiz;
 
 exports.uploadMoodleXml = (req, res) => {
    if (!req.files || !('xmlFile' in req.files)) {
@@ -19,7 +19,7 @@ exports.uploadMoodleXml = (req, res) => {
   moodleService.parseMoodleXml(
       xmlFile.data.toString(),
   ).then(json => {
-    MoodleQuiz.create({
+    Quiz.create({
       teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
       nbQuestions: json.questions.length,

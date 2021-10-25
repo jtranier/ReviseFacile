@@ -2,7 +2,7 @@ const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const controllerUtil = require('../controllers/ControllerUtil');
 const {Op} = require('sequelize');
-const MoodleQuiz = db.moodleQuiz;
+const Quiz = db.quiz;
 const Training = db.training;
 
 const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
@@ -47,7 +47,7 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
 exports.get = (req, res) => {
   const id = req.params.id || -1;
 
-  MoodleQuiz.findByPk(id, {raw: true}).then(data => {
+  Quiz.findByPk(id, {raw: true}).then(data => {
     if (data === null) {
       res.status(404).send({
         message: `There is no quiz with id ${id}`,
@@ -82,7 +82,7 @@ exports.getWithLatestTraining = (req, res) => {
   const id = req.params.id || -1;
   const learner_uuid = authenticationService.getUUID(req);
 
-  MoodleQuiz.findByPk(id, {
+  Quiz.findByPk(id, {
     include: [
       {
         model: Training,
@@ -132,7 +132,7 @@ exports.getWithLatestTraining = (req, res) => {
 
 exports.list = (req, res) => {
 
-  MoodleQuiz.findAll({
+  Quiz.findAll({
     raw: true,
     where: {
       'teacherUuid': authenticationService.getUUID(req),
@@ -165,7 +165,7 @@ exports.redoTraining = (req, res) => {
 
   // Get the quiz
   // TODO check the learner is allowed to access to this quiz
-  MoodleQuiz.findByPk(id).then(data => {
+  Quiz.findByPk(id).then(data => {
 
         if (data === null) {
           res.status(404).json({
@@ -191,7 +191,7 @@ exports.redoTraining = (req, res) => {
 exports.getResults = (req, res) => {
   const quizId = req.params.id || -1;
 
-  MoodleQuiz.findByPk(quizId, {
+  Quiz.findByPk(quizId, {
     attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
   }).then(quiz => {
     if (quiz === null) {
@@ -209,7 +209,7 @@ exports.getResults = (req, res) => {
           score: {[Op.ne]: null},
         },
         include: {
-          model: MoodleQuiz,
+          model: Quiz,
           attributes: ['name'],
         },
         order: [

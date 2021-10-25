@@ -1,8 +1,8 @@
 /**
- * Model to store Moodle Quiz
+ * Model to store Quiz
  */
 module.exports = (sequelize, Sequelize) => {
-  return sequelize.define('moodleQuiz',
+  return sequelize.define('quiz',
       {
         id: {
           primaryKey: true,

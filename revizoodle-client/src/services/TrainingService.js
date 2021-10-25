@@ -59,7 +59,7 @@ class TrainingService {
 
   redoTraining(quizId) {
     return new Promise((resolve, reject) => {
-      http.post(`/moodle-quiz/${quizId}/redo-training`)
+      http.post(`/quiz/${quizId}/redo-training`)
           .then(resolve).catch(reject);
     });
   }

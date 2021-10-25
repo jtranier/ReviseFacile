@@ -3,7 +3,7 @@ import moment from 'moment';
 
 class QuizService {
   get(id) {
-    return http.get(`/moodle-quiz/${id}`);
+    return http.get(`/quiz/${id}`);
   }
 
   /**
@@ -12,7 +12,7 @@ class QuizService {
    */
   getWithLastTraining(id) {
     return new Promise((resolve, reject) => {
-      http.get(`/moodle-quiz/${id}/latest-training`).then(res => {
+      http.get(`/quiz/${id}/latest-training`).then(res => {
         resolve(res.data)
       }).catch(reject);
     });
@@ -20,7 +20,7 @@ class QuizService {
 
   findAllMyQuiz() {
     return new Promise((resolve, reject) =>
-        http.get(`/moodle-quiz`).then(res => {
+        http.get(`/quiz`).then(res => {
           resolve(
               res.data.map(quiz => {
                 return {
@@ -37,7 +37,7 @@ class QuizService {
 
   getResults(id) {
     return new Promise((resolve, reject) => {
-      http.get(`/moodle-quiz/${id}/results`).then(res => {
+      http.get(`/quiz/${id}/results`).then(res => {
         resolve(res.data);
       }).catch(reject);
     });

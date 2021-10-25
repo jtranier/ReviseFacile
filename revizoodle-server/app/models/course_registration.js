@@ -1,6 +1,3 @@
-/**
- * Model to store Moodle Quiz
- */
 module.exports = (sequelize, Sequelize) => {
   return sequelize.define('course_registration',
       {

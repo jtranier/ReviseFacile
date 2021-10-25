@@ -3,8 +3,8 @@ const authenticationService = require('../services/AuthenticationService');
 const controllerUtil = require('../controllers/ControllerUtil');
 
 const Course = db.course;
-const MoodleQuiz = db.moodleQuiz;
-const Course_MoodleQuiz = db.course_moodleQuiz;
+const Quiz = db.quiz;
+const CourseQuiz = db.course_quiz;
 const CourseRegistration = db.course_registration;
 
 exports.get = (req, res) => {
@@ -13,7 +13,7 @@ exports.get = (req, res) => {
   Course.findOne({
     where: {id},
     include: {
-      model: MoodleQuiz,
+      model: Quiz,
       order: [['updatedAt', 'desc']],
     },
   }).then(data => {
@@ -28,12 +28,12 @@ exports.get = (req, res) => {
         id: data.dataValues.id,
         name: data.dataValues.name,
         updateAt: data.dataValues.updateAt,
-        quizList: data.dataValues.moodleQuizzes.map(quiz => {
+        quizList: data.dataValues.quizzes.map(quiz => {
 
           return {
             id: quiz.id,
             name: quiz.name,
-            updatedAt: quiz['course_moodleQuiz'].updatedAt,
+            updatedAt: quiz['courseQuiz'].updatedAt,
             nbQuestions: JSON.parse(quiz.questions).length,
           };
         }),
@@ -81,9 +81,9 @@ exports.addQuiz = (req, res) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
-  Course_MoodleQuiz.create({
+  CourseQuiz.create({
     courseId: courseId,
-    moodleQuizId: quizId,
+    quizId: quizId,
   }).then(() => {
     res.json({
       success: true,

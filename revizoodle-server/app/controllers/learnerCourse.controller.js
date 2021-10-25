@@ -3,7 +3,7 @@ const authenticationService = require('../services/AuthenticationService');
 const Course = db.course;
 const CourseRegistration = db.course_registration;
 const Training = db.training;
-const Quiz = db.moodleQuiz;
+const Quiz = db.quiz;
 
 /**
  * Get the last training of a learner on a quiz

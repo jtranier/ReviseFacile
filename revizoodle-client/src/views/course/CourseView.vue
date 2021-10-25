@@ -28,7 +28,7 @@
     <hr style="margin-bottom: 2rem">
 
     <router-link
-        :to="`/teacher/course/${course.id}/add-quiz-action`"
+        :to="`/teacher/course/${courseId}/add-quiz-action`"
         custom
         v-slot="{ navigate }">
       <button class="button-primary u-full-width"

@@ -23,7 +23,7 @@ app.use(cookieParser());
 // default options for file upload
 app.use(fileUpload());
 
-require('./app/routes/moodleQuiz.routes')(app);
+require('./app/routes/quiz.routes')(app);
 require('./app/routes/training.routes')(app);
 require('./app/routes/course.routes')(app);
 require('./app/routes/learnerCourse.routes')(app);
