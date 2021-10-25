@@ -17,6 +17,7 @@ import QuizResultsView from '@/views/quiz/teacher/QuizResultsView';
 import SingleQuestionView from '@/views/quiz/teacher/SingleQuestionView';
 import UuidView from '@/views/user/UuidView';
 import UserService from '@/services/UserService';
+import PageNotFound from '@/views/PageNotFound';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -137,6 +138,10 @@ const routes = [
     props: {
       aze: false
     }
+  },
+  {
+    path: '*',
+    component: PageNotFound
   },
 ]
 
