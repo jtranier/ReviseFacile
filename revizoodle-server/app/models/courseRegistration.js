@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
-  return sequelize.define('course_registration',
+  return sequelize.define('courseRegistration',
       {
-        'learner_uuid': {
+        'learnerUuid': {
           type: Sequelize.STRING(40),
           allowNull: false,
         },

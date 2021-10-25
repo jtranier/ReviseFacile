@@ -21,7 +21,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
 
   return Training.create({
     quizId: quiz.id,
-    'learner_uuid': learnerUuid,
+    'learnerUuid': learnerUuid,
     score: null,
     answers: JSON.stringify(
         questions.reduce((result, question, index) => {
@@ -80,7 +80,7 @@ exports.getWithLatestTraining = (req, res) => {
   }
 
   const id = req.params.id || -1;
-  const learner_uuid = authenticationService.getUUID(req);
+  const learnerUuid = authenticationService.getUUID(req);
 
   Quiz.findByPk(id, {
     include: [
@@ -88,7 +88,7 @@ exports.getWithLatestTraining = (req, res) => {
         model: Training,
         as: 'trainings',
         where: {
-          learner_uuid,
+          learnerUuid: learnerUuid,
         },
         limit: 1,
         required: false,
@@ -108,7 +108,7 @@ exports.getWithLatestTraining = (req, res) => {
 
     const quiz = data['dataValues'];
 
-    getOrCreateLastTraining(quiz, learner_uuid).then(lastTraining => {
+    getOrCreateLastTraining(quiz, learnerUuid).then(lastTraining => {
       const questions = JSON.parse(quiz.questions);
       const learnerAnswers = JSON.parse(lastTraining.answers);
 
@@ -221,8 +221,8 @@ exports.getResults = (req, res) => {
         let data1stAttempt = Array.from({length: quiz.nbQuestions}, () => []);
 
         data.forEach(training => {
-          if (!learners.has(training['learner_uuid'])) {
-            learners.add(training['learner_uuid']);
+          if (!learners.has(training['learnerUuid'])) {
+            learners.add(training['learnerUuid']);
 
             const currentTrainingAnswers = JSON.parse(training['answers']);
             for (let [questionIndex, value] of Object.entries(

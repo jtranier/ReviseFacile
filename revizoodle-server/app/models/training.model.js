@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
           autoIncrement: true,
           type: Sequelize.BIGINT(11),
         },
-        'learner_uuid': {
+        'learnerUuid': {
           type: Sequelize.STRING(40),
           allowNull: false,
         },

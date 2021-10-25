@@ -26,19 +26,19 @@ db.sequelize = sequelize;
 // Entities
 db.quiz = require("./quiz.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
-db.course_quiz = require("./courseQuiz.model")(sequelize, Sequelize);
-db.course_registration = require("./course_registration")(sequelize, Sequelize);
+db.courseQuiz = require("./courseQuiz.model")(sequelize, Sequelize);
+db.courseRegistration = require("./courseRegistration")(sequelize, Sequelize);
 db.training = require("./training.model")(sequelize, Sequelize);
 
-db.course.belongsToMany(db.quiz, {through: db.course_quiz});
+db.course.belongsToMany(db.quiz, {through: db.courseQuiz});
 // TODO hasMany
 
-db.quiz.belongsToMany(db.course, {through: db.course_quiz});
+db.quiz.belongsToMany(db.course, {through: db.courseQuiz});
 // TODO hasMany
 
 
-db.course_registration.belongsTo(db.course, {foreignKey: 'courseId'});
-db.course.hasMany(db.course_registration, {foreignKey: 'courseId'});
+db.courseRegistration.belongsTo(db.course, {foreignKey: 'courseId'});
+db.course.hasMany(db.courseRegistration, {foreignKey: 'courseId'});
 
 db.training.belongsTo(db.quiz, { foreignKey: 'quizId' });
 db.quiz.hasMany(db.training, { foreignKey: 'quizId' });

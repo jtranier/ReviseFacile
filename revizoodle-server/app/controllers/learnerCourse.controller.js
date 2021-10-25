@@ -1,7 +1,7 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const Course = db.course;
-const CourseRegistration = db.course_registration;
+const CourseRegistration = db.courseRegistration;
 const Training = db.training;
 const Quiz = db.quiz;
 
@@ -32,8 +32,7 @@ exports.findAllRegistered = (req, res) => {
   CourseRegistration.findAll({
     raw: true,
     where: {
-      'learner_uuid': authenticationService.getUUID(req),
-      // TODO Paginate
+      'learnerUuid': authenticationService.getUUID(req),
     },
     include: Course,
     order: [['course', 'updatedAt', 'DESC']],
@@ -65,7 +64,7 @@ exports.findAllTrainingsForCourse = (req, res) => {
         model: Training,
         as: 'trainings',
         where: {
-          'learner_uuid': authenticationService.getUUID(req),
+          'learnerUuid': authenticationService.getUUID(req),
         },
         required: false,
       },

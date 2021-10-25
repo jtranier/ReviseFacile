@@ -4,8 +4,8 @@ const controllerUtil = require('../controllers/ControllerUtil');
 
 const Course = db.course;
 const Quiz = db.quiz;
-const CourseQuiz = db.course_quiz;
-const CourseRegistration = db.course_registration;
+const CourseQuiz = db.courseQuiz;
+const CourseRegistration = db.courseRegistration;
 
 exports.get = (req, res) => {
   const id = req.params.id || -1;
@@ -107,7 +107,7 @@ exports.register = (req, res) => {
     include: {
       model: CourseRegistration,
       where: {
-        'learner_uuid': learnerUuid,
+        'learnerUuid': learnerUuid,
       },
       required: false,
     },
@@ -115,12 +115,12 @@ exports.register = (req, res) => {
     if (course === null) {
       res.status(404).
           json({error: {message: `There is no course with id ${courseId}`}});
-    } else if (course['course_registrations'].length > 0) {
+    } else if (course['courseRegistrations'].length > 0) {
       res.json({success: true}); // Already registered
 
     } else {
       CourseRegistration.create({
-        'learner_uuid': learnerUuid,
+        'learnerUuid': learnerUuid,
         courseId: courseId,
       }).then(() => {
         res.json({success: true});
