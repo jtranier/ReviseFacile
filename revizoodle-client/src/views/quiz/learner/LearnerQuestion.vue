@@ -88,6 +88,7 @@ export default {
 
     submit() {
       this.learnerAnswer.score = computeQuestionScore(this.answers, this.learnerAnswer, this.isMultipleChoice);
+
       this.$emit('submitLearnerAnswer' , this.learnerAnswer);
     },
     renderMathJax() {

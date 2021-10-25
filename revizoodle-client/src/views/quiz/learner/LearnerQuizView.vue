@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     scrollToTop() {
-        window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     },
 
     nextQuestion() {
@@ -140,10 +140,8 @@ export default {
 
         this.currentQuestionIndex = 1 + (
             // Look for the 1st question not answered
-
-            Object.keys(this.quiz.learnerAnswers).sort((a, b) => { return Number.parseInt(a) - Number.parseInt(b) })
-            .findIndex(index => {
-              return this.quiz.learnerAnswers[index].submitted === false;
+            this.quiz.learnerAnswers.findIndex(learnerAnswer => {
+              return learnerAnswer.submitted === false;
             })
         );
 
@@ -159,8 +157,8 @@ export default {
 const computeTrainingScore = (learnerAnswers, nbQuestions) => {
 
   return Math.ceil(
-      [...Array(nbQuestions)].reduce((acc, x, index) => {
-        return acc + learnerAnswers[index].score;
+      learnerAnswers.reduce((acc, learnerAnswer) => {
+        return acc + learnerAnswer.score;
       }, 0) / nbQuestions,
   );
 };

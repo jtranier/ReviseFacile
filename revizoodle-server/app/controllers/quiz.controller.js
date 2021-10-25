@@ -12,10 +12,9 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
     return {
       submitted: false, // TODO replace by score ?
       nbChoice: question.answers.length,
-      choices: question.answers.reduce((result, answer, index) => {
-        result[index] = false;
-        return result;
-      }, {}),
+      choices: question.answers.map(() => {
+        return false;
+      }),
     };
   };
 
@@ -24,11 +23,9 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
     'learnerUuid': learnerUuid,
     score: null,
     answers: JSON.stringify(
-        questions.reduce((result, question, index) => {
-              result[index] = createEmptyLearnerAnswer(question);
-              return result;
-            }
-            , {}),
+        questions.map((question) => {
+          return createEmptyLearnerAnswer(question);
+        }),
     ),
   });
 };
@@ -223,13 +220,9 @@ exports.getResults = (req, res) => {
             learners.add(training['learnerUuid']);
 
             const currentTrainingAnswers = JSON.parse(training['answers']);
-            for (let [questionIndex, value] of Object.entries(
-                currentTrainingAnswers)) {
-
-              data1stAttempt[Number.parseInt(questionIndex)].push(
-                  value['score']);
-            }
-
+            currentTrainingAnswers.forEach((value, index) => {
+              data1stAttempt[index].push(value['score']);
+            });
           }
         });
         const nbLearners = learners.size;
