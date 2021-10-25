@@ -49,12 +49,12 @@ exports.get = (req, res) => {
 
   Quiz.findByPk(id, {raw: true}).then(data => {
     if (data === null) {
-      res.status(404).send({
+      res.status(404).json({
         message: `There is no quiz with id ${id}`,
       });
 
     } else if (data.teacherUuid !== authenticationService.getUUID(req)) {
-      res.status(401).send({
+      res.status(401).json({
         message: `You are not the owner of the quiz ${id}`,
       });
     } else {
@@ -64,10 +64,10 @@ exports.get = (req, res) => {
         ...data,
         questions: JSON.parse(data.questions),
       };
-      res.send(quiz);
+      res.json(quiz);
     }
   }).catch(err => {
-    res.status(500).send({
+    res.status(500).json({
       message: err.message ||
           `Some error occurred while retrieving the quiz id=${id}`,
     });
@@ -182,7 +182,7 @@ exports.redoTraining = (req, res) => {
       },
   ).catch(error => {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json(error);
   });
 };
 
@@ -193,11 +193,11 @@ exports.getResults = (req, res) => {
     attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
   }).then(quiz => {
     if (quiz === null) {
-      res.status(404).send({
+      res.status(404).json({
         message: `There is no quiz with id ${quizId}`,
       });
     } else if (quiz.teacherUuid !== authenticationService.getUUID(req)) {
-      res.status(401).send({
+      res.status(401).json({
         message: `You are not the owner of the quiz ${quizId}`,
       });
     } else {
@@ -249,7 +249,7 @@ exports.getResults = (req, res) => {
         });
       }).catch(err => {
         console.error(err);
-        res.status(500).send({
+        res.status(500).json({
           message: err.message ||
               `Some error occurred while retrieving the results of the quiz id=${quizId}`,
         });
@@ -257,7 +257,7 @@ exports.getResults = (req, res) => {
     }
   }).catch(err => {
     console.error(err);
-    res.status(500).send({
+    res.status(500).json({
       message: err.message ||
           `Some error occurred while retrieving the quiz id=${quizId}`,
     });
