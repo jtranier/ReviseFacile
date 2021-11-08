@@ -35,7 +35,7 @@ export default {
         return 'correct';
       }
 
-      if(this.isSelected && this.scoreFraction === 0) {
+      if(this.isSelected && this.scoreFraction <= 0) {
         return 'incorrect';
       }
 
