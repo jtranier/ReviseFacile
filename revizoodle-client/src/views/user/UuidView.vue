@@ -16,7 +16,7 @@
       <form @submit.prevent="changeUuid">
         <p>L'identifiant ci-dessous vous permet de retrouver vos données <em>Revizoodle</em> sur un autre appareil.
           Pour cela, il vous suffit de copier celui-ci dans votre deuxième appareil (ou de recopier celui de
-          votre deuxième appareil à la place de celui-ci, puis de cliquer sur le bouton Modifier).</p>
+          votre deuxième appareil à la place de celui-ci), puis de cliquer sur le bouton Modifier.</p>
 
         <label for="uuid">Identifiant :</label>
         <input class="u-full-width"
