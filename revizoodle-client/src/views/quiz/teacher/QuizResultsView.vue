@@ -66,7 +66,7 @@ export default {
 
 
       if (this.results1stAttempt.length > 0 && quizResults.nbAttempts > 0) {
-        this.mean1stTry = Math.floor(
+        this.mean1stTry = Math.round(
             this.results1stAttempt.reduce((a, b) => {
               return a + b;
             }, 0) / this.results1stAttempt.length,

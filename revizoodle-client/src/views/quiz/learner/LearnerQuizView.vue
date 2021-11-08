@@ -156,7 +156,7 @@ export default {
 
 const computeTrainingScore = (learnerAnswers, nbQuestions) => {
 
-  return Math.ceil(
+  return Math.round(
       learnerAnswers.reduce((acc, learnerAnswer) => {
         return acc + learnerAnswer.score;
       }, 0) / nbQuestions,

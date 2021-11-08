@@ -224,7 +224,7 @@ exports.getResults = (req, res) => {
           nbAttempts,
           nbLearners,
           results1stAttempt: data1stAttempt.map(questionResult => {
-            return Math.floor(
+            return Math.round(
                 questionResult.reduce((a, b) => {
                   return a + b;
                 }, 0) / questionResult.length,
