@@ -13,6 +13,13 @@
     </div>
 
     <div class="row">
+      <p>
+        <strong>Rôle</strong> : {{ isTeacher ? 'Enseignant' : 'Étudiant' }}
+        <span v-if="isTeacher === false">(<a href="#" @click.prevent="showTeacherAccessForm">changer de rôle</a>)</span>
+      </p>
+    </div>
+
+    <div class="row">
       <form @submit.prevent="changeUuid">
         <p>L'identifiant ci-dessous vous permet de retrouver vos données <em>Revizoodle</em> sur un autre appareil.
           Pour cela, il vous suffit de copier celui-ci dans votre deuxième appareil (ou de recopier celui de
@@ -35,11 +42,6 @@
           <p><em>Votre identifiant a été mis à jour.</em></p>
         </div>
       </form>
-    </div>
-
-    <div class="row">
-      <strong>Rôle</strong> : {{ isTeacher ? 'Enseignant' : 'Étudiant' }}
-      <span v-if="isTeacher === false">(<a href="#" @click.prevent="showTeacherAccessForm">changer de rôle</a>)</span>
     </div>
 
     <div class="row" style="margin-top: 3em;" v-if="teacherAccessFormVisible">
@@ -85,7 +87,7 @@ export default {
   created() {
     this.uuid = this.$cookies.get('uuid');
     this.isTeacher = UserService.isTeacher(this.$cookies);
-    this.needTeacherAccess = !! this.$route.query.needTeacherAccess;
+    this.needTeacherAccess = !!this.$route.query.needTeacherAccess;
   },
   computed: {
     roleLabel() {
@@ -95,13 +97,12 @@ export default {
   },
   methods: {
     changeUuid() {
-      if(UserService.changeUuid(this.uuid, this.$cookies)) {
+      if (UserService.changeUuid(this.uuid, this.$cookies)) {
         this.errorUuid = false;
         this.updateUuidSuccessful = true;
         this.isTeacher = null;
         this.isTeacher = UserService.isTeacher(this.$cookies);
-      }
-      else {
+      } else {
         this.errorUuid = true;
       }
     },
@@ -112,7 +113,7 @@ export default {
       this.teacherAccessFormErrorMessage = null;
 
       UserService.requestTeacherAccess(this.teacherPassword).then(response => {
-        UserService.saveTeacherTocken(response.data.teacherToken, this.$cookies)
+        UserService.saveTeacherTocken(response.data.teacherToken, this.$cookies);
         this.isTeacher = true;
         this.teacherAccessFormVisible = false;
       }).catch(error => {
