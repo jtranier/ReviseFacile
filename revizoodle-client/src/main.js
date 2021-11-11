@@ -5,7 +5,7 @@ import VueCookies from 'vue-cookies';
 import {v4 as uuidv4} from 'uuid';
 import http from './http-commons';
 
-import './assets/styles/font-Raleway.css';
+// import './assets/styles/font-Raleway.css';
 import './assets/styles/normalize.css';
 import './assets/styles/skeleton.css';
 import './assets/styles/extensionBoutons.css';
