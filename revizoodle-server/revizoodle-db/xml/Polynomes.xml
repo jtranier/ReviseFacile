@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Polynômes et Fractions Rationnelles</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 54246  -->
+  <question type="multichoice">
+    <name>
+      <text>141</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quelle est la forme factorisée du polynôme représenté ci-dessous?</p><p><img src="https://jfparmentier.fr/question_pictures/2/9ff7a48.png" class="u-max-full-width">​​​​​​​</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = (x + 1) \, (x + 5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$f(x) = (x - 1) \, (x - 5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = -(x - 1) \, (x - 5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = -(x + 1) \, (x + 5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>​​​​​​​Il n'a pas de forme factorisée correspondante.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54247  -->
+  <question type="multichoice">
+    <name>
+      <text>142</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quelle est la forme factorisée du polynôme représenté ci-dessous?</p><p><img src="https://jfparmentier.fr/question_pictures/2/1011b130.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = (x - 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = -(x - 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = (x + 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$f(x) = -(x + 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = 4 (x + 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Il n'a pas de forme factorisée correspondante.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54248  -->
+  <question type="multichoice">
+    <name>
+      <text>143</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quel est la forme factorisée du polynôme représenté ci-dessous?</p><p><img src="https://jfparmentier.fr/question_pictures/2/11394713.png" class="u-max-full-width"></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = (x - 1) \, (x - 4)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = -2 (x - 1) \, (x - 3)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$f(x) = 2 (x - 1) \, (x - 3)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f(x) = 6(x - 1) \, (x - 3)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Il n'a pas de forme factorisée correspondante.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54249  -->
+  <question type="multichoice">
+    <name>
+      <text>146</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Une seule égalité est vraie, laquelle?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>$$z^2+5z+9=\left(z+\dfrac{5}{2}-\dfrac{\mathrm{i}\sqrt{11}}{2}\right)\left(z-\dfrac{5}{2}+\dfrac{\mathrm{i}\sqrt{11}}{2}\right)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>$$z^2+5z+9=\left(z+\dfrac{5}{2}-\dfrac{\mathrm{i}\sqrt{11}}{2}\right)\left(z+\dfrac{5}{2}+\dfrac{\mathrm{i}\sqrt{11}}{2}\right)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$z^2+5z+9=\left(z-\dfrac{5}{2}-\dfrac{\mathrm{i}\sqrt{11}}{2}\right)\left(z+\dfrac{5}{2}+\dfrac{\mathrm{i}\sqrt{11}}{2}\right)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54250  -->
+  <question type="multichoice">
+    <name>
+      <text>521</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On donne la représentation graphique ci-dessous d'une fonction polynômiale du second degré. $$S$$ est le sommet de cette parabole et ses coordonnées sont $$(-14;31)$$.</p><p><img src="https://jfparmentier.fr/question_pictures/2/883e1022.png" class="u-max-full-width"></p><p>Parmi les propositions, ci-dessous, une seule peut être vraie. Laquelle?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>$$f$$ s'annule deux fois en $$x=-20$$et $$x=-8$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f$$ ne s'annule jamais.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f$$ s'annule deux fois en $$x=25$$ et $$x=37$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>$$f$$ ne s'annule pas en aucune valeur réelle mais en deux valeurs complexes conjuguées.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54251  -->
+  <question type="multichoice">
+    <name>
+      <text>522</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On donne la représentation graphique ci-dessous d'une fonction $$f$$ polynômiale du second degré. $$S$$ est le sommet de cette parabole et ses coordonnées sont $$(14;31)$$.</p><p><img src="https://jfparmentier.fr/question_pictures/2/898d99ed.png" class="u-max-full-width"></p><p>Si $$f$$ pour expression $$f(x)=ax^2+bx+c$$ alors :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54252  -->
+  <question type="multichoice">
+    <name>
+      <text>523</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On donne la représentation graphique ci-dessous d'une fonction $$f$$ polynômiale du second degré. $$S$$ est le sommet de cette parabole et ses coordonnées sont $$(14;-31)$$.</p><p><img src="https://jfparmentier.fr/question_pictures/2/90d79488.png" class="u-max-full-width"></p><p>Si $$f$$ pour expression $$f(x)=ax^2+bx+c$$ alors :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54253  -->
+  <question type="multichoice">
+    <name>
+      <text>526</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>On donne la représentation graphique ci-dessous d'une fonction polynômiale $$f$$ du second degré. $$S$$ est le sommet de cette parabole et ses coordonnées sont $$(-14;31)$$.</p><p><img src="https://jfparmentier.fr/question_pictures/2/98fec05f.png" class="u-max-full-width"></p><p>Si $$f$$ a pour expression $$f(x)=ax^2+bx+c$$ alors :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac>0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta>0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[$$b^2-4ac<0$$ et $$f(x)=a(x-\alpha)^2+\beta$$ avec $$\beta<0$$]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>aucune des réponses précédentes ne convient</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54254  -->
+  <question type="multichoice">
+    <name>
+      <text>528</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>$$f$$ est une fonction polynôme de degré $$2$$ dont on donne ci-dessous une représentation.</p><p><img src="https://jfparmentier.fr/question_pictures/2/100bba18b.png" class="u-max-full-width">​​​​​​​</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>Alors $$f(x)=-x^2+12x-11$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Alors $$f(x)=-x^2+13x-12$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Alors $$f(x)=x^2-12x+11$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Alors $$f(x)=x^2-13x+12$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54255  -->
+  <question type="multichoice">
+    <name>
+      <text>536</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$P(x) = x^2-3x-10$$. On peut écrire :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(5-x)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$5$$ et $$P(x)=(x-2)(x+5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$5$$ et $$P(x)=(x+2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Aucune des propositions précédentes ne convient.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54256  -->
+  <question type="multichoice">
+    <name>
+      <text>537</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$P(x) = x^2+7x+10$$. On peut écrire :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(5-x)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$-5$$ et $$P(x)=(x+2)(x+5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$-5$$ et $$P(x)=(x-2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Aucune des propositions précédentes ne convient.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54257  -->
+  <question type="multichoice">
+    <name>
+      <text>538</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$P(x) = -x^2+7x-10$$. On peut écrire :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(2-x)(5-x)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$-5$$ et $$P(x)=(x+2)(x+5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$5$$ et $$P(x)=(x+2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Aucune des propositions précédentes ne convient.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54258  -->
+  <question type="multichoice">
+    <name>
+      <text>539</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$P(x) = x^2-7x+10$$. On peut écrire :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$2$$ et $$5$$ et $$P(x)=(x-2)(5-x)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$-5$$ et $$P(x)=(x+2)(x+5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>les racines de $$P$$ sont $$-2$$ et $$5$$ et $$P(x)=(x+2)(x-5)$$</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Aucune des propositions précédentes ne convient.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54259  -->
+  <question type="multichoice">
+    <name>
+      <text>771</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$f$$ la fonction définie par $$f(x)=2x^2-4x-6$$</p><p>La forme canonique de $$f$$ est $$f(x)=2(x-1)^2-8$$ et sa forme factorisée est $$f(x)=2(x-3)(x+1)$$.</p><p>Pour calculer l'image de $$1$$, la forme la plus adaptée est :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>La forme dévelopée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>La forme canonique</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme factorisée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Autant de calculs avec chacune des formes.En utilisant la forme canonique, $$f(1)=0-8=-8$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54260  -->
+  <question type="multichoice">
+    <name>
+      <text>772</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$f$$ la fonction définie par $$f(x)=2x^2-4x-6$$</p><p>La forme canonique de $$f$$ est $$f(x)=2(x-1)^2-8$$ et sa forme factorisée est $$f(x)=2(x-3)(x+1)$$.</p><p>Pour calculer l'image de $$3$$, la forme la plus adaptée est :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>La forme dévelopée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme canonique</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>La forme factorisée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Autant de calculs avec chacune des formes.En utilisant la forme factorisée on obtient $$f(3)=0$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54261  -->
+  <question type="multichoice">
+    <name>
+      <text>773</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$f$$ la fonction définie par $$f(x)=2x^2-4x-6$$</p><p>La forme canonique de $$f$$ est $$f(x)=2(x-1)^2-8$$ et sa forme factorisée est $$f(x)=2(x-3)(x+1)$$.</p><p>Pour calculer l'image de $$-1$$, la forme la plus adaptée est :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>La forme dévelopée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme canonique</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>La forme factorisée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Autant de calculs avec chacune des formes.En utilisant la forme factorisée on obtient $$f(-1)=0$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54262  -->
+  <question type="multichoice">
+    <name>
+      <text>774</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$f$$ la fonction définie par $$f(x)=2x^2-4x-6$$</p><p>La forme canonique de $$f$$ est $$f(x)=2(x-1)^2-8$$ et sa forme factorisée est $$f(x)=2(x-3)(x+1)$$.</p><p>Pour calculer l'image de $$0$$, la forme la plus adaptée est :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>La forme dévelopée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme canonique</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme factorisée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Autant de calculs avec chacune des formes.En utilisant la forme factorisée on obtient $$f(0)=-6$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 54263  -->
+  <question type="multichoice">
+    <name>
+      <text>775</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit $$f$$ la fonction définie par $$f(x)=2x^2-4x-6$$</p><p>La forme canonique de $$f$$ est $$f(x)=2(x-1)^2-8$$ et sa forme factorisée est $$f(x)=2(x-3)(x+1)$$.</p><p>Pour calculer les éventuels antécédents de $$0$$, la forme la plus adaptée est :</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text>La forme dévelopée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>La forme canonique</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>La forme factorisée</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Autant de calculs avec chacune des formes.En utilisant la forme factorisée on obtient $$f(x)=0\Leftrightarrow 2(x-3)(x+1)=0 \Leftrightarrow x-3 = 0 \text{ ou } x+1=0 \Leftrightarrow x=3 ou x=-1$$.</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>
