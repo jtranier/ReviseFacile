@@ -19,6 +19,26 @@
       </p>
     </div>
 
+    <div class="row" v-if="teacherAccessFormVisible">
+      <form @submit.prevent="requestTeacherAccess">
+        <label for="teacherPassword">Mot de passe :</label>
+        <input type="password"
+               autocomplete="current-password"
+               class="u-full-width"
+               placeholder="Mot de passe enseignant"
+               id="teacherPassword"
+               v-model="teacherPassword">
+
+        <div v-if="teacherAccessFormErrorMessage !== null">
+          <p><em>{{ teacherAccessFormErrorMessage }}</em></p>
+        </div>
+
+        <button class="button-primary u-full-width"
+                type="submit">Soumettre
+        </button>
+      </form>
+    </div>
+
     <div class="row">
       <form @submit.prevent="changeUuid">
         <p>L'identifiant ci-dessous vous permet de retrouver vos données <em>Revizoodle</em> sur un autre appareil.
@@ -41,26 +61,6 @@
         <div v-if="updateUuidSuccessful">
           <p><em>Votre identifiant a été mis à jour.</em></p>
         </div>
-      </form>
-    </div>
-
-    <div class="row" style="margin-top: 3em;" v-if="teacherAccessFormVisible">
-      <form @submit.prevent="requestTeacherAccess">
-        <label for="teacherPassword">Mot de passe :</label>
-        <input type="password"
-               autocomplete="current-password"
-               class="u-full-width"
-               placeholder="Mot de passe enseignant"
-               id="teacherPassword"
-               v-model="teacherPassword">
-
-        <div v-if="teacherAccessFormErrorMessage !== null">
-          <p><em>{{ teacherAccessFormErrorMessage }}</em></p>
-        </div>
-
-        <button class="button-primary u-full-width"
-                type="submit">Soumettre
-        </button>
       </form>
     </div>
 
