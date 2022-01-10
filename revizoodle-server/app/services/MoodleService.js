@@ -13,6 +13,53 @@ class MoodleService {
       parser.parseStringPromise(text).then(parsedXml => {
         const questions = parsedXml.quiz.question;
 
+        const extractAllImageOf = function(node) {
+          return node['file']?.map(fileNode => {
+            return extractImageOf(fileNode);
+          }).filter(e => e !== null) || [];
+        };
+
+        const extractImageOf = function(fileNode) {
+          if(fileNode.$.encoding !== "base64")
+            return null;
+
+          // TODO check encoding && attributes (or catch errors)
+          return {
+            name: fileNode.$.name,
+            blob: fileNode._,
+          };
+        };
+
+        /**
+         * Replace image references of the form <img src="@@PLUGINFILE@@/{uri}" />
+         * by their Base64 representation
+         * @param text
+         * @param imageList
+         * @returns {*}
+         */
+        const interpolateImages = function(text, imageList) {
+          imageList.forEach(image => {
+            // Moodle seems to encode image name as URI, but it also encodes
+            // '(' and ')' ... I ignore why... So I just replace them by their code.
+            const uri = encodeURI(image.name).
+                replace('(', '%28').
+                replace(')', '%29');
+
+            // Match image reference (we need to ignore eventual URI params)
+            text = text.replace(
+                new RegExp(`src="@@PLUGINFILE@@/${uri}(\\?.*)?"`),
+                `src="data:image;base64, ${image.blob}"`
+            );
+          });
+
+          return text;
+        };
+
+        const parseHtmlNode = function(node) {
+          const text = node['text'][0];
+          return interpolateImages(text, extractAllImageOf(node));
+        };
+
         resolve(
             {
               questions: questions.filter(q => {
@@ -24,17 +71,16 @@ class MoodleService {
 
                 const answers = question['answer'];
 
-
                 return {
-                  name: question['name'][0]['text'][0],
-                  statement: question['questiontext'][0]['text'][0],
-                  explanation: question['generalfeedback'][0]['text'][0],
+                  name: parseHtmlNode(question['name'][0]),
+                  statement: parseHtmlNode(question['questiontext'][0]),
+                  explanation: parseHtmlNode(question['generalfeedback'][0]),
                   type: resolveType(question),
                   answers: answers.map(answer => {
                     return {
-                      text: answer['text'][0],
+                      text: parseHtmlNode(answer),
                       scoreFraction: Number.parseInt(answer['$']['fraction']),
-                      feedback: answer['feedback'][0]['text'][0],
+                      feedback: parseHtmlNode(answer['feedback'][0]),
                     };
                   }),
                 };
@@ -51,9 +97,10 @@ class MoodleService {
 
 const resolveType = function(moodleQuestion) {
 
-  if(moodleQuestion['$']['type'] === 'multichoice' && moodleQuestion['single'][0] === 'true')
-    return 'singlechoice'
+  if (moodleQuestion['$']['type'] === 'multichoice' &&
+      moodleQuestion['single'][0] === 'true')
+    return 'singlechoice';
   else return moodleQuestion['$']['type'];
-}
+};
 
 module.exports = new MoodleService();

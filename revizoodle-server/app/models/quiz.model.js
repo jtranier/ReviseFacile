@@ -23,7 +23,7 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false,
         },
         questions: {
-          type: Sequelize.TEXT, // JSON
+          type: Sequelize.TEXT('medium'), // JSON up to 16 Mb (for base64 images)
           allowNull: false,
         },
       });
