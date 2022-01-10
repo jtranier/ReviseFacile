@@ -13,6 +13,10 @@ class MoodleService {
       parser.parseStringPromise(text).then(parsedXml => {
         const questions = parsedXml.quiz.question;
 
+        const removeFontSizeInstructions = function(html) {
+          return html.replace(new RegExp(`(?<=;|"|\\s)font-size:[^;']*(;)?`), '')
+        }
+
         const extractAllImageOf = function(node) {
           return node['file']?.map(fileNode => {
             return extractImageOf(fileNode);
@@ -57,7 +61,10 @@ class MoodleService {
 
         const parseHtmlNode = function(node) {
           const text = node['text'][0];
-          return interpolateImages(text, extractAllImageOf(node));
+          return interpolateImages(
+              removeFontSizeInstructions(text),
+              extractAllImageOf(node)
+          );
         };
 
         resolve(
