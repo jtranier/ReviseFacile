@@ -14,7 +14,7 @@ class MoodleService {
         const questions = parsedXml.quiz.question;
 
         const removeFontSizeInstructions = function(html) {
-          return html.replace(new RegExp(`(?<=;|"|\\s)font-size:[^;']*(;)?`), '')
+          return html.replace(/(?<=;|"|\\s)font-size:[^;']*(;)?/g, '')
         }
 
         const extractAllImageOf = function(node) {
