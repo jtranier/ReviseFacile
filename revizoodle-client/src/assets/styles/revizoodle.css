@@ -3,3 +3,5 @@
 }
 
 .question-container br { display: none; }
+
+.question-container img { max-width: 100%; }
