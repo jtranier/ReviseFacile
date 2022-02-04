@@ -14,6 +14,7 @@ npm run serve
 ```
 npm run build
 ```
+The production files are deployed directly `revizoodle-server` into `app/views`.
 
 ### Lints and fixes files
 ```
