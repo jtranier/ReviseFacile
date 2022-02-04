@@ -30,11 +30,11 @@ const db = {};
 db.sequelize = sequelize;
 
 // Load entities
-db.Quiz = require("./quiz.model.js")(sequelize);
-db.Course = require("./course.model.js")(sequelize);
-db.CourseQuiz = require("./courseQuiz.model")(sequelize);
-db.CourseRegistration = require("./courseRegistration.model")(sequelize);
-db.Training = require("./training.model")(sequelize);
+db.Quiz = require("./Quiz.model.js")(sequelize);
+db.Course = require("./Course.model.js")(sequelize);
+db.CourseQuiz = require("./CourseQuiz.model")(sequelize);
+db.CourseRegistration = require("./CourseRegistration.model")(sequelize);
+db.Training = require("./Training.model")(sequelize);
 
 // Setup relationships
 db.Course.associate(db)
