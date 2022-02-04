@@ -2,29 +2,31 @@
  * A Quiz is a list of Questions
  * The questions are specified by a JSON array of objects
  */
-module.exports = (sequelize, Sequelize) => {
+const { DataTypes } = require('sequelize')
+
+module.exports = (sequelize) => {
   return sequelize.define('quiz',
       {
         id: {
           primaryKey: true,
           autoIncrement: true,
-          type: Sequelize.BIGINT(11),
+          type: DataTypes.BIGINT(11),
         },
         teacherUuid: {
-          type: Sequelize.Sequelize.STRING(40),
+          type: DataTypes.STRING(40),
           allowNull: false,
         },
 
         name: {
-          type: Sequelize.TEXT,
+          type: DataTypes.TEXT,
           allowNull: false,
         },
         nbQuestions: {
-          type: Sequelize.TINYINT,
+          type: DataTypes.TINYINT,
           allowNull: false,
         },
         questions: {
-          type: Sequelize.TEXT('medium'), // JSON up to 16 Mb (for base64 images)
+          type: DataTypes.TEXT('medium'), // JSON up to 16 Mb (for base64 images)
           allowNull: false,
         },
       });

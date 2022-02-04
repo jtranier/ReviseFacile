@@ -7,6 +7,7 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
+
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
@@ -30,11 +31,11 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Entities
-db.quiz = require("./quiz.model.js")(sequelize, Sequelize);
-db.course = require("./course.model.js")(sequelize, Sequelize);
-db.courseQuiz = require("./courseQuiz.model")(sequelize, Sequelize);
-db.courseRegistration = require("./courseRegistration")(sequelize, Sequelize);
-db.training = require("./training.model")(sequelize, Sequelize);
+db.quiz = require("./quiz.model.js")(sequelize);
+db.course = require("./course.model.js")(sequelize);
+db.courseQuiz = require("./courseQuiz.model")(sequelize);
+db.courseRegistration = require("./courseRegistration")(sequelize);
+db.training = require("./training.model")(sequelize);
 
 db.course.belongsToMany(db.quiz, {through: db.courseQuiz});
 // TODO hasMany

@@ -2,11 +2,14 @@
  * Course <=> Learner association
  * It stores the list of learners registered to a course
  */
-module.exports = (sequelize, Sequelize) => {
+const { DataTypes } = require('sequelize')
+
+module.exports = (sequelize) => {
+
   return sequelize.define('courseRegistration',
       {
         'learnerUuid': {
-          type: Sequelize.STRING(40),
+          type: DataTypes.STRING(40),
           allowNull: false,
         },
       },
