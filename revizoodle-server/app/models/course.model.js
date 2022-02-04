@@ -1,3 +1,7 @@
+/**
+ * A course is a collection of quizzes, owned by a teacher, on which learners
+ * may register
+ */
 module.exports = (sequelize, Sequelize) => {
   return sequelize.define('course',
       {

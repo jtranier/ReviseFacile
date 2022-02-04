@@ -1,3 +1,9 @@
+/**
+ * ORM (Sequelize) configuration
+ *
+ * it exposes the `db` object defining the server entities and theirs
+ * relationships
+ */
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");

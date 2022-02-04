@@ -1,5 +1,6 @@
 /**
- * Model to store Quiz
+ * A Quiz is a list of Questions
+ * The questions are specified by a JSON array of objects
  */
 module.exports = (sequelize, Sequelize) => {
   return sequelize.define('quiz',

@@ -1,5 +1,6 @@
 /**
- * Model to store trainings (learner answers to a quiz)
+ * A Training is one execution of a Quiz by a Learner
+ * It stores its progression, provided answers and obtained score.
  */
 module.exports = (sequelize, Sequelize) => {
   return sequelize.define('training',
