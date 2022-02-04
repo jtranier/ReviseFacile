@@ -1,5 +1,5 @@
 const db = require('../models');
-const Training = db.training;
+const Training = db.Training;
 
 // TODO Rename into updateAnswers
 exports.update = (req, res) => {

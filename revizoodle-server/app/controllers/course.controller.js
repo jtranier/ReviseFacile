@@ -1,10 +1,10 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 
-const Course = db.course;
-const Quiz = db.quiz;
-const CourseQuiz = db.courseQuiz;
-const CourseRegistration = db.courseRegistration;
+const Course = db.Course;
+const Quiz = db.Quiz;
+const CourseQuiz = db.CourseQuiz;
+const CourseRegistration = db.CourseRegistration;
 
 exports.get = (req, res) => {
   const id = req.params.id || -1;

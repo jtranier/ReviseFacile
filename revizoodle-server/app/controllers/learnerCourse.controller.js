@@ -1,9 +1,9 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
-const Course = db.course;
-const CourseRegistration = db.courseRegistration;
-const Training = db.training;
-const Quiz = db.quiz;
+const Course = db.Course;
+const CourseRegistration = db.CourseRegistration;
+const Training = db.Training;
+const Quiz = db.Quiz;
 
 /**
  * Get the last training of a learner on a quiz
