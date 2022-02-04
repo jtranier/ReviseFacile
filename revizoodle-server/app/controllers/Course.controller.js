@@ -9,7 +9,8 @@ const Quiz = db.Quiz;
 const CourseQuiz = db.CourseQuiz;
 const CourseRegistration = db.CourseRegistration;
 
-const { renderAsJson } = require('../controllers/ControllerUtil')
+const {assertIsFound, errorHandler} =
+    require('../controllers/ControllerUtil');
 
 /**
  * Get a Course as JSON
@@ -21,54 +22,61 @@ const { renderAsJson } = require('../controllers/ControllerUtil')
 exports.get = (req, res) => {
   const id = req.params.id || -1;
 
-  renderAsJson(
-      res,
-      Course.findOne({
-        where: {id},
-        include: {
-          model: Quiz,
-          order: [['updatedAt', 'desc']],
-        },
-      }),
-      {
-        dataTransformer: CourseSummary,
-        notFoundMessage: `There is no course with id ${id}`
-      }
-  )
-
+  Course.findOne({
+    where: {id},
+    include: {
+      model: Quiz,
+      order: [['updatedAt', 'desc']],
+    },
+  }).
+      then(assertIsFound(`There is no course with id ${id}`)).
+      then(course => {
+        res.json(CourseSummary(course));
+      }).
+      catch(errorHandler(res));
 };
 
+/**
+ * List the course of the teacher initiating the query
+ * URL: /api/course
+ */
 exports.list = (req, res) => {
-
   Course.findAll({
-    raw: true,
     order: [
       ['updatedAt', 'DESC'],
     ],
     where: {
       'teacherUuid': authenticationService.getUUID(req),
     },
-  }).then(data => {
-    res.json(data);
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
+  }).then(res.json).catch(errorHandler(res));
 };
 
+/**
+ * Create a course
+ * URL: POST /api/course
+ * The request body must contains a name attribute
+ *
+ * @return 500 if something gets wrong
+ * @return 200 created Course (json) if OK
+ */
 exports.create = (req, res) => {
-
   Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: authenticationService.getUUID(req),
-  }).then(course => {
-    res.json(course['dataValues']);
-  }).catch(error => {
-    res.status(500).json(error);
-  });
-
+  }).then(res.json).catch(errorHandler(res));
 };
 
+/**
+ * Add a Quiz to a Course
+ * URL: POST /api/course/:courseId/add-quiz
+ * quizId must provided as form data
+ *
+ * @return 200 { success: true } if OK
+ * @return 500 if an error occurs
+ *
+ * Implementation note : this is a very simple implementation without any
+ * check ; a 500 error will be thrown if courseId or quizId are incorrect
+ */
 exports.addQuiz = (req, res) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
@@ -77,16 +85,14 @@ exports.addQuiz = (req, res) => {
     courseId: courseId,
     quizId: quizId,
   }).then(() => {
-    res.json({
-      success: true,
-    });
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
-
+    return {success: true};
+  }).catch(errorHandler(res));
 };
 
+/**
+ * Register a Learner to a Course
+ * URL : POST /api/course/:courseId/register
+ */
 exports.register = (req, res) => {
   const courseId = req.params.courseId || -1;
   const learnerUuid = authenticationService.getUUID(req);
@@ -99,30 +105,23 @@ exports.register = (req, res) => {
       },
       required: false,
     },
-  }).then(course => {
-    if (course === null) {
-      res.status(404).
-          json({error: {message: `There is no course with id ${courseId}`}});
-    } else if (course['courseRegistrations'].length > 0) {
-      res.json({success: true}); // Already registered
+  }).
+      then(assertIsFound(`There is no course with id ${courseId}`)).
+      then(course => {
+        if (course['courseRegistrations'].length > 0) {
+          // Already registered
+          return true;
+        }
 
-    } else {
-      CourseRegistration.create({
-        'learnerUuid': learnerUuid,
-        courseId: courseId,
-      }).then(() => {
+        return CourseRegistration.create({
+          'learnerUuid': learnerUuid,
+          courseId: courseId,
+        });
+      }).
+      then(() => {
         res.json({success: true});
-      }).catch(error => {
-        console.error(error);
-        res.status(500).json(error);
-      });
-
-    }
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
-
+      }).
+      catch(errorHandler(res));
 };
 
 /**
@@ -148,4 +147,4 @@ const CourseSummary = (course) => {
     }),
   };
 
-}
+};

@@ -21,6 +21,7 @@ class CourseService {
   }
 
   addQuiz(courseId, quizId) {
+    // TODO It would be nicer to pass data by a JSON body instead of FormData
     const formData = new FormData();
     formData.append('quizId', quizId);
     return http.post(`/course/${courseId}/add-quiz`, formData).then(() => {
