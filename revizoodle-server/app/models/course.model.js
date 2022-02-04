@@ -5,7 +5,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-  return sequelize.define('course',
+  const Course = sequelize.define('course',
       {
         id: {
           primaryKey: true,
@@ -23,4 +23,12 @@ module.exports = (sequelize) => {
         },
       },
   );
+
+  Course.associate = function(models) {
+    Course.hasMany(models.CourseRegistration, {foreignKey: 'courseId'});
+    Course.belongsToMany(models.Quiz, {through: models.CourseQuiz}); // TODO hasMany
+
+  }
+
+  return Course;
 };

@@ -27,28 +27,19 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const db = {};
 
-db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Entities
-db.quiz = require("./quiz.model.js")(sequelize);
-db.course = require("./course.model.js")(sequelize);
-db.courseQuiz = require("./courseQuiz.model")(sequelize);
-db.courseRegistration = require("./courseRegistration")(sequelize);
-db.training = require("./training.model")(sequelize);
+// Load entities
+db.Quiz = require("./quiz.model.js")(sequelize);
+db.Course = require("./course.model.js")(sequelize);
+db.CourseQuiz = require("./courseQuiz.model")(sequelize);
+db.CourseRegistration = require("./courseRegistration.model")(sequelize);
+db.Training = require("./training.model")(sequelize);
 
-db.course.belongsToMany(db.quiz, {through: db.courseQuiz});
-// TODO hasMany
-
-db.quiz.belongsToMany(db.course, {through: db.courseQuiz});
-// TODO hasMany
-
-
-db.courseRegistration.belongsTo(db.course, {foreignKey: 'courseId'});
-db.course.hasMany(db.courseRegistration, {foreignKey: 'courseId'});
-
-db.training.belongsTo(db.quiz, { foreignKey: 'quizId' });
-db.quiz.hasMany(db.training, { foreignKey: 'quizId' });
-
+// Setup relationships
+db.Course.associate(db)
+db.Training.associate(db);
+db.Quiz.associate(db);
+db.CourseRegistration.associate(db);
 
 module.exports = db;

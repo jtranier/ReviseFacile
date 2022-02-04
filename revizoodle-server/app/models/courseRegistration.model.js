@@ -6,7 +6,7 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
 
-  return sequelize.define('courseRegistration',
+  const CourseRegistration = sequelize.define('courseRegistration',
       {
         'learnerUuid': {
           type: DataTypes.STRING(40),
@@ -14,4 +14,10 @@ module.exports = (sequelize) => {
         },
       },
   );
+
+  CourseRegistration.associate = function(models) {
+    CourseRegistration.belongsTo(models.Course, {foreignKey: 'courseId'});
+  }
+
+  return CourseRegistration;
 };

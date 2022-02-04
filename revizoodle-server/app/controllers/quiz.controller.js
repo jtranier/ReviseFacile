@@ -1,8 +1,8 @@
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const {Op} = require('sequelize');
-const Quiz = db.quiz;
-const Training = db.training;
+const Quiz = db.Quiz;
+const Training = db.Training;
 
 const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
   const questions = JSON.parse(quiz.questions);

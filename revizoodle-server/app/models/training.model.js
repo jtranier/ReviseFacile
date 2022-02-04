@@ -5,7 +5,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-  return sequelize.define('training',
+  const Training = sequelize.define('training',
       {
         id: {
           primaryKey: true,
@@ -30,4 +30,11 @@ module.exports = (sequelize) => {
           allowNull: false,
         },
       });
+
+  Training.associate = function(models) {
+    Training.belongsTo(models.Quiz, { foreignKey: 'quizId' });
+  };
+
+  return Training;
+
 };
