@@ -11,3 +11,9 @@ You will also find demo quizzes exported from Moodle into `revizoodle-db/xml`.
 ```
 node server.js
 ```
+
+## Config files
+| File                        | Description            |
+| --------------------------- | ---------------------- |
+| `app/config/db.config.js`   | Database configuration |
+| `app/config/user.config.js` | Security config        |
