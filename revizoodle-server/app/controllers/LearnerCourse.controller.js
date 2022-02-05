@@ -1,3 +1,6 @@
+/**
+ * Controller for actions on course for Learners
+ */
 const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const Course = db.Course;
@@ -5,29 +8,15 @@ const CourseRegistration = db.CourseRegistration;
 const Training = db.Training;
 const Quiz = db.Quiz;
 
+const {
+  errorHandler,
+} = require('../controllers/ControllerUtil');
+
 /**
- * Get the last training of a learner on a quiz
- * @param quiz Quiz object entity
- * @returns {null|*}
+ * Find all courses on which the current learner is registered
+ * @return List<RegistrationSummary> as JSON
+ * URL : GET /api/learner/course/
  */
-const getLastTraining = (quiz) => {
-  if(!quiz['trainings'] || !quiz['trainings'].length) {
-    return null
-  }
-
-  if(quiz['trainings'].length === 1) {
-    return quiz['trainings'][0];
-  }
-
-  const lastScoredTraining = quiz['trainings'].find(training => {
-    return training.score !== null;
-  });
-
-  return lastScoredTraining ?
-      lastScoredTraining :
-      quiz['trainings'][0];
-};
-
 exports.findAllRegistered = (req, res) => {
   CourseRegistration.findAll({
     where: {
@@ -35,23 +24,19 @@ exports.findAllRegistered = (req, res) => {
     },
     include: Course,
     order: [['course', 'updatedAt', 'DESC']],
-  }).then(data => {
+  }).then((courseRegistrationList) => {
 
-    res.json(data.map(registration => {
-
-      return {
-        id: registration['course'].id,
-        name: registration['course'].name,
-        date: registration['updatedAt'],
-      };
-    }));
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
+    res.json(courseRegistrationList.map(RegistrationSummary));
+  }).catch(errorHandler(res));
 };
 
-exports.findAllTrainingsForCourse = (req, res) => {
+/**
+ * Get the info about the quizzes and trainings belonging to a course on which
+ * the logged Learner is registered
+ * @return List<QuizWithTrainingsSummary> as JSON
+ * URL : GET /api/learner/course/:courseId
+ */
+exports.findAllQuizWithTrainingsForCourse = (req, res) => {
   const courseId = req.params.courseId || -1;
 
   Quiz.findAll({
@@ -73,28 +58,71 @@ exports.findAllTrainingsForCourse = (req, res) => {
 
     order: [['updatedAt', 'desc'], ['trainings', 'updatedAt', 'desc']],
   }).
-      then(data => {
+      then((quizList) => {
         res.json(
-            data.map(quiz => {
-              const lastTraining = getLastTraining(quiz);
-
-              return {
-                quizId: quiz['id'],
-                quizTitle: quiz['name'],
-                quizDate: quiz['updatedAt'],
-                lastTrainingCurrentQuestion:
-                    lastTraining ?
-                        lastTraining['currentQuestion'] :
-                        null,
-                quizNbQuestions: JSON.parse(quiz['questions']).length || 0,
-                nbTrainings: quiz['trainings'].length,
-                score: lastTraining ? lastTraining.score : null,
-              };
-            }),
+            quizList.map(QuizWithTrainingsSummary),
         );
 
-      }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
+      }).catch(errorHandler(res));
+};
+
+/**
+ * Info about a course on which a learner is registered
+ * @param courseRegistration
+ * @return {{date, name, id}}
+ * @constructor
+ */
+const RegistrationSummary = function(courseRegistration) {
+  return {
+    id: courseRegistration['course'].id,
+    name: courseRegistration['course'].name,
+    date: courseRegistration['updatedAt'],
+  };
+};
+
+/**
+ * Info for learners about a Quiz on which they are registered and their
+ * trainings on it
+ * @param quiz
+ * @return {{nbTrainings, quizDate, score: (null|*|null), lastTrainingCurrentQuestion: (*|null), quizNbQuestions, quizId, quizTitle}}
+ * @constructor
+ */
+const QuizWithTrainingsSummary = function(quiz) {
+  const lastTraining = getLastTraining(quiz);
+
+  return {
+    quizId: quiz['id'],
+    quizTitle: quiz['name'],
+    quizDate: quiz['updatedAt'],
+    lastTrainingCurrentQuestion:
+        lastTraining ?
+            lastTraining['currentQuestion'] :
+            null,
+    quizNbQuestions: quiz['nbQuestions'],
+    nbTrainings: quiz['trainings'].length,
+    score: lastTraining ? lastTraining.score : null,
+  };
+}
+
+/**
+ * Get the last training of a learner on a quiz
+ * @param quiz Quiz object entity
+ * @returns {null|*}
+ */
+const getLastTraining = (quiz) => {
+  if (!quiz['trainings'] || !quiz['trainings'].length) {
+    return null;
+  }
+
+  if (quiz['trainings'].length === 1) {
+    return quiz['trainings'][0];
+  }
+
+  const lastScoredTraining = quiz['trainings'].find(training => {
+    return training.score !== null;
   });
+
+  return lastScoredTraining ?
+      lastScoredTraining :
+      quiz['trainings'][0];
 };

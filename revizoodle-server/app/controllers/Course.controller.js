@@ -48,7 +48,9 @@ exports.list = (req, res) => {
     where: {
       'teacherUuid': authenticationService.getUUID(req),
     },
-  }).then(res.json).catch(errorHandler(res));
+  }).
+      then(courseList => res.json(courseList)).
+      catch(errorHandler(res));
 };
 
 /**
@@ -63,7 +65,7 @@ exports.create = (req, res) => {
   Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: authenticationService.getUUID(req),
-  }).then(res.json).catch(errorHandler(res));
+  }).then(course => res.json(course)).catch(errorHandler(res));
 };
 
 /**
@@ -118,9 +120,7 @@ exports.register = (req, res) => {
           courseId: courseId,
         });
       }).
-      then(() => {
-        res.json({success: true});
-      }).
+      then(() => res.json({success: true})).
       catch(errorHandler(res));
 };
 
@@ -142,7 +142,7 @@ const CourseSummary = (course) => {
         id: quiz.id,
         name: quiz.name,
         updatedAt: quiz['courseQuiz'].updatedAt,
-        nbQuestions: JSON.parse(quiz.questions).length,
+        nbQuestions: quiz.nbQuestions,
       };
     }),
   };
