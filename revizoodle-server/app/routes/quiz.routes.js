@@ -1,5 +1,5 @@
 module.exports = app => {
-  const quizController = require('../controllers/quiz.controller');
+  const quizController = require('../controllers/Quiz.controller');
   const AuthenticationService = require('../services/AuthenticationService');
 
   let router = require('express').Router();

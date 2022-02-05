@@ -1,5 +1,5 @@
 module.exports = app => {
-  const trainingController = require('../controllers/training.controller');
+  const trainingController = require('../controllers/Training.controller');
 
   let router = require('express').Router();
   router.put('/:id', trainingController.update);

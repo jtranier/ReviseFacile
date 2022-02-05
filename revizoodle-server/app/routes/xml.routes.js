@@ -1,6 +1,6 @@
 const AuthenticationService = require('../services/AuthenticationService');
 module.exports = app => {
-  const xmlController = require('../controllers/xml.controller');
+  const xmlController = require('../controllers/Xml.controller');
 
   let router = require('express').Router();
 
