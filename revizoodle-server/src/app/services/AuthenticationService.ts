@@ -1,12 +1,13 @@
-const uuidv4 = require('uuid');
-const CryptoJs = require('crypto-js');
+import uuidv4 from 'uuid'
+import CryptoJs from 'crypto-js'
+
 const userConfig = require('../config/user.config.js');
 
-  isAuthenticated = (req) => {
+  const isAuthenticated = (req) => {
     return uuidv4.validate(req.headers.uuid);
   }
 
-  checkIsAuthenticated = (req, res, next) => {
+  const checkIsAuthenticated = (req, res, next) => {
     if(isAuthenticated(req)) {
       next();
     }
@@ -19,7 +20,7 @@ const userConfig = require('../config/user.config.js');
     }
   }
 
-  checkIsTeacher = (req, res, next) => {
+  const checkIsTeacher = (req, res, next) => {
     if(isTeacher(req)) {
       next();
     }
@@ -28,7 +29,7 @@ const userConfig = require('../config/user.config.js');
     }
   }
   
-  isTeacher = (req) => {
+  const isTeacher = (req) => {
     const uuid = req.headers.uuid;
     const teacherToken = req.headers.teachertoken;
 
@@ -41,7 +42,7 @@ const userConfig = require('../config/user.config.js');
     return uuid === bytes.toString(CryptoJs.enc.Utf8);
   }
 
-  getUUID = (req) => {
+  const getUUID = (req) => {
     return req.headers.uuid;
   }
 
