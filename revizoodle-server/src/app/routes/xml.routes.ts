@@ -1,5 +1,6 @@
-const AuthenticationService = require('../services/AuthenticationService');
-module.exports = app => {
+import * as AuthenticationService from '../services/AuthenticationService';
+
+export default function setupXmlRoute(app) {
   const xmlController = require('../controllers/Xml.controller');
 
   let router = require('express').Router();

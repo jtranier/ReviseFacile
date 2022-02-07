@@ -1,4 +1,4 @@
-module.exports = app => {
+export default function setupTrainingRoute(app) {
   const trainingController = require('../controllers/LearnerTraining.controller');
 
   let router = require('express').Router();

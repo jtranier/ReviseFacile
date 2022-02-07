@@ -1,4 +1,4 @@
-import authenticationService from '../services/AuthenticationService'
+import * as AuthenticationService from '../services/AuthenticationService'
 import {CourseQuiz, CourseRegistration} from '../models';
 
 /**
@@ -47,7 +47,7 @@ export const assertIsFound = (notFoundMessage) => (data) => {
  * @return callback that just return the provided data if OK or throw an error
  */
 export const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
-  if (getOwnerUUID(data) !== authenticationService.getUUID(req)) {
+  if (getOwnerUUID(data) !== AuthenticationService.getUUID(req)) {
     throw {
       statusCode: 401,
       message: notOwnerMessage,

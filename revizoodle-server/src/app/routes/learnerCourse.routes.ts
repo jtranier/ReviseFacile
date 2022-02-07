@@ -1,5 +1,5 @@
 
-module.exports = app => {
+export default function setupLearnerCourseRoute(app) {
   const learnerCourseController = require('../controllers/LearnerCourse.controller');
 
   let router = require('express').Router();

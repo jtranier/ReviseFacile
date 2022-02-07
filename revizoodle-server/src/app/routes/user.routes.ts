@@ -1,4 +1,4 @@
-module.exports = app => {
+export default function setupUserRoute(app) {
   const userController = require('../controllers/User.controller');
 
   let router = require('express').Router();

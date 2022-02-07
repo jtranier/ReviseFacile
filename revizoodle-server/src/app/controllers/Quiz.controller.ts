@@ -2,7 +2,7 @@
  * REST Controller for Quiz entity
  */
 // TODO Think to move dedicated Learners actions to a dedicated controller
-import authenticationService from '../services/AuthenticationService'
+import * as AuthenticationService from '../services/AuthenticationService'
 import {Op} from 'sequelize'
 import {Quiz, Training} from '../models';
 import {assertIsFound, assertIsOwner, assertLearnerIsRegisteredOnQuiz, errorHandler,} from './ControllerUtil'
@@ -97,7 +97,7 @@ exports.get = (req, res) => {
  */
 exports.getWithLatestTraining = (req, res) => {
   const id = req.params.id || -1;
-  const learnerUuid = authenticationService.getUUID(req);
+  const learnerUuid = AuthenticationService.getUUID(req);
 
   Quiz.findByPk(id, {
     include: [
@@ -139,7 +139,7 @@ exports.list = (req, res) => {
 
   Quiz.findAll({
     where: {
-      'teacherUuid': authenticationService.getUUID(req),
+      'teacherUuid': AuthenticationService.getUUID(req),
     },
   }).then(data => res.json(data.map(QuizSummary))).catch(errorHandler(res));
 };
@@ -150,7 +150,7 @@ exports.list = (req, res) => {
  */
 exports.redoTraining = (req, res) => {
   const quizId = req.params.id || -1;
-  const learnerUuid = authenticationService.getUUID(req);
+  const learnerUuid = AuthenticationService.getUUID(req);
 
   Quiz.findByPk(quizId).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(
     assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId)).then(
