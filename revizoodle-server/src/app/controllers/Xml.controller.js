@@ -1,6 +1,5 @@
 const moodleService = require('../services/MoodleService');
-const db = require('../models');
-const Quiz = db.Quiz;
+import {Quiz} from '../models';
 
 exports.uploadMoodleXml = (req, res) => {
    if (!req.files || !('xmlFile' in req.files)) {

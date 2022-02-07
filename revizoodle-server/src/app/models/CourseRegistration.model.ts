@@ -2,7 +2,7 @@
  * Course <=> Learner association
  * It stores the list of learners registered to a course
  */
-const { DataTypes } = require('sequelize')
+import {DataTypes} from 'sequelize'
 
 module.exports = (sequelize) => {
 

@@ -1,12 +1,8 @@
 /**
  * Controller for actions on course for Learners
  */
-const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
-const Course = db.Course;
-const CourseRegistration = db.CourseRegistration;
-const Training = db.Training;
-const Quiz = db.Quiz;
+import {Course, CourseRegistration, Quiz, Training} from '../models';
 
 const {
   errorHandler,

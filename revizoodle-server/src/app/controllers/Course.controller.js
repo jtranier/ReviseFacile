@@ -1,13 +1,9 @@
 /**
  * REST Controller for the Course entity
  */
-const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 
-const Course = db.Course;
-const Quiz = db.Quiz;
-const CourseQuiz = db.CourseQuiz;
-const CourseRegistration = db.CourseRegistration;
+import {Course, CourseQuiz, CourseRegistration, Quiz} from '../models';
 
 const {assertIsFound, errorHandler} =
     require('./ControllerUtil');

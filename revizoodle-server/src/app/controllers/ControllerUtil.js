@@ -1,7 +1,5 @@
 const authenticationService = require('../services/AuthenticationService');
-const db = require('../models');
-const CourseRegistration = db.CourseRegistration;
-const CourseQuiz = db.CourseQuiz;
+import {CourseQuiz, CourseRegistration} from '../models';
 
 /**
  * Default error handler for http response

@@ -2,11 +2,9 @@
  * REST Controller for Quiz entity
  */
 // TODO Think to move dedicated Learners actions to a dedicated controller
-const db = require('../models');
 const authenticationService = require('../services/AuthenticationService');
 const {Op} = require('sequelize');
-const Quiz = db.Quiz;
-const Training = db.Training;
+import {Quiz, Training} from '../models';
 
 const {
   assertIsFound,
