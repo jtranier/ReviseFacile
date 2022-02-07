@@ -10,7 +10,7 @@ const CourseQuiz = db.CourseQuiz;
 const CourseRegistration = db.CourseRegistration;
 
 const {assertIsFound, errorHandler} =
-    require('../controllers/ControllerUtil');
+    require('./ControllerUtil');
 
 /**
  * Get a Course as JSON

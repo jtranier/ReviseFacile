@@ -10,7 +10,7 @@ const Quiz = db.Quiz;
 
 const {
   errorHandler,
-} = require('../controllers/ControllerUtil');
+} = require('./ControllerUtil');
 
 /**
  * Find all courses on which the current learner is registered

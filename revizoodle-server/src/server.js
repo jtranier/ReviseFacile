@@ -30,7 +30,7 @@ require('./app/routes/learnerCourse.routes')(app);
 require('./app/routes/xml.routes')(app);
 require('./app/routes/user.routes')(app);
 
-const db = require("./app/models/index");
+const db = require("./app/models");
 
 // Note : force: true is for development mode
 db.sequelize.sync(/*{force: true}*/).then(() => {

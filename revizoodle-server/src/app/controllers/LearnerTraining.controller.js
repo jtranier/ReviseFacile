@@ -6,7 +6,7 @@ const db = require('../models');
 const Training = db.Training;
 const {
   errorHandler,
-} = require('../controllers/ControllerUtil');
+} = require('./ControllerUtil');
 
 /**
  * Update the answers submitted by the logged Learner to a Quiz
