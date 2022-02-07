@@ -9,7 +9,7 @@ You will also find demo quizzes exported from Moodle into `revizoodle-db/xml`.
 
 ## Run the server
 ```
-node server.js
+npm start
 ```
 
 ## Config files
