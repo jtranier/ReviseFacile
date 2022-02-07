@@ -1,8 +1,18 @@
+/**
+ * Controller for learners interact with their Trainings (i.e. submitting
+ * theirs answers)
+ */
 const db = require('../models');
 const Training = db.Training;
+const {
+  errorHandler,
+} = require('../controllers/ControllerUtil');
 
-// TODO Rename into updateAnswers
-exports.update = (req, res) => {
+/**
+ * Update the answers submitted by the logged Learner to a Quiz
+ * URL : /api/learner/training/:trainingId
+ */
+exports.updateLearnerAnswers = (req, res) => {
 
   const questionIndex = req.body.questionIndex;
   const learnerAnswers = JSON.parse(req.body.learnerAnswers);
@@ -17,14 +27,12 @@ exports.update = (req, res) => {
       {
         where: {id: req.params.id},
       },
-  ).then(() => {
+  ).then((_) => {
     res.json(learnerAnswers);
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
+  }).catch(errorHandler(res));
 };
 
+// TODO Hum... Why updating the score that way ?! we should compute & update the score automatically when the last answer to a quiz is submitted...
 exports.updateScore = (req, res) => {
   const score = req.body.score;
 
@@ -35,10 +43,7 @@ exports.updateScore = (req, res) => {
       {
         where: {id: req.params.id},
       },
-  ).then((result) => {
+  ).then((_) => {
     res.json({success: true});
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json(error);
-  });
+  }).catch(errorHandler(res));
 };

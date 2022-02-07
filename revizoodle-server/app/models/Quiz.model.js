@@ -26,6 +26,7 @@ module.exports = (sequelize) => {
           allowNull: false,
         },
         questions: {
+          // TODO : Experiment with DataTypes.JSON
           type: DataTypes.TEXT('medium'), // JSON up to 16 Mb (for base64 images)
           allowNull: false,
         },
