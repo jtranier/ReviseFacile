@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
+    "compile": "tsc",
     "start": "tsc && node dist/server.js",
     "test": "test"
   },

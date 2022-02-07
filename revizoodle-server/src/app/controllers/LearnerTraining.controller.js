@@ -2,8 +2,8 @@
  * Controller for learners interact with their Trainings (i.e. submitting
  * theirs answers)
  */
-const db = require('../models');
-const Training = db.Training;
+import {Training} from '../models';
+
 const {
   errorHandler,
 } = require('./ControllerUtil');

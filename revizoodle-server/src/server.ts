@@ -1,8 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const fileUpload = require('express-fileupload');
-const cookieParser = require('cookie-parser')
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import fileUpload from "express-fileupload"
+import cookieParser from "cookie-parser"
+import path from "path"
+import process from "process"
+import {sequelize} from "./app/models"
 
 const app = express();
 
@@ -30,18 +33,16 @@ require('./app/routes/learnerCourse.routes')(app);
 require('./app/routes/xml.routes')(app);
 require('./app/routes/user.routes')(app);
 
-const db = require("./app/models");
-
 // Note : force: true is for development mode
-db.sequelize.sync(/*{force: true}*/).then(() => {
+sequelize.sync(/*{force: true}*/).then(() => {
   console.log("Drop & re-sync db.")
 });
 
 // Views
-const path = __dirname + '/app/views/';
-app.use(express.static(path));
+const resourcePath = path.join(process.cwd(), './resources/views/');
+app.use(express.static(resourcePath));
 app.get('/', function (req,res) {
-  res.sendFile(path + "index.html");
+  res.sendFile(path.join(resourcePath, "index.html"));
 });
 
 // set port, listen for requests
