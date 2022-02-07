@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // default options for file upload
-app.use(fileUpload());
+app.use(fileUpload({}));
 
 require('./app/routes/quiz.routes')(app);
 require('./app/routes/training.routes')(app);
