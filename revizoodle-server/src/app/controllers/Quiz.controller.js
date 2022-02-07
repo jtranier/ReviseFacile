@@ -13,7 +13,7 @@ const {
   errorHandler,
   assertIsOwner,
   assertLearnerIsRegisteredOnQuiz,
-} = require('../controllers/ControllerUtil');
+} = require('./ControllerUtil');
 
 /**
  * Private methode for creating a new Training on a Quiz for a Learner.
