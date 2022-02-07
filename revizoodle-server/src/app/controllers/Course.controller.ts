@@ -1,7 +1,7 @@
 /**
  * REST Controller for the Course entity
  */
-import authenticationService from '../services/AuthenticationService'
+import * as AuthenticationService from '../services/AuthenticationService'
 import {Course, CourseQuiz, CourseRegistration, Quiz} from '../models';
 
 const {assertIsFound, errorHandler} =
@@ -41,7 +41,7 @@ exports.list = (req, res) => {
       ['updatedAt', 'DESC'],
     ],
     where: {
-      'teacherUuid': authenticationService.getUUID(req),
+      'teacherUuid': AuthenticationService.getUUID(req),
     },
   }).
       then(courseList => res.json(courseList)).
@@ -59,7 +59,7 @@ exports.list = (req, res) => {
 exports.create = (req, res) => {
   Course.create({
     name: req.body.name, // TODO check validity
-    teacherUuid: authenticationService.getUUID(req),
+    teacherUuid: AuthenticationService.getUUID(req),
   }).then(course => res.json(course)).catch(errorHandler(res));
 };
 
@@ -92,7 +92,7 @@ exports.addQuiz = (req, res) => {
  */
 exports.register = (req, res) => {
   const courseId = req.params.courseId || -1;
-  const learnerUuid = authenticationService.getUUID(req);
+  const learnerUuid = AuthenticationService.getUUID(req);
 
   Course.findByPk(courseId, {
     include: {

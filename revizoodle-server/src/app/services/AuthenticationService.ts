@@ -3,11 +3,11 @@ import CryptoJs from 'crypto-js'
 
 const userConfig = require('../config/user.config.js');
 
-  const isAuthenticated = (req) => {
+  export const isAuthenticated = (req) => {
     return uuidv4.validate(req.headers.uuid);
   }
 
-  const checkIsAuthenticated = (req, res, next) => {
+  export const checkIsAuthenticated = (req, res, next) => {
     if(isAuthenticated(req)) {
       next();
     }
@@ -20,7 +20,7 @@ const userConfig = require('../config/user.config.js');
     }
   }
 
-  const checkIsTeacher = (req, res, next) => {
+  export const checkIsTeacher = (req, res, next) => {
     if(isTeacher(req)) {
       next();
     }
@@ -28,8 +28,7 @@ const userConfig = require('../config/user.config.js');
       res.sendStatus(401);
     }
   }
-  
-  const isTeacher = (req) => {
+  export const isTeacher = (req) => {
     const uuid = req.headers.uuid;
     const teacherToken = req.headers.teachertoken;
 
@@ -42,15 +41,6 @@ const userConfig = require('../config/user.config.js');
     return uuid === bytes.toString(CryptoJs.enc.Utf8);
   }
 
-  const getUUID = (req) => {
+  export const getUUID = (req) => {
     return req.headers.uuid;
   }
-
-
-module.exports = {
-  isAuthenticated,
-  checkIsAuthenticated,
-  checkIsTeacher,
-  isTeacher,
-  getUUID,
-};

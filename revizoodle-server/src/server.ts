@@ -6,6 +6,11 @@ import cookieParser from "cookie-parser"
 import path from "path"
 import process from "process"
 import {sequelize} from "./app/models"
+import setupCourseRoute from "./app/routes/course.routes"
+import setupTrainingRoute from "./app/routes/training.routes"
+import setupLearnerCourseRoute from "./app/routes/learnerCourse.routes"
+import setupXmlRoute from "./app/routes/xml.routes"
+import setupUserRoute from "./app/routes/user.routes"
 
 const app = express();
 
@@ -26,12 +31,11 @@ app.use(cookieParser());
 // default options for file upload
 app.use(fileUpload({}));
 
-require('./app/routes/quiz.routes')(app);
-require('./app/routes/training.routes')(app);
-require('./app/routes/course.routes')(app);
-require('./app/routes/learnerCourse.routes')(app);
-require('./app/routes/xml.routes')(app);
-require('./app/routes/user.routes')(app);
+setupCourseRoute(app);
+setupTrainingRoute(app);
+setupLearnerCourseRoute(app);
+setupXmlRoute(app);
+setupUserRoute(app);
 
 // Note : force: true is for development mode
 sequelize.sync(/*{force: true}*/).then(() => {

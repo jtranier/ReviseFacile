@@ -1,4 +1,4 @@
-import authenticationService from '../services/AuthenticationService'
+import * as AuthenticationService from '../services/AuthenticationService'
 import CryptoJs from 'crypto-js'
 
 const userConfig = require('../config/user.config.js');
@@ -9,7 +9,7 @@ exports.requestTeacherAccess = (req, res) => {
     res.json({
       success: true,
       teacherToken: CryptoJs.AES.encrypt(
-          authenticationService.getUUID(req),
+          AuthenticationService.getUUID(req),
           userConfig.secretKey,
       ).toString(),
     });
@@ -20,6 +20,6 @@ exports.requestTeacherAccess = (req, res) => {
 
 exports.isTeacher = (req, res) => {
   res.json({
-    isTeacher: authenticationService.isTeacher(req)
+    isTeacher: AuthenticationService.isTeacher(req)
   });
 }

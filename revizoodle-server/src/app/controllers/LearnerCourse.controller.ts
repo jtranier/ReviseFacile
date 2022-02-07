@@ -1,7 +1,7 @@
 /**
  * Controller for actions on course for Learners
  */
-import authenticationService from '../services/AuthenticationService'
+import * as AuthenticationService from '../services/AuthenticationService'
 import {Course, CourseRegistration, Quiz, Training} from '../models';
 
 const {
@@ -16,7 +16,7 @@ const {
 exports.findAllRegistered = (req, res) => {
   CourseRegistration.findAll({
     where: {
-      'learnerUuid': authenticationService.getUUID(req),
+      'learnerUuid': AuthenticationService.getUUID(req),
     },
     include: Course,
     order: [['course', 'updatedAt', 'DESC']],
@@ -46,7 +46,7 @@ exports.findAllQuizWithTrainingsForCourse = (req, res) => {
         model: Training,
         as: 'trainings',
         where: {
-          'learnerUuid': authenticationService.getUUID(req),
+          'learnerUuid': AuthenticationService.getUUID(req),
         },
         required: false,
       },
