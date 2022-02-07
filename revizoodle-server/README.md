@@ -14,7 +14,7 @@ npm install
 
 ## Run the server
 ```
-node server.js
+npm start
 ```
 
 ## Config files
