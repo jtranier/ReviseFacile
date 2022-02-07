@@ -1,6 +1,7 @@
-const authenticationService = require('../services/AuthenticationService');
+import authenticationService from '../services/AuthenticationService'
+import CryptoJs from 'crypto-js'
+
 const userConfig = require('../config/user.config.js');
-const CryptoJs = require('crypto-js');
 
 exports.requestTeacherAccess = (req, res) => {
 

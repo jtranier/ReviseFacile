@@ -1,4 +1,4 @@
-const moodleService = require('../services/MoodleService');
+import moodleService from '../services/MoodleService'
 import {Quiz} from '../models';
 
 exports.uploadMoodleXml = (req, res) => {
