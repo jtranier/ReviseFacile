@@ -2,16 +2,10 @@
  * REST Controller for Quiz entity
  */
 // TODO Think to move dedicated Learners actions to a dedicated controller
-const authenticationService = require('../services/AuthenticationService');
-const {Op} = require('sequelize');
+import authenticationService from '../services/AuthenticationService'
+import {Op} from 'sequelize'
 import {Quiz, Training} from '../models';
-
-const {
-  assertIsFound,
-  errorHandler,
-  assertIsOwner,
-  assertLearnerIsRegisteredOnQuiz,
-} = require('./ControllerUtil');
+import {assertIsFound, assertIsOwner, assertLearnerIsRegisteredOnQuiz, errorHandler,} from './ControllerUtil'
 
 /**
  * Private methode for creating a new Training on a Quiz for a Learner.
@@ -22,7 +16,7 @@ const {
 const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
   const questions = JSON.parse(quiz.questions);
 
-  const createEmptyLearnerAnswer = function(question) {
+  const createEmptyLearnerAnswer = function (question) {
     return {
       submitted: false, // TODO replace by score ?
       nbChoice: question.answers.length,
@@ -35,7 +29,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
     'learnerUuid': learnerUuid,
     score: null,
     answers: JSON.stringify(
-        questions.map(createEmptyLearnerAnswer),
+      questions.map(createEmptyLearnerAnswer),
     ),
   });
 };
@@ -55,13 +49,12 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
         quiz,
         lastTraining: quiz['trainings'][0],
       });
-    } else {
-      createEmptyTrainingForQuiz(quiz, learnerUuid).
-          then(lastTraining => resolve({
-            quiz,
-            lastTraining,
-          })).
-          catch(reject);
+    }
+    else {
+      createEmptyTrainingForQuiz(quiz, learnerUuid).then(lastTraining => resolve({
+        quiz,
+        lastTraining,
+      })).catch(reject);
     }
   });
 };
@@ -74,29 +67,25 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
 exports.get = (req, res) => {
   const id = req.params.id || -1;
 
-  Quiz.findByPk(id, {raw: true}).
-      then(assertIsFound(`There is no quiz with id ${id}`)).
-      then(assertIsOwner(
-          req,
-          (data) => {
-            return data.teacherUuid;
-          },
-          `You are not the owner of the quiz ${id}`,
-      )).
-      then(data => {
-        // Parse the JSON representation of questions
-        const quiz = {
-          ...data,
-          questions: JSON.parse(data.questions),
-        };
-        res.json(quiz);
-      }).
-      catch(
-          errorHandler(
-              res,
-              `Some error occurred while retrieving the quiz id=${id}`,
-          ),
-      );
+  Quiz.findByPk(id, {raw: true}).then(assertIsFound(`There is no quiz with id ${id}`)).then(assertIsOwner(
+    req,
+    (data) => {
+      return data.teacherUuid;
+    },
+    `You are not the owner of the quiz ${id}`,
+  )).then(data => {
+    // Parse the JSON representation of questions
+    const quiz = {
+      ...data,
+      questions: JSON.parse(data.questions),
+    };
+    res.json(quiz);
+  }).catch(
+    errorHandler(
+      res,
+      `Some error occurred while retrieving the quiz id=${id}`,
+    ),
+  );
 };
 
 /**
@@ -123,25 +112,22 @@ exports.getWithLatestTraining = (req, res) => {
         order: [['updatedAt', 'desc']],
       }],
 
-  }).
-      then(assertIsFound(`There is no quiz with id ${id}`)).
-      then(quiz => getOrCreateLastTraining(quiz, learnerUuid)).
-      then(data => {
-        const quiz = data.quiz;
-        const lastTraining = data.lastTraining;
-        const questions = JSON.parse(quiz.questions);
-        const learnerAnswers = JSON.parse(lastTraining.answers);
+  }).then(assertIsFound(`There is no quiz with id ${id}`)).then(
+    quiz => getOrCreateLastTraining(quiz, learnerUuid)).then(data => {
+    const quiz = data.quiz;
+    const lastTraining = data.lastTraining;
+    const questions = JSON.parse(quiz.questions);
+    const learnerAnswers = JSON.parse(lastTraining.answers);
 
-        res.json({
-          id: quiz.id,
-          name: quiz.name,
-          trainingId: lastTraining.id,
-          questions,
-          learnerAnswers,
-        });
+    res.json({
+      id: quiz.id,
+      name: quiz.name,
+      trainingId: lastTraining.id,
+      questions,
+      learnerAnswers,
+    });
 
-      }).
-      catch(errorHandler(res));
+  }).catch(errorHandler(res));
 };
 
 /**
@@ -155,9 +141,7 @@ exports.list = (req, res) => {
     where: {
       'teacherUuid': authenticationService.getUUID(req),
     },
-  }).
-      then(data => res.json(data.map(QuizSummary))).
-      catch(errorHandler(res));
+  }).then(data => res.json(data.map(QuizSummary))).catch(errorHandler(res));
 };
 
 /**
@@ -168,12 +152,10 @@ exports.redoTraining = (req, res) => {
   const quizId = req.params.id || -1;
   const learnerUuid = authenticationService.getUUID(req);
 
-  Quiz.findByPk(quizId).
-      then(assertIsFound(`There is no quiz with id ${quizId}`)).
-      then(assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId)).
-      then((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid)).
-      then((training) => res.json(training)).
-      catch(errorHandler(res));
+  Quiz.findByPk(quizId).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(
+    assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId)).then(
+    (quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid)).then((training) => res.json(training)).catch(
+    errorHandler(res));
 };
 
 /**
@@ -186,13 +168,11 @@ exports.getResults = (req, res) => {
   Promise.all([
     Quiz.findByPk(quizId, {
       attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
-    }).
-        then(assertIsFound(`There is no quiz with id ${quizId}`)).
-        then(assertIsOwner(
-            req,
-            (quiz) => quiz.teacherUuid,
-            `You are not the owner of the quiz ${quizId}`,
-        )),
+    }).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(assertIsOwner(
+      req,
+      (quiz) => quiz.teacherUuid,
+      `You are not the owner of the quiz ${quizId}`,
+    )),
     Training.findAll({
       where: {
         quizId: quizId,
@@ -206,10 +186,10 @@ exports.getResults = (req, res) => {
         ['id', 'ASC'],
       ],
     }).catch(
-        errorHandler(
-            res,
-            `Some error occurred while retrieving the results of the quiz id=${quizId}`,
-        ),
+      errorHandler(
+        res,
+        `Some error occurred while retrieving the results of the quiz id=${quizId}`,
+      ),
     ),
   ]).then((data) => {
     const quiz = data[0];
@@ -217,9 +197,9 @@ exports.getResults = (req, res) => {
 
     res.json(ResultsSummary(quiz, trainingList));
   }).catch(errorHandler(
-          res,
-          `Some error occurred while retrieving the results of the quiz id=${quizId}`,
-      ),
+      res,
+      `Some error occurred while retrieving the results of the quiz id=${quizId}`,
+    ),
   );
 };
 
@@ -244,11 +224,11 @@ const QuizSummary = (quiz) => {
  * @param trainingList
  * @constructor
  */
-const ResultsSummary = function(quiz, trainingList) {
+const ResultsSummary = function (quiz, trainingList) {
   const nbAttempts = trainingList.length;
   const learners = new Set();
   let data1stAttempt = Array.from({length: quiz.nbQuestions},
-      () => []);
+    () => []);
 
   trainingList.forEach(training => {
     if (!learners.has(training['learnerUuid'])) {
@@ -276,10 +256,10 @@ const ResultsSummary = function(quiz, trainingList) {
  * @param questionScoreList
  * @return {number}
  */
-const computeMean = function(questionScoreList) {
+const computeMean = function (questionScoreList) {
   return Math.round(
-      questionScoreList.reduce((a, b) => {
-        return a + b;
-      }, 0) / questionScoreList.length,
+    questionScoreList.reduce((a, b) => {
+      return a + b;
+    }, 0) / questionScoreList.length,
   );
 };

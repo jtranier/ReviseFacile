@@ -1,8 +1,7 @@
 /**
  * REST Controller for the Course entity
  */
-const authenticationService = require('../services/AuthenticationService');
-
+import authenticationService from '../services/AuthenticationService'
 import {Course, CourseQuiz, CourseRegistration, Quiz} from '../models';
 
 const {assertIsFound, errorHandler} =

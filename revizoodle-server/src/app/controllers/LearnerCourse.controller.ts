@@ -1,7 +1,7 @@
 /**
  * Controller for actions on course for Learners
  */
-const authenticationService = require('../services/AuthenticationService');
+import authenticationService from '../services/AuthenticationService'
 import {Course, CourseRegistration, Quiz, Training} from '../models';
 
 const {
@@ -53,13 +53,12 @@ exports.findAllQuizWithTrainingsForCourse = (req, res) => {
     ],
 
     order: [['updatedAt', 'desc'], ['trainings', 'updatedAt', 'desc']],
-  }).
-      then((quizList) => {
-        res.json(
-            quizList.map(QuizWithTrainingsSummary),
-        );
+  }).then((quizList) => {
+    res.json(
+      quizList.map(QuizWithTrainingsSummary),
+    );
 
-      }).catch(errorHandler(res));
+  }).catch(errorHandler(res));
 };
 
 /**
@@ -68,7 +67,7 @@ exports.findAllQuizWithTrainingsForCourse = (req, res) => {
  * @return {{date, name, id}}
  * @constructor
  */
-const RegistrationSummary = function(courseRegistration) {
+const RegistrationSummary = function (courseRegistration) {
   return {
     id: courseRegistration['course'].id,
     name: courseRegistration['course'].name,
@@ -83,7 +82,7 @@ const RegistrationSummary = function(courseRegistration) {
  * @return {{nbTrainings, quizDate, score: (null|*|null), lastTrainingCurrentQuestion: (*|null), quizNbQuestions, quizId, quizTitle}}
  * @constructor
  */
-const QuizWithTrainingsSummary = function(quiz) {
+const QuizWithTrainingsSummary = function (quiz) {
   const lastTraining = getLastTraining(quiz);
 
   return {
@@ -91,9 +90,9 @@ const QuizWithTrainingsSummary = function(quiz) {
     quizTitle: quiz['name'],
     quizDate: quiz['updatedAt'],
     lastTrainingCurrentQuestion:
-        lastTraining ?
-            lastTraining['currentQuestion'] :
-            null,
+      lastTraining ?
+        lastTraining['currentQuestion'] :
+        null,
     quizNbQuestions: quiz['nbQuestions'],
     nbTrainings: quiz['trainings'].length,
     score: lastTraining ? lastTraining.score : null,
@@ -119,6 +118,6 @@ const getLastTraining = (quiz) => {
   });
 
   return lastScoredTraining ?
-      lastScoredTraining :
-      quiz['trainings'][0];
+    lastScoredTraining :
+    quiz['trainings'][0];
 };

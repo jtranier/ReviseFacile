@@ -1,4 +1,4 @@
-const authenticationService = require('../services/AuthenticationService');
+import authenticationService from '../services/AuthenticationService'
 import {CourseQuiz, CourseRegistration} from '../models';
 
 /**
@@ -8,7 +8,7 @@ import {CourseQuiz, CourseRegistration} from '../models';
  * @param defaultMessage (optional), if provided and if the error object does
  * not contain a message, the default message will be used.
  */
-const errorHandler = (httpResponse, defaultMessage) => (error) => {
+export const errorHandler = (httpResponse, defaultMessage?) => (error) => {
   if (defaultMessage) {
     error.message = error.message || defaultMessage;
   }
@@ -24,7 +24,7 @@ const errorHandler = (httpResponse, defaultMessage) => (error) => {
  * the controller error handler
  * @param notFoundMessage
  */
-const assertIsFound = (notFoundMessage) => (data) => {
+export const assertIsFound = (notFoundMessage) => (data) => {
 
   if (!data) {
     throw {
@@ -46,7 +46,7 @@ const assertIsFound = (notFoundMessage) => (data) => {
  * owner
  * @return callback that just return the provided data if OK or throw an error
  */
-const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
+export const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
   if (getOwnerUUID(data) !== authenticationService.getUUID(req)) {
     throw {
       statusCode: 401,
@@ -63,7 +63,7 @@ const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
  * @param quizId
  * @return callback that just return the provided data if OK or throw an error
  */
-const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
+export const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
     (data) => {
       return CourseRegistration.findAll(
           {where: {learnerUuid: learnerUUID}},
@@ -91,10 +91,3 @@ const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
             throw error;
           });
     };
-
-module.exports = {
-  assertIsFound,
-  errorHandler,
-  assertIsOwner,
-  assertLearnerIsRegisteredOnQuiz,
-};

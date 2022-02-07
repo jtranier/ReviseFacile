@@ -6,7 +6,7 @@ class MoodleService {
   /**
    * Convert a Moodle XML Quiz to JSON
    * @param text : String a Moodle Quiz as plain text XML
-   * @returns {Promise<unknown>} a promise to convert the Quiz to JSON
+   * @returns {Promise} a promise to convert the Quiz to JSON
    */
   parseMoodleXml(text) {
     return new Promise((resolve, reject) => {
