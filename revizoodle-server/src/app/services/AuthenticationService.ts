@@ -1,10 +1,10 @@
-import uuidv4 from 'uuid'
+import {validate} from 'uuid'
 import CryptoJs from 'crypto-js'
 
 const userConfig = require('../config/user.config.js');
 
   export const isAuthenticated = (req) => {
-    return uuidv4.validate(req.headers.uuid);
+    return validate(req.headers.uuid);
   }
 
   export const checkIsAuthenticated = (req, res, next) => {

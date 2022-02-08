@@ -2,7 +2,7 @@
  * Controller for learners interact with their Trainings (i.e. submitting
  * theirs answers)
  */
-import {Training} from '../models';
+import {Model} from '../models';
 import {errorHandler} from './ControllerUtil'
 
 /**
@@ -16,7 +16,7 @@ exports.updateLearnerAnswers = (req, res) => {
 
   learnerAnswers[questionIndex].submitted = true;
 
-  Training.update(
+  Model.Training.update(
     {
       currentQuestion: questionIndex,
       answers: JSON.stringify(learnerAnswers),
@@ -33,7 +33,7 @@ exports.updateLearnerAnswers = (req, res) => {
 exports.updateScore = (req, res) => {
   const score = req.body.score;
 
-  Training.update(
+  Model.Training.update(
     {
       score: score,
     },

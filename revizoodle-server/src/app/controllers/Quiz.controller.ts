@@ -4,7 +4,7 @@
 // TODO Think to move dedicated Learners actions to a dedicated controller
 import * as AuthenticationService from '../services/AuthenticationService'
 import {Op} from 'sequelize'
-import {Model, Training} from '../models';
+import {Model} from '../models';
 import {assertIsFound, assertIsOwner, assertLearnerIsRegisteredOnQuiz, errorHandler,} from './ControllerUtil'
 
 /**
@@ -24,7 +24,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
     };
   };
 
-  return Training.create({
+  return Model.Training.create({
     quizId: quiz.id,
     'learnerUuid': learnerUuid,
     score: null,
@@ -102,7 +102,7 @@ exports.getWithLatestTraining = (req, res) => {
   Model.Quiz.findByPk(id, {
     include: [
       {
-        model: Training,
+        model: Model.Training,
         as: 'trainings',
         where: {
           learnerUuid: learnerUuid,
@@ -173,7 +173,7 @@ exports.getResults = (req, res) => {
       (quiz) => quiz.teacherUuid,
       `You are not the owner of the quiz ${quizId}`,
     )),
-    Training.findAll({
+    Model.Training.findAll({
       where: {
         quizId: quizId,
         score: {[Op.ne]: null},

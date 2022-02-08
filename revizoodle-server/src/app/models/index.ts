@@ -6,6 +6,7 @@
  */
 import Course from "./Course.model"
 import Quiz from "./Quiz.model"
+import Training from "./Training.model"
 
 const dbConfig = require("../config/db.config.js");
 
@@ -34,15 +35,14 @@ export const Model = {
   Course: Course.setup(sequelize),
   CourseQuiz: require("./CourseQuiz.model")(sequelize),
   CourseRegistration: require("./CourseRegistration.model")(sequelize),
-  Training: require("./Training.model")(sequelize),
+  Training: Training.setup(sequelize),
 }
 
 // Setup relationships
 Course.associate(Model);
 Quiz.associate(Model);
-Model.Training.associate(Model);
+Training.associate(Model);
 Model.CourseRegistration.associate(Model);
 
 export const CourseQuiz = Model.CourseQuiz
 export const CourseRegistration = Model.CourseRegistration
-export const Training = Model.Training

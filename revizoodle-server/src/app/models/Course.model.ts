@@ -6,7 +6,7 @@ import {DataTypes, Model} from 'sequelize'
 import {Model as RevizoodleModel} from './index'
 
 export default class Course extends Model {
-  declare id?: number;
+  declare id: number;
   declare teacherUuid: string;
   declare name: string;
 
