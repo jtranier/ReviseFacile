@@ -11,6 +11,7 @@ import setupTrainingRoute from "./app/routes/training.routes"
 import setupLearnerCourseRoute from "./app/routes/learnerCourse.routes"
 import setupXmlRoute from "./app/routes/xml.routes"
 import setupUserRoute from "./app/routes/user.routes"
+import setupQuizRoute from "./app/routes/quiz.routes"
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(cookieParser());
 app.use(fileUpload({}));
 
 setupCourseRoute(app);
+setupQuizRoute(app);
 setupTrainingRoute(app);
 setupLearnerCourseRoute(app);
 setupXmlRoute(app);
