@@ -4,7 +4,7 @@
 // TODO Think to move dedicated Learners actions to a dedicated controller
 import * as AuthenticationService from '../services/AuthenticationService'
 import {Op} from 'sequelize'
-import {Quiz, Training} from '../models';
+import {Model, Training} from '../models';
 import {assertIsFound, assertIsOwner, assertLearnerIsRegisteredOnQuiz, errorHandler,} from './ControllerUtil'
 
 /**
@@ -41,7 +41,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
  * @param learnerUuid
  * @return {Promise<{quiz, lastTraining}>}
  */
-const getOrCreateLastTraining = (quiz, learnerUuid) => {
+const getOrCreateLastTraining = (quiz, learnerUuid): Promise<{quiz, lastTraining}> => {
   return new Promise((resolve, reject) => {
     // Create training on the fly if needed
     if (quiz['trainings'].length > 0) {
@@ -67,7 +67,7 @@ const getOrCreateLastTraining = (quiz, learnerUuid) => {
 exports.get = (req, res) => {
   const id = req.params.id || -1;
 
-  Quiz.findByPk(id, {raw: true}).then(assertIsFound(`There is no quiz with id ${id}`)).then(assertIsOwner(
+  Model.Quiz.findByPk(id, {raw: true}).then(assertIsFound(`There is no quiz with id ${id}`)).then(assertIsOwner(
     req,
     (data) => {
       return data.teacherUuid;
@@ -99,7 +99,7 @@ exports.getWithLatestTraining = (req, res) => {
   const id = req.params.id || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
-  Quiz.findByPk(id, {
+  Model.Quiz.findByPk(id, {
     include: [
       {
         model: Training,
@@ -137,7 +137,7 @@ exports.getWithLatestTraining = (req, res) => {
  */
 exports.list = (req, res) => {
 
-  Quiz.findAll({
+  Model.Quiz.findAll({
     where: {
       'teacherUuid': AuthenticationService.getUUID(req),
     },
@@ -152,7 +152,7 @@ exports.redoTraining = (req, res) => {
   const quizId = req.params.id || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
-  Quiz.findByPk(quizId).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(
+  Model.Quiz.findByPk(quizId).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(
     assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId)).then(
     (quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid)).then((training) => res.json(training)).catch(
     errorHandler(res));
@@ -166,7 +166,7 @@ exports.getResults = (req, res) => {
   const quizId = req.params.id || -1;
 
   Promise.all([
-    Quiz.findByPk(quizId, {
+    Model.Quiz.findByPk(quizId, {
       attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
     }).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(assertIsOwner(
       req,
@@ -179,7 +179,7 @@ exports.getResults = (req, res) => {
         score: {[Op.ne]: null},
       },
       include: {
-        model: Quiz,
+        model: Model.Quiz,
         attributes: ['name'],
       },
       order: [

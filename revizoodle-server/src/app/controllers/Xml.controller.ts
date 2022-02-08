@@ -1,5 +1,5 @@
 import MoodleService from '../services/MoodleService'
-import {Quiz} from '../models';
+import {Model} from '../models';
 
 exports.uploadMoodleXml = (req, res) => {
    if (!req.files || !('xmlFile' in req.files)) {
@@ -18,7 +18,7 @@ exports.uploadMoodleXml = (req, res) => {
   MoodleService.parseMoodleXml(
       xmlFile.data.toString(),
   ).then(json => {
-    Quiz.create({
+    Model.Quiz.create({
       teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
       nbQuestions: json['questions'].length,

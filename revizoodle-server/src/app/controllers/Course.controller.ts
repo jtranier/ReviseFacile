@@ -2,7 +2,7 @@
  * REST Controller for the Course entity
  */
 import * as AuthenticationService from '../services/AuthenticationService'
-import {Course, CourseQuiz, CourseRegistration, Quiz} from '../models';
+import {CourseQuiz, CourseRegistration, Model} from '../models';
 
 const {assertIsFound, errorHandler} =
     require('./ControllerUtil');
@@ -14,13 +14,13 @@ const {assertIsFound, errorHandler} =
  * @return 500 if an error occurs
  * @return 200 CourseSummary (JSON) if OK
  */
-exports.get = (req, res) => {
+export const get = (req, res) => {
   const id = req.params.id || -1;
 
-  Course.findOne({
+  Model.Course.findOne({
     where: {id},
     include: {
-      model: Quiz,
+      model: Model.Quiz,
       order: [['updatedAt', 'desc']],
     },
   }).
@@ -35,8 +35,8 @@ exports.get = (req, res) => {
  * List the course of the teacher initiating the query
  * URL: /api/course
  */
-exports.list = (req, res) => {
-  Course.findAll({
+export const list = (req, res) => {
+  Model.Course.findAll({
     order: [
       ['updatedAt', 'DESC'],
     ],
@@ -56,8 +56,8 @@ exports.list = (req, res) => {
  * @return 500 if something gets wrong
  * @return 200 created Course (json) if OK
  */
-exports.create = (req, res) => {
-  Course.create({
+export const create = (req, res) => {
+  Model.Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: AuthenticationService.getUUID(req),
   }).then(course => res.json(course)).catch(errorHandler(res));
@@ -74,7 +74,7 @@ exports.create = (req, res) => {
  * Implementation note : this is a very simple implementation without any
  * check ; a 500 error will be thrown if courseId or quizId are incorrect
  */
-exports.addQuiz = (req, res) => {
+export const addQuiz = (req, res) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
@@ -90,11 +90,11 @@ exports.addQuiz = (req, res) => {
  * Register a Learner to a Course
  * URL : POST /api/course/:courseId/register
  */
-exports.register = (req, res) => {
+export const register = (req, res) => {
   const courseId = req.params.courseId || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
-  Course.findByPk(courseId, {
+  Model.Course.findByPk(courseId, {
     include: {
       model: CourseRegistration,
       where: {
