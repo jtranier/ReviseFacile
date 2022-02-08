@@ -16,7 +16,7 @@ import Training from "../models/Training.model"
  * @param learnerUuid
  * @return {*}
  */
-const createEmptyTrainingForQuiz = (quiz: Quiz, learnerUuid: string) => {
+const createEmptyTrainingForQuiz = (quiz: Quiz, learnerUuid: string): Promise<Training> => {
   const questions = JSON.parse(quiz.questions);
 
   // TODO type the question
@@ -74,25 +74,27 @@ exports.get = (req: express.Request, res: express.Response) => {
   Model.Quiz.findByPk(id, {raw: true})
     .then(assertIsFound(`There is no quiz with id ${id}`))
     .then(
-      assertIsOwner(req,
-        (data) => {
-          return data.teacherUuid;
+      assertIsOwner(
+        req,
+        (quiz) => {
+          return quiz!.teacherUuid;
         },
         `You are not the owner of the quiz ${id}`,
       ))
-    .then(data => {
+    .then(quiz => {
       // Parse the JSON representation of questions
-      const quiz = {
-        ...data,
-        questions: JSON.parse(data.questions),
+      const parsedQuiz = {
+        ...quiz,
+        questions: JSON.parse(quiz!.questions),
       };
-      res.json(quiz);
-    }).catch(
-    errorHandler(
-      res,
-      `Some error occurred while retrieving the quiz id=${id}`,
-    ),
-  );
+      res.json(parsedQuiz);
+    })
+    .catch(
+      errorHandler(
+        res,
+        `Some error occurred while retrieving the quiz id=${id}`,
+      ),
+    );
 };
 
 /**
@@ -122,7 +124,7 @@ exports.getWithLatestTraining = (req: express.Request, res: express.Response) =>
   })
     .then(assertIsFound(`There is no quiz with id ${id}`))
     .then(
-      quiz => getOrCreateLastTraining(quiz, learnerUuid))
+      quiz => getOrCreateLastTraining(quiz!, learnerUuid))
     .then(data => {
       const quiz = data.quiz;
       const lastTraining = data.lastTraining;
@@ -164,9 +166,9 @@ exports.redoTraining = (req: express.Request, res: express.Response) => {
   const learnerUuid = AuthenticationService.getUUID(req);
 
   Model.Quiz.findByPk(quizId)
-    .then(assertIsFound(`There is no quiz with id ${quizId}`))
-    .then(assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId))
-    .then((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid))
+    .then<Quiz>(assertIsFound(`There is no quiz with id ${quizId}`))
+    .then<Quiz>(assertLearnerIsRegisteredOnQuiz(learnerUuid))
+    .then<Quiz>((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid))
     .then((training) => res.json(training))
     .catch(errorHandler(res));
 };

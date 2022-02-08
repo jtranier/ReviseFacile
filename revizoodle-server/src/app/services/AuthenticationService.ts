@@ -1,13 +1,15 @@
+import * as express from "express"
 import {validate} from 'uuid'
 import CryptoJs from 'crypto-js'
 
 const userConfig = require('../config/user.config.js');
 
-  export const isAuthenticated = (req) => {
-    return validate(req.headers.uuid);
+  export const isAuthenticated = (req: express.Request) => {
+    return typeof req.headers.uuid === 'string' && validate(req.headers.uuid);
   }
 
-  export const checkIsAuthenticated = (req, res, next) => {
+  export const checkIsAuthenticated =
+    (req: express.Request, res: express.Response, next: () => void) => {
     if(isAuthenticated(req)) {
       next();
     }
@@ -20,7 +22,8 @@ const userConfig = require('../config/user.config.js');
     }
   }
 
-  export const checkIsTeacher = (req, res, next) => {
+  export const checkIsTeacher =
+    (req: express.Request, res: express.Response, next: () => void) => {
     if(isTeacher(req)) {
       next();
     }
@@ -28,11 +31,11 @@ const userConfig = require('../config/user.config.js');
       res.sendStatus(401);
     }
   }
-  export const isTeacher = (req) => {
+  export const isTeacher = (req: express.Request) => {
     const uuid = req.headers.uuid;
     const teacherToken = req.headers.teachertoken;
 
-    if(!teacherToken) {
+    if(typeof teacherToken !== 'string') {
       return false;
     }
 
@@ -41,6 +44,6 @@ const userConfig = require('../config/user.config.js');
     return uuid === bytes.toString(CryptoJs.enc.Utf8);
   }
 
-  export const getUUID = (req) => {
+  export const getUUID = (req: express.Request) => {
     return req.headers.uuid;
   }

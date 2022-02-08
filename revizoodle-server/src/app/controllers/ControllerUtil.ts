@@ -1,6 +1,7 @@
 import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
 import {Model} from '../models';
+import Quiz from "../models/Quiz.model"
 
 /**
  * Default error handler for http response
@@ -61,18 +62,17 @@ export const assertIsOwner = <T>(req: express.Request, getOwnerUUID: (data: T) =
  * Check that the logged learner is registered on a course that contains the
  * Quiz
  * @param learnerUUID
- * @param quizId
  * @return callback that just return the provided data if OK or throw an error
  */
-export const assertLearnerIsRegisteredOnQuiz = <T>(learnerUUID: string, quizId: number) =>
-  (data: T): Promise<T> => {
+export const assertLearnerIsRegisteredOnQuiz = (learnerUUID: string) =>
+  (quiz: Quiz): Promise<Quiz | null> => {
     return Model.CourseRegistration.findAll(
       {where: {learnerUuid: learnerUUID}},
     )
       .then(registrationList => {
         return Model.CourseQuiz.findOne({
           where: {
-            quizId,
+            quizId: quiz.id,
             courseId: registrationList.map(
               registration => registration.courseId),
           },
@@ -82,12 +82,15 @@ export const assertLearnerIsRegisteredOnQuiz = <T>(learnerUUID: string, quizId: 
           if (!courseQuiz) {
             throw {
               statusCode: 401,
-              message: `The learner ${learnerUUID} is not registered on the quiz ${quizId}`,
+              message: `The learner ${learnerUUID} is not registered on the quiz ${quiz.id}`,
             };
           }
-          return data;
+          else {
+            return quiz;
+          }
         },
-      ).catch(error => {
+      )
+      .catch(error => {
         throw error;
       });
   };
