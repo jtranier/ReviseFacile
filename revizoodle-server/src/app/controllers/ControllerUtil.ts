@@ -24,7 +24,7 @@ export const errorHandler = (httpResponse, defaultMessage?) => (error) => {
  * the controller error handler
  * @param notFoundMessage
  */
-export const assertIsFound = (notFoundMessage) => (data) => {
+export const assertIsFound = <T>(notFoundMessage: string) => (data: T): T => {
 
   if (!data) {
     throw {
@@ -46,7 +46,7 @@ export const assertIsFound = (notFoundMessage) => (data) => {
  * owner
  * @return callback that just return the provided data if OK or throw an error
  */
-export const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
+export const assertIsOwner = <T>(req, getOwnerUUID, notOwnerMessage: string) => (data: T): T => {
   if (getOwnerUUID(data) !== AuthenticationService.getUUID(req)) {
     throw {
       statusCode: 401,
@@ -63,31 +63,30 @@ export const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
  * @param quizId
  * @return callback that just return the provided data if OK or throw an error
  */
-export const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
-    (data) => {
-      return Model.CourseRegistration.findAll(
-          {where: {learnerUuid: learnerUUID}},
-      ).
-          then(registrationList => {
-            return Model.CourseQuiz.findOne({
-              where: {
-                quizId,
-                courseId: registrationList.map(
-                    registration => registration['courseId']),
-              },
-            });
-          }).
-          then(courseQuiz => {
-                if (!courseQuiz) {
-                  throw {
-                    statusCode: 401,
-                    message: `The learner ${learnerUUID} is not registered on the quiz ${quizId}`,
-                  };
-                }
-                return data;
-              },
-          ).
-          catch(error => {
-            throw error;
-          });
-    };
+export const assertLearnerIsRegisteredOnQuiz = <T>(learnerUUID: string, quizId: number) =>
+  (data: T): Promise<T> => {
+    return Model.CourseRegistration.findAll(
+      {where: {learnerUuid: learnerUUID}},
+    )
+      .then(registrationList => {
+        return Model.CourseQuiz.findOne({
+          where: {
+            quizId,
+            courseId: registrationList.map(
+              registration => registration['courseId']),
+          },
+        });
+      })
+      .then(courseQuiz => {
+          if (!courseQuiz) {
+            throw {
+              statusCode: 401,
+              message: `The learner ${learnerUUID} is not registered on the quiz ${quizId}`,
+            };
+          }
+          return data;
+        },
+      ).catch(error => {
+        throw error;
+      });
+  };

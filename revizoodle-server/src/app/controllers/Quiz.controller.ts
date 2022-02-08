@@ -41,7 +41,7 @@ const createEmptyTrainingForQuiz = (quiz, learnerUuid) => {
  * @param learnerUuid
  * @return {Promise<{quiz, lastTraining}>}
  */
-const getOrCreateLastTraining = (quiz, learnerUuid): Promise<{quiz, lastTraining}> => {
+const getOrCreateLastTraining = (quiz, learnerUuid): Promise<{ quiz, lastTraining }> => {
   return new Promise((resolve, reject) => {
     // Create training on the fly if needed
     if (quiz['trainings'].length > 0) {
@@ -152,10 +152,12 @@ exports.redoTraining = (req, res) => {
   const quizId = req.params.id || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
-  Model.Quiz.findByPk(quizId).then(assertIsFound(`There is no quiz with id ${quizId}`)).then(
-    assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId)).then(
-    (quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid)).then((training) => res.json(training)).catch(
-    errorHandler(res));
+  Model.Quiz.findByPk(quizId)
+    .then(assertIsFound(`There is no quiz with id ${quizId}`))
+    .then(assertLearnerIsRegisteredOnQuiz(learnerUuid, quizId))
+    .then((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid))
+    .then((training) => res.json(training))
+    .catch(errorHandler(res));
 };
 
 /**
