@@ -2,11 +2,17 @@
  * A course is a collection of quizzes, owned by a teacher, on which learners
  * may register
  */
-import {DataTypes} from 'sequelize'
+import {DataTypes, Model} from 'sequelize'
+import {Model as RevizoodleModel} from './index'
 
-module.exports = (sequelize) => {
-  const Course = sequelize.define('course',
-    {
+export class Course extends Model {
+  declare id: number;
+  declare teacherUuid: string;
+  declare name: string;
+}
+
+export function init(sequelize): typeof Course {
+  return Course.init({
       id: {
         primaryKey: true,
         autoIncrement: true,
@@ -22,13 +28,14 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-  );
+    {
+      tableName: 'course',
+      sequelize
+    })
+}
 
-  Course.associate = function (models) {
-    Course.hasMany(models.CourseRegistration, {foreignKey: 'courseId'});
-    Course.belongsToMany(models.Quiz, {through: models.CourseQuiz}); // TODO hasMany
+export function associate(model: typeof RevizoodleModel): void {
+  Course.hasMany(model.CourseRegistration, {foreignKey: 'courseId'});
+  Course.belongsToMany(model.Quiz, {through: model.CourseQuiz}); // TODO hasMany
 
-  }
-
-  return Course;
-};
+}

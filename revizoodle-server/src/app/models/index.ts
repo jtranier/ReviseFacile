@@ -4,6 +4,8 @@
  * it exposes the `db` object defining the server entities and theirs
  * relationships
  */
+import * as CourseModel from "./Course.model"
+
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
@@ -28,14 +30,14 @@ export const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASS
 // Load entities
 export const Model = {
   Quiz: require("./Quiz.model")(sequelize),
-  Course: require("./Course.model")(sequelize),
+  Course: CourseModel.init(sequelize),
   CourseQuiz: require("./CourseQuiz.model")(sequelize),
   CourseRegistration: require("./CourseRegistration.model")(sequelize),
   Training: require("./Training.model")(sequelize),
 }
 
 // Setup relationships
-Model.Course.associate(Model)
+CourseModel.associate(Model)
 Model.Training.associate(Model);
 Model.Quiz.associate(Model);
 Model.CourseRegistration.associate(Model);

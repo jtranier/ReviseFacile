@@ -25,7 +25,7 @@ exports.get = (req, res) => {
     },
   }).
       then(assertIsFound(`There is no course with id ${id}`)).
-      then(course => {
+      then((course) => {
         res.json(CourseSummary(course));
       }).
       catch(errorHandler(res));
