@@ -2,10 +2,10 @@
  * REST Controller for the Course entity
  */
 import * as AuthenticationService from '../services/AuthenticationService'
-import {CourseQuiz, CourseRegistration, Model} from '../models';
+import {Model} from '../models';
 
 const {assertIsFound, errorHandler} =
-    require('./ControllerUtil');
+  require('./ControllerUtil');
 
 /**
  * Get a Course as JSON
@@ -23,12 +23,9 @@ export const get = (req, res) => {
       model: Model.Quiz,
       order: [['updatedAt', 'desc']],
     },
-  }).
-      then(assertIsFound(`There is no course with id ${id}`)).
-      then((course) => {
-        res.json(CourseSummary(course));
-      }).
-      catch(errorHandler(res));
+  }).then(assertIsFound(`There is no course with id ${id}`)).then((course) => {
+    res.json(CourseSummary(course));
+  }).catch(errorHandler(res));
 };
 
 /**
@@ -43,9 +40,7 @@ export const list = (req, res) => {
     where: {
       'teacherUuid': AuthenticationService.getUUID(req),
     },
-  }).
-      then(courseList => res.json(courseList)).
-      catch(errorHandler(res));
+  }).then(courseList => res.json(courseList)).catch(errorHandler(res));
 };
 
 /**
@@ -78,7 +73,7 @@ export const addQuiz = (req, res) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
-  CourseQuiz.create({
+  Model.CourseQuiz.create({
     courseId: courseId,
     quizId: quizId,
   }).then(() => {
@@ -96,27 +91,23 @@ export const register = (req, res) => {
 
   Model.Course.findByPk(courseId, {
     include: {
-      model: CourseRegistration,
+      model: Model.CourseRegistration,
       where: {
         'learnerUuid': learnerUuid,
       },
       required: false,
     },
-  }).
-      then(assertIsFound(`There is no course with id ${courseId}`)).
-      then(course => {
-        if (course['courseRegistrations'].length > 0) {
-          // Already registered
-          return true;
-        }
+  }).then(assertIsFound(`There is no course with id ${courseId}`)).then(course => {
+    if (course['courseRegistrations'].length > 0) {
+      // Already registered
+      return true;
+    }
 
-        return CourseRegistration.create({
-          'learnerUuid': learnerUuid,
-          courseId: courseId,
-        });
-      }).
-      then(() => res.json({success: true})).
-      catch(errorHandler(res));
+    return Model.CourseRegistration.create({
+      'learnerUuid': learnerUuid,
+      courseId: courseId,
+    });
+  }).then(() => res.json({success: true})).catch(errorHandler(res));
 };
 
 /**

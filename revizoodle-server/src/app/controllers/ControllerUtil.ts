@@ -1,5 +1,5 @@
 import * as AuthenticationService from '../services/AuthenticationService'
-import {CourseQuiz, CourseRegistration} from '../models';
+import {Model} from '../models';
 
 /**
  * Default error handler for http response
@@ -65,11 +65,11 @@ export const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
  */
 export const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
     (data) => {
-      return CourseRegistration.findAll(
+      return Model.CourseRegistration.findAll(
           {where: {learnerUuid: learnerUUID}},
       ).
           then(registrationList => {
-            return CourseQuiz.findOne({
+            return Model.CourseQuiz.findOne({
               where: {
                 quizId,
                 courseId: registrationList.map(

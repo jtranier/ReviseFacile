@@ -2,7 +2,7 @@
  * Controller for actions on course for Learners
  */
 import * as AuthenticationService from '../services/AuthenticationService'
-import {CourseRegistration, Model} from '../models';
+import {Model} from '../models';
 
 const {
   errorHandler,
@@ -14,7 +14,7 @@ const {
  * URL : GET /api/learner/course/
  */
 exports.findAllRegistered = (req, res) => {
-  CourseRegistration.findAll({
+  Model.CourseRegistration.findAll({
     where: {
       'learnerUuid': AuthenticationService.getUUID(req),
     },
