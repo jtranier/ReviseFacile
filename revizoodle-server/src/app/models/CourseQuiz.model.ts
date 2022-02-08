@@ -1,6 +1,15 @@
 /**
  * Course <=> Quiz association
  */
-module.exports = (sequelize) => {
-  return sequelize.define('courseQuiz')
+import {Model, Sequelize} from "sequelize"
+
+export default class CourseQuiz extends Model {
+
+ static setup(sequelize: Sequelize): typeof CourseQuiz {
+   return CourseQuiz.init({}, {
+     tableName: 'courseQuiz',
+     modelName: 'courseQuiz',
+     sequelize
+   })
+ }
 }

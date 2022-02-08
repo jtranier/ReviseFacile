@@ -1,11 +1,13 @@
 /**
  * REST Controller for the Course entity
  */
+import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
-import {Course, CourseQuiz, CourseRegistration, Quiz} from '../models';
+import {Model} from '../models';
+import Course from "../models/Course.model"
 
 const {assertIsFound, errorHandler} =
-    require('./ControllerUtil');
+  require('./ControllerUtil');
 
 /**
  * Get a Course as JSON
@@ -14,50 +16,47 @@ const {assertIsFound, errorHandler} =
  * @return 500 if an error occurs
  * @return 200 CourseSummary (JSON) if OK
  */
-exports.get = (req, res) => {
+export const get = (req: express.Request, res: express.Response) => {
   const id = req.params.id || -1;
 
-  Course.findOne({
+  Model.Course.findOne({
     where: {id},
     include: {
-      model: Quiz,
+      model: Model.Quiz,
       order: [['updatedAt', 'desc']],
     },
-  }).
-      then(assertIsFound(`There is no course with id ${id}`)).
-      then(course => {
-        res.json(CourseSummary(course));
-      }).
-      catch(errorHandler(res));
+  })
+    .then<Course>(assertIsFound(`There is no course with id ${id}`))
+    .then((course) => {
+      res.json(CourseSummary(course));
+    }).catch(errorHandler(res));
 };
 
 /**
  * List the course of the teacher initiating the query
  * URL: /api/course
  */
-exports.list = (req, res) => {
-  Course.findAll({
+export const list = (req: express.Request, res: express.Response) => {
+  Model.Course.findAll({
     order: [
       ['updatedAt', 'DESC'],
     ],
     where: {
       'teacherUuid': AuthenticationService.getUUID(req),
     },
-  }).
-      then(courseList => res.json(courseList)).
-      catch(errorHandler(res));
+  }).then(courseList => res.json(courseList)).catch(errorHandler(res));
 };
 
 /**
  * Create a course
  * URL: POST /api/course
- * The request body must contains a name attribute
+ * The request body must contain a name attribute
  *
  * @return 500 if something gets wrong
  * @return 200 created Course (json) if OK
  */
-exports.create = (req, res) => {
-  Course.create({
+export const create = (req: express.Request, res: express.Response) => {
+  Model.Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: AuthenticationService.getUUID(req),
   }).then(course => res.json(course)).catch(errorHandler(res));
@@ -66,7 +65,7 @@ exports.create = (req, res) => {
 /**
  * Add a Quiz to a Course
  * URL: POST /api/course/:courseId/add-quiz
- * quizId must provided as form data
+ * quizId must be provided as form data
  *
  * @return 200 { success: true } if OK
  * @return 500 if an error occurs
@@ -74,11 +73,11 @@ exports.create = (req, res) => {
  * Implementation note : this is a very simple implementation without any
  * check ; a 500 error will be thrown if courseId or quizId are incorrect
  */
-exports.addQuiz = (req, res) => {
+export const addQuiz = (req: express.Request, res: express.Response) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
-  CourseQuiz.create({
+  Model.CourseQuiz.create({
     courseId: courseId,
     quizId: quizId,
   }).then(() => {
@@ -90,33 +89,32 @@ exports.addQuiz = (req, res) => {
  * Register a Learner to a Course
  * URL : POST /api/course/:courseId/register
  */
-exports.register = (req, res) => {
+export const register = (req: express.Request, res: express.Response) => {
   const courseId = req.params.courseId || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
-  Course.findByPk(courseId, {
+  Model.Course.findByPk(courseId, {
     include: {
-      model: CourseRegistration,
+      model: Model.CourseRegistration,
       where: {
         'learnerUuid': learnerUuid,
       },
       required: false,
     },
-  }).
-      then(assertIsFound(`There is no course with id ${courseId}`)).
-      then(course => {
-        if (course['courseRegistrations'].length > 0) {
-          // Already registered
-          return true;
-        }
+  }).then(assertIsFound(`There is no course with id ${courseId}`))
+    .then((course) => {
+      if (course != null && course.courseRegistrations.length > 0) {
+        // Already registered
+        return;
+      }
 
-        return CourseRegistration.create({
-          'learnerUuid': learnerUuid,
-          courseId: courseId,
-        });
-      }).
-      then(() => res.json({success: true})).
-      catch(errorHandler(res));
+      return Model.CourseRegistration.create({
+        'learnerUuid': learnerUuid,
+        courseId: courseId,
+      });
+    })
+    .then((_) => res.json({success: true}))
+    .catch(errorHandler(res));
 };
 
 /**
@@ -127,16 +125,16 @@ exports.register = (req, res) => {
  * @returns {{quizList: *, name, updateAt, id}}
  * @constructor
  */
-const CourseSummary = (course) => {
+const CourseSummary = (course: Course) => {
   return {
     id: course.id,
     name: course.name,
-    updateAt: course.updateAt,
+    updateAt: course.updatedAt,
     quizList: course['quizzes'].map(quiz => {
       return {
         id: quiz.id,
         name: quiz.name,
-        updatedAt: quiz['courseQuiz'].updatedAt,
+        updatedAt: quiz.courseQuiz.updatedAt,
         nbQuestions: quiz.nbQuestions,
       };
     }),

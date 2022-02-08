@@ -1,7 +1,8 @@
+import * as express from "express"
 import MoodleService from '../services/MoodleService'
-import {Quiz} from '../models';
+import {Model} from '../models';
 
-exports.uploadMoodleXml = (req, res) => {
+exports.uploadMoodleXml = (req: express.Request, res: express.Response) => {
    if (!req.files || !('xmlFile' in req.files)) {
 
     return res.status(400).json({
@@ -14,11 +15,14 @@ exports.uploadMoodleXml = (req, res) => {
 
   // accessing the file
   const xmlFile = req.files.xmlFile;
+   if(!("data" in xmlFile)) {
+     throw Error('Empty file')
+   }
 
   MoodleService.parseMoodleXml(
       xmlFile.data.toString(),
-  ).then(json => {
-    Quiz.create({
+  ).then((json: { [x: string]: any; }) => { // TODO type
+    Model.Quiz.create({
       teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
       nbQuestions: json['questions'].length,

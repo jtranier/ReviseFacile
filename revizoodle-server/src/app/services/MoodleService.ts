@@ -9,22 +9,23 @@ class MoodleService {
    * @param text : String a Moodle Quiz as plain text XML
    * @returns {Promise} a promise to convert the Quiz to JSON
    */
-  public static parseMoodleXml(text) {
+  // TODO type
+  public static parseMoodleXml(text: string): any {
     return new Promise((resolve, reject) => {
       parser.parseStringPromise(text).then(parsedXml => {
-        const questions = parsedXml.quiz.question;
+        const questions = parsedXml.quiz.question as any; // TODO type
 
-        const removeFontSizeInstructions = function (html) {
+        const removeFontSizeInstructions = function (html: string) {
           return html.replace(/(?<=;|"|\\s)font-size:[^;']*(;)?/g, '')
         }
 
-        const extractAllImageOf = function (node) {
-          return node['file']?.map(fileNode => {
+        const extractAllImageOf = function (node: any) { // TODO type
+          return node['file']?.map((fileNode: any) => {
             return extractImageOf(fileNode);
-          }).filter(e => e !== null) || [];
+          }).filter((e:any) => e !== null) || [];
         };
 
-        const extractImageOf = function (fileNode) {
+        const extractImageOf = function (fileNode: any) { // TODO Type
           if (fileNode.$.encoding !== "base64")
             return null;
 
@@ -42,7 +43,7 @@ class MoodleService {
          * @param imageList
          * @returns {*}
          */
-        const interpolateImages = function (text, imageList) {
+        const interpolateImages = function (text: string, imageList: any[]) { // TODO type
           imageList.forEach(image => {
             // Moodle seems to encode image name as URI, but it also encodes
             // '(' and ')' ... I ignore why... So I just replace them by their code.
@@ -58,7 +59,7 @@ class MoodleService {
           return text;
         };
 
-        const parseHtmlNode = function (node) {
+        const parseHtmlNode = function (node: any) { // TODO Type
           const text = node['text'][0];
           return interpolateImages(
             removeFontSizeInstructions(text),
@@ -68,12 +69,12 @@ class MoodleService {
 
         resolve(
           {
-            questions: questions.filter(q => {
+            questions: questions.filter((q: any) => { // TODO Type
               return [
                 'multichoice',
                 'truefalse',
               ].includes(q['$'].type);
-            }).map(question => {
+            }).map((question: any) => {
 
               const answers = question['answer'];
 
@@ -82,7 +83,7 @@ class MoodleService {
                 statement: parseHtmlNode(question['questiontext'][0]),
                 explanation: parseHtmlNode(question['generalfeedback'][0]),
                 type: resolveType(question),
-                answers: answers.map(answer => {
+                answers: answers.map((answer: any) => { // TODO Type
                   return {
                     text: parseHtmlNode(answer),
                     scoreFraction: Number.parseInt(answer['$']['fraction']),
@@ -101,7 +102,8 @@ class MoodleService {
   }
 }
 
-const resolveType = function (moodleQuestion) {
+// TODO type
+const resolveType = function (moodleQuestion: any) {
 
   if (moodleQuestion['$']['type'] === 'multichoice' &&
     moodleQuestion['single'][0] === 'true')

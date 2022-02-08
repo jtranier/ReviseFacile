@@ -6,7 +6,8 @@
     "allowJs": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true,
   },
   "include": ["./src/**/*"],
   "lib": ["es2015"]

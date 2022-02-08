@@ -2,21 +2,22 @@
  * Controller for learners interact with their Trainings (i.e. submitting
  * theirs answers)
  */
-import {Training} from '../models';
+import * as express from "express"
+import {Model} from '../models';
 import {errorHandler} from './ControllerUtil'
 
 /**
  * Update the answers submitted by the logged Learner to a Quiz
  * URL : /api/learner/training/:trainingId
  */
-exports.updateLearnerAnswers = (req, res) => {
+exports.updateLearnerAnswers = (req: express.Request, res: express.Response) => {
 
   const questionIndex = req.body.questionIndex;
   const learnerAnswers = JSON.parse(req.body.learnerAnswers);
 
   learnerAnswers[questionIndex].submitted = true;
 
-  Training.update(
+  Model.Training.update(
     {
       currentQuestion: questionIndex,
       answers: JSON.stringify(learnerAnswers),
@@ -30,10 +31,10 @@ exports.updateLearnerAnswers = (req, res) => {
 };
 
 // TODO Hum... Why updating the score that way ?! we should compute & update the score automatically when the last answer to a quiz is submitted...
-exports.updateScore = (req, res) => {
+exports.updateScore = (req: express.Request, res: express.Response) => {
   const score = req.body.score;
 
-  Training.update(
+  Model.Training.update(
     {
       score: score,
     },

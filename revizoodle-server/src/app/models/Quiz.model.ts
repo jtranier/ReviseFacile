@@ -2,15 +2,28 @@
  * A Quiz is a list of Questions
  * The questions are specified by a JSON array of objects
  */
-import {DataTypes} from 'sequelize'
+import {CreationOptional, DataTypes, Model, Sequelize} from 'sequelize'
+import {Model as RevizoodleModel} from './index'
+import Training from "./Training.model"
 
-module.exports = (sequelize) => {
-  const Quiz = sequelize.define('quiz',
-      {
+export default class Quiz extends Model {
+  declare id?: number
+  declare teacherUuid: string;
+  declare name: string;
+  declare nbQuestions: number;
+  declare questions: string;
+  declare courseQuiz: Quiz;
+  declare trainings: Training[];
+  declare createdAt: CreationOptional<Date>;
+  declare updatedAt: CreationOptional<Date>;
+
+
+  static setup(sequelize: Sequelize): typeof Quiz {
+    return Quiz.init({
         id: {
           primaryKey: true,
           autoIncrement: true,
-          type: DataTypes.BIGINT({ length: 11}),
+          type: DataTypes.BIGINT({length: 11}),
         },
         teacherUuid: {
           type: DataTypes.STRING(40),
@@ -30,12 +43,16 @@ module.exports = (sequelize) => {
           type: DataTypes.TEXT({length: 'medium'}), // JSON up to 16 Mb (for base64 images)
           allowNull: false,
         },
-      });
-
-  Quiz.associate = function(models) {
-    Quiz.belongsToMany(models.Course, {through: models.CourseQuiz}); // TODO hasMany
-    Quiz.hasMany(models.Training, { foreignKey: 'quizId' });
+      },
+      {
+        tableName: 'quiz',
+        modelName: 'quiz',
+        sequelize
+      })
   }
 
-  return Quiz;
-};
+  static associate(model: typeof RevizoodleModel): void {
+    Quiz.belongsToMany(model.Course, {through: model.CourseQuiz});
+    Quiz.hasMany(model.Training, {foreignKey: 'quizId'});
+  }
+}
