@@ -97,17 +97,20 @@ export const register = (req, res) => {
       },
       required: false,
     },
-  }).then(assertIsFound(`There is no course with id ${courseId}`)).then(course => {
-    if (course['courseRegistrations'].length > 0) {
-      // Already registered
-      return true;
-    }
+  }).then(assertIsFound(`There is no course with id ${courseId}`))
+    .then((course) => {
+      if (course['courseRegistrations'].length > 0) {
+        // Already registered
+        return;
+      }
 
-    return Model.CourseRegistration.create({
-      'learnerUuid': learnerUuid,
-      courseId: courseId,
-    });
-  }).then(() => res.json({success: true})).catch(errorHandler(res));
+      return Model.CourseRegistration.create({
+        'learnerUuid': learnerUuid,
+        courseId: courseId,
+      });
+    })
+    .then((_) => res.json({success: true}))
+    .catch(errorHandler(res));
 };
 
 /**
