@@ -1,3 +1,4 @@
+import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
 import {Model} from '../models';
 
@@ -8,7 +9,7 @@ import {Model} from '../models';
  * @param defaultMessage (optional), if provided and if the error object does
  * not contain a message, the default message will be used.
  */
-export const errorHandler = (httpResponse, defaultMessage?) => (error) => {
+export const errorHandler = (httpResponse: express.Response, defaultMessage?: string) => (error: any) => {
   if (defaultMessage) {
     error.message = error.message || defaultMessage;
   }
@@ -33,7 +34,7 @@ export const assertIsFound = <T>(notFoundMessage: string) => (data: T): T => {
     };
   }
 
-  return data;
+  return data!;
 };
 
 /**
@@ -46,7 +47,7 @@ export const assertIsFound = <T>(notFoundMessage: string) => (data: T): T => {
  * owner
  * @return callback that just return the provided data if OK or throw an error
  */
-export const assertIsOwner = <T>(req, getOwnerUUID, notOwnerMessage: string) => (data: T): T => {
+export const assertIsOwner = <T>(req: express.Request, getOwnerUUID: (data: T) => string, notOwnerMessage: string) => (data: T): T => {
   if (getOwnerUUID(data) !== AuthenticationService.getUUID(req)) {
     throw {
       statusCode: 401,
@@ -73,7 +74,7 @@ export const assertLearnerIsRegisteredOnQuiz = <T>(learnerUUID: string, quizId: 
           where: {
             quizId,
             courseId: registrationList.map(
-              registration => registration['courseId']),
+              registration => registration.courseId),
           },
         });
       })

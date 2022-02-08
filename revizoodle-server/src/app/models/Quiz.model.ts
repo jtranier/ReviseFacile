@@ -2,8 +2,9 @@
  * A Quiz is a list of Questions
  * The questions are specified by a JSON array of objects
  */
-import {DataTypes, Model} from 'sequelize'
+import {CreationOptional, DataTypes, Model, Sequelize} from 'sequelize'
 import {Model as RevizoodleModel} from './index'
+import Training from "./Training.model"
 
 export default class Quiz extends Model {
   declare id?: number
@@ -11,8 +12,13 @@ export default class Quiz extends Model {
   declare name: string;
   declare nbQuestions: number;
   declare questions: string;
+  declare courseQuiz: Quiz;
+  declare trainings: Training[];
+  declare createdAt: CreationOptional<Date>;
+  declare updatedAt: CreationOptional<Date>;
 
-  static setup(sequelize): typeof Quiz {
+
+  static setup(sequelize: Sequelize): typeof Quiz {
     return Quiz.init({
         id: {
           primaryKey: true,

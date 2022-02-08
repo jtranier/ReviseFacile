@@ -2,13 +2,14 @@
  * Course <=> Learner association
  * It stores the list of learners registered to a course
  */
-import {DataTypes, Model} from 'sequelize'
+import {DataTypes, Model, Sequelize} from 'sequelize'
 import {Model as RevizoodleModel} from './index'
 
 export default class CourseRegistration extends Model {
   declare learnerUuid: string;
+  declare courseId: number;
 
-  static setup(sequelize): typeof CourseRegistration {
+  static setup(sequelize: Sequelize): typeof CourseRegistration {
     return CourseRegistration.init({
         'learnerUuid': {
           type: DataTypes.STRING(40),

@@ -1,5 +1,6 @@
+import * as express from "express"
 
-export default function setupLearnerCourseRoute(app) {
+export default function setupLearnerCourseRoute(app: express.Application) {
   const learnerCourseController = require('../controllers/LearnerCourse.controller');
 
   let router = require('express').Router();

@@ -1,6 +1,7 @@
+import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
 
-export default function setupCourseRoute(app) {
+export default function setupCourseRoute(app: express.Application) {
   const courseController = require('../controllers/Course.controller');
 
   let router = require('express').Router();

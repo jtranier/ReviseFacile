@@ -1,10 +1,11 @@
 /**
  * Course <=> Quiz association
  */
-import {Model} from "sequelize"
+import {Model, Sequelize} from "sequelize"
 
 export default class CourseQuiz extends Model {
- static setup(sequelize): typeof CourseQuiz {
+
+ static setup(sequelize: Sequelize): typeof CourseQuiz {
    return CourseQuiz.init({}, {
      tableName: 'courseQuiz',
      modelName: 'courseQuiz',

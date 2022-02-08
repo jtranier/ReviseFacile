@@ -2,15 +2,21 @@
  * A course is a collection of quizzes, owned by a teacher, on which learners
  * may register
  */
-import {DataTypes, Model} from 'sequelize'
+import {CreationOptional, DataTypes, Model, Sequelize} from 'sequelize'
 import {Model as RevizoodleModel} from './index'
+import CourseRegistration from "./CourseRegistration.model"
+import Quiz from "./Quiz.model"
 
 export default class Course extends Model {
   declare id: number;
   declare teacherUuid: string;
   declare name: string;
+  declare courseRegistrations: CourseRegistration[];
+  declare quizzes: Quiz[];
+  declare createdAt: CreationOptional<Date>;
+  declare updatedAt: CreationOptional<Date>;
 
-  static setup(sequelize): typeof Course {
+  static setup(sequelize: Sequelize): typeof Course {
     return Course.init({
         id: {
           primaryKey: true,

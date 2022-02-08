@@ -1,8 +1,10 @@
 /**
  * REST Controller for the Course entity
  */
+import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
 import {Model} from '../models';
+import Course from "../models/Course.model"
 
 const {assertIsFound, errorHandler} =
   require('./ControllerUtil');
@@ -14,7 +16,7 @@ const {assertIsFound, errorHandler} =
  * @return 500 if an error occurs
  * @return 200 CourseSummary (JSON) if OK
  */
-export const get = (req, res) => {
+export const get = (req: express.Request, res: express.Response) => {
   const id = req.params.id || -1;
 
   Model.Course.findOne({
@@ -23,16 +25,18 @@ export const get = (req, res) => {
       model: Model.Quiz,
       order: [['updatedAt', 'desc']],
     },
-  }).then(assertIsFound(`There is no course with id ${id}`)).then((course) => {
-    res.json(CourseSummary(course));
-  }).catch(errorHandler(res));
+  })
+    .then<Course>(assertIsFound(`There is no course with id ${id}`))
+    .then((course) => {
+      res.json(CourseSummary(course));
+    }).catch(errorHandler(res));
 };
 
 /**
  * List the course of the teacher initiating the query
  * URL: /api/course
  */
-export const list = (req, res) => {
+export const list = (req: express.Request, res: express.Response) => {
   Model.Course.findAll({
     order: [
       ['updatedAt', 'DESC'],
@@ -46,12 +50,12 @@ export const list = (req, res) => {
 /**
  * Create a course
  * URL: POST /api/course
- * The request body must contains a name attribute
+ * The request body must contain a name attribute
  *
  * @return 500 if something gets wrong
  * @return 200 created Course (json) if OK
  */
-export const create = (req, res) => {
+export const create = (req: express.Request, res: express.Response) => {
   Model.Course.create({
     name: req.body.name, // TODO check validity
     teacherUuid: AuthenticationService.getUUID(req),
@@ -61,7 +65,7 @@ export const create = (req, res) => {
 /**
  * Add a Quiz to a Course
  * URL: POST /api/course/:courseId/add-quiz
- * quizId must provided as form data
+ * quizId must be provided as form data
  *
  * @return 200 { success: true } if OK
  * @return 500 if an error occurs
@@ -69,7 +73,7 @@ export const create = (req, res) => {
  * Implementation note : this is a very simple implementation without any
  * check ; a 500 error will be thrown if courseId or quizId are incorrect
  */
-export const addQuiz = (req, res) => {
+export const addQuiz = (req: express.Request, res: express.Response) => {
   const courseId = req.params.courseId;
   const quizId = req.body.quizId;
 
@@ -85,7 +89,7 @@ export const addQuiz = (req, res) => {
  * Register a Learner to a Course
  * URL : POST /api/course/:courseId/register
  */
-export const register = (req, res) => {
+export const register = (req: express.Request, res: express.Response) => {
   const courseId = req.params.courseId || -1;
   const learnerUuid = AuthenticationService.getUUID(req);
 
@@ -99,7 +103,7 @@ export const register = (req, res) => {
     },
   }).then(assertIsFound(`There is no course with id ${courseId}`))
     .then((course) => {
-      if (course['courseRegistrations'].length > 0) {
+      if (course != null && course.courseRegistrations.length > 0) {
         // Already registered
         return;
       }
@@ -121,16 +125,16 @@ export const register = (req, res) => {
  * @returns {{quizList: *, name, updateAt, id}}
  * @constructor
  */
-const CourseSummary = (course) => {
+const CourseSummary = (course: Course) => {
   return {
     id: course.id,
     name: course.name,
-    updateAt: course.updateAt,
+    updateAt: course.updatedAt,
     quizList: course['quizzes'].map(quiz => {
       return {
         id: quiz.id,
         name: quiz.name,
-        updatedAt: quiz['courseQuiz'].updatedAt,
+        updatedAt: quiz.courseQuiz.updatedAt,
         nbQuestions: quiz.nbQuestions,
       };
     }),
