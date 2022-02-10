@@ -2,7 +2,7 @@
  * A Training is one execution of a Quiz by a Learner
  * It stores its progression, provided answers and obtained score.
  */
-import {DataTypes, Model} from 'sequelize'
+import {DataTypes, Model, Sequelize} from 'sequelize'
 import {Model as RevizoodleModel} from './index'
 
 export default class Training extends Model {
@@ -12,7 +12,7 @@ export default class Training extends Model {
   declare currentQuestion?: number;
   declare answers: string;
 
-  static setup(sequelize): typeof Training {
+  static setup(sequelize: Sequelize): typeof Training {
     return Training.init(
       {
         id: {

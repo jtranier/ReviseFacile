@@ -44,6 +44,11 @@ const userConfig = require('../config/user.config.js');
     return uuid === bytes.toString(CryptoJs.enc.Utf8);
   }
 
-  export const getUUID = (req: express.Request) => {
-    return req.headers.uuid;
+  export const getUUID = (req: express.Request): string => {
+    const uuid = req.headers.uuid;
+    switch (typeof uuid) {
+      case 'undefined': return '';
+      case 'string': return uuid;
+      default: return uuid[0];
+    }
   }

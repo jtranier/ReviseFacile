@@ -9,7 +9,7 @@ class MoodleService {
    * @param text : String a Moodle Quiz as plain text XML
    * @returns {Promise} a promise to convert the Quiz to JSON
    */
-  public static parseMoodleXml(text) {
+  public static parseMoodleXml(text: string) {
     return new Promise((resolve, reject) => {
       parser.parseStringPromise(text).then(parsedXml => {
         const questions = parsedXml.quiz.question;
@@ -42,7 +42,7 @@ class MoodleService {
          * @param imageList
          * @returns {*}
          */
-        const interpolateImages = function (text, imageList) {
+        const interpolateImages = function (text: string, imageList) {
           imageList.forEach(image => {
             // Moodle seems to encode image name as URI, but it also encodes
             // '(' and ')' ... I ignore why... So I just replace them by their code.

@@ -166,9 +166,9 @@ exports.redoTraining = (req: express.Request, res: express.Response) => {
   const learnerUuid = AuthenticationService.getUUID(req);
 
   Model.Quiz.findByPk(quizId)
-    .then<Quiz>(assertIsFound(`There is no quiz with id ${quizId}`))
-    .then<Quiz>(assertLearnerIsRegisteredOnQuiz(learnerUuid))
-    .then<Quiz>((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid))
+    .then(assertIsFound<Quiz>(`There is no quiz with id ${quizId}`))
+    .then(assertLearnerIsRegisteredOnQuiz(learnerUuid))
+    .then((quiz) => createEmptyTrainingForQuiz(quiz, learnerUuid))
     .then((training) => res.json(training))
     .catch(errorHandler(res));
 };
@@ -184,8 +184,8 @@ exports.getResults = (req: express.Request, res: express.Response) => {
     Model.Quiz.findByPk(quizId, {
       attributes: ['id', 'name', 'nbQuestions', 'teacherUuid'],
     })
-      .then(assertIsFound(`There is no quiz with id ${quizId}`))
-      .then(assertIsOwner(
+      .then(assertIsFound<Quiz>(`There is no quiz with id ${quizId}`))
+      .then(assertIsOwner<Quiz>(
         req,
         (quiz) => quiz.teacherUuid,
         `You are not the owner of the quiz ${quizId}`,
@@ -203,15 +203,9 @@ exports.getResults = (req: express.Request, res: express.Response) => {
         ['id', 'ASC'],
       ],
     })
-      .catch(
-        errorHandler(
-          res,
-          `Some error occurred while retrieving the results of the quiz id=${quizId}`,
-        ),
-      ),
-  ]).then((data) => {
-    const quiz = data[0];
-    const trainingList = data[1];
+
+  ]).then(([quiz, trainingList]) => {
+    //const [quiz, trainingList] = data;
 
     res.json(ResultsSummary(quiz, trainingList));
   }).catch(errorHandler(

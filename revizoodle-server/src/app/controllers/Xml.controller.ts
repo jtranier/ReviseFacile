@@ -1,7 +1,8 @@
+import * as express from "express"
 import MoodleService from '../services/MoodleService'
 import {Model} from '../models';
 
-exports.uploadMoodleXml = (req, res) => {
+exports.uploadMoodleXml = (req: express.Request, res: express.Response) => {
    if (!req.files || !('xmlFile' in req.files)) {
 
     return res.status(400).json({
