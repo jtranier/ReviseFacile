@@ -239,7 +239,7 @@ const QuizSummary = (quiz: Quiz) => {
 const ResultsSummary = function (quiz: Quiz, trainingList: Training[]) {
   const nbAttempts = trainingList.length;
   const learners = new Set();
-  let data1stAttempt = Array.from({length: quiz.nbQuestions},
+  let data1stAttempt: Array<any> = Array.from({length: quiz.nbQuestions},
     () => []);
 
   trainingList.forEach(training => {
@@ -247,7 +247,8 @@ const ResultsSummary = function (quiz: Quiz, trainingList: Training[]) {
       learners.add(training['learnerUuid']);
 
       const currentTrainingAnswers = JSON.parse(training['answers']);
-      currentTrainingAnswers.forEach((value, index: number) => {
+      // TODO Create answer type
+      currentTrainingAnswers.forEach((value: any, index: number) => {
         data1stAttempt[index].push(value['score']);
       });
     }
@@ -268,7 +269,7 @@ const ResultsSummary = function (quiz: Quiz, trainingList: Training[]) {
  * @param questionScoreList
  * @return {number}
  */
-const computeMean = function (questionScoreList) {
+const computeMean = function (questionScoreList: number[]): number {
   return Math.round(
     questionScoreList.reduce((a, b) => {
       return a + b;

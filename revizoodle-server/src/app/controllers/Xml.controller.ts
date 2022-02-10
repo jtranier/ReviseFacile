@@ -15,10 +15,13 @@ exports.uploadMoodleXml = (req: express.Request, res: express.Response) => {
 
   // accessing the file
   const xmlFile = req.files.xmlFile;
+   if(!("data" in xmlFile)) {
+     throw Error('Empty file')
+   }
 
   MoodleService.parseMoodleXml(
       xmlFile.data.toString(),
-  ).then(json => {
+  ).then((json: { [x: string]: any; }) => { // TODO type
     Model.Quiz.create({
       teacherUuid: req.headers.uuid,
       name: req.body.quizName || 'Unnamed quiz',
