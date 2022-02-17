@@ -1,28 +1,27 @@
 /**
  * Controller for actions on course for Learners
  */
-const db = require('../models');
-const authenticationService = require('../services/AuthenticationService');
-const Course = db.Course;
-const CourseRegistration = db.CourseRegistration;
-const Training = db.Training;
-const Quiz = db.Quiz;
+import * as AuthenticationService from '../services/AuthenticationService'
+import * as express from "express"
+import {Model} from '../models';
+import Quiz from "../models/Quiz.model"
+import CourseRegistration from "../models/CourseRegistration.model"
 
 const {
   errorHandler,
-} = require('../controllers/ControllerUtil');
+} = require('./ControllerUtil');
 
 /**
  * Find all courses on which the current learner is registered
  * @return List<RegistrationSummary> as JSON
  * URL : GET /api/learner/course/
  */
-exports.findAllRegistered = (req, res) => {
-  CourseRegistration.findAll({
+exports.findAllRegistered = (req: express.Request, res: express.Response) => {
+  Model.CourseRegistration.findAll({
     where: {
-      'learnerUuid': authenticationService.getUUID(req),
+      'learnerUuid': AuthenticationService.getUUID(req),
     },
-    include: Course,
+    include: Model.Course,
     order: [['course', 'updatedAt', 'DESC']],
   }).then((courseRegistrationList) => {
 
@@ -36,34 +35,33 @@ exports.findAllRegistered = (req, res) => {
  * @return List<QuizWithTrainingsSummary> as JSON
  * URL : GET /api/learner/course/:courseId
  */
-exports.findAllQuizWithTrainingsForCourse = (req, res) => {
+exports.findAllQuizWithTrainingsForCourse = (req: express.Request, res: express.Response) => {
   const courseId = req.params.courseId || -1;
 
-  Quiz.findAll({
+  Model.Quiz.findAll({
     include: [
       {
-        model: Course,
+        model: Model.Course,
         where: {id: courseId},
         attributes: ['id'],
       },
       {
-        model: Training,
+        model: Model.Training,
         as: 'trainings',
         where: {
-          'learnerUuid': authenticationService.getUUID(req),
+          'learnerUuid': AuthenticationService.getUUID(req),
         },
         required: false,
       },
     ],
 
     order: [['updatedAt', 'desc'], ['trainings', 'updatedAt', 'desc']],
-  }).
-      then((quizList) => {
-        res.json(
-            quizList.map(QuizWithTrainingsSummary),
-        );
+  }).then((quizList) => {
+    res.json(
+      quizList.map(QuizWithTrainingsSummary),
+    );
 
-      }).catch(errorHandler(res));
+  }).catch(errorHandler(res));
 };
 
 /**
@@ -72,7 +70,7 @@ exports.findAllQuizWithTrainingsForCourse = (req, res) => {
  * @return {{date, name, id}}
  * @constructor
  */
-const RegistrationSummary = function(courseRegistration) {
+const RegistrationSummary = function (courseRegistration: CourseRegistration) {
   return {
     id: courseRegistration['course'].id,
     name: courseRegistration['course'].name,
@@ -87,7 +85,7 @@ const RegistrationSummary = function(courseRegistration) {
  * @return {{nbTrainings, quizDate, score: (null|*|null), lastTrainingCurrentQuestion: (*|null), quizNbQuestions, quizId, quizTitle}}
  * @constructor
  */
-const QuizWithTrainingsSummary = function(quiz) {
+const QuizWithTrainingsSummary = function (quiz: Quiz) {
   const lastTraining = getLastTraining(quiz);
 
   return {
@@ -95,9 +93,9 @@ const QuizWithTrainingsSummary = function(quiz) {
     quizTitle: quiz['name'],
     quizDate: quiz['updatedAt'],
     lastTrainingCurrentQuestion:
-        lastTraining ?
-            lastTraining['currentQuestion'] :
-            null,
+      lastTraining ?
+        lastTraining['currentQuestion'] :
+        null,
     quizNbQuestions: quiz['nbQuestions'],
     nbTrainings: quiz['trainings'].length,
     score: lastTraining ? lastTraining.score : null,
@@ -109,7 +107,7 @@ const QuizWithTrainingsSummary = function(quiz) {
  * @param quiz Quiz object entity
  * @returns {null|*}
  */
-const getLastTraining = (quiz) => {
+const getLastTraining = (quiz: Quiz) => {
   if (!quiz['trainings'] || !quiz['trainings'].length) {
     return null;
   }
@@ -123,6 +121,6 @@ const getLastTraining = (quiz) => {
   });
 
   return lastScoredTraining ?
-      lastScoredTraining :
-      quiz['trainings'][0];
+    lastScoredTraining :
+    quiz['trainings'][0];
 };

@@ -1,7 +1,9 @@
-const authenticationService = require('../services/AuthenticationService');
-const db = require('../models');
-const CourseRegistration = db.CourseRegistration;
-const CourseQuiz = db.CourseQuiz;
+import * as express from "express"
+import * as AuthenticationService from '../services/AuthenticationService'
+import {Model} from '../models';
+import Quiz from "../models/Quiz.model"
+
+type MaybeNull<T> = T | null;
 
 /**
  * Default error handler for http response
@@ -10,7 +12,7 @@ const CourseQuiz = db.CourseQuiz;
  * @param defaultMessage (optional), if provided and if the error object does
  * not contain a message, the default message will be used.
  */
-const errorHandler = (httpResponse, defaultMessage) => (error) => {
+export const errorHandler = (httpResponse: express.Response, defaultMessage?: string) => (error: any) => {
   if (defaultMessage) {
     error.message = error.message || defaultMessage;
   }
@@ -26,7 +28,7 @@ const errorHandler = (httpResponse, defaultMessage) => (error) => {
  * the controller error handler
  * @param notFoundMessage
  */
-const assertIsFound = (notFoundMessage) => (data) => {
+export const assertIsFound = <T>(notFoundMessage: string) => (data: MaybeNull<T>): T => {
 
   if (!data) {
     throw {
@@ -35,7 +37,7 @@ const assertIsFound = (notFoundMessage) => (data) => {
     };
   }
 
-  return data;
+  return data!;
 };
 
 /**
@@ -48,8 +50,8 @@ const assertIsFound = (notFoundMessage) => (data) => {
  * owner
  * @return callback that just return the provided data if OK or throw an error
  */
-const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
-  if (getOwnerUUID(data) !== authenticationService.getUUID(req)) {
+export const assertIsOwner = <T>(req: express.Request, getOwnerUUID: (data: T) => string, notOwnerMessage: string) => (data: T): T => {
+  if (getOwnerUUID(data) !== AuthenticationService.getUUID(req)) {
     throw {
       statusCode: 401,
       message: notOwnerMessage,
@@ -62,41 +64,35 @@ const assertIsOwner = (req, getOwnerUUID, notOwnerMessage) => (data) => {
  * Check that the logged learner is registered on a course that contains the
  * Quiz
  * @param learnerUUID
- * @param quizId
  * @return callback that just return the provided data if OK or throw an error
  */
-const assertLearnerIsRegisteredOnQuiz = (learnerUUID, quizId) =>
-    (data) => {
-      return CourseRegistration.findAll(
-          {where: {learnerUuid: learnerUUID}},
-      ).
-          then(registrationList => {
-            return CourseQuiz.findOne({
-              where: {
-                quizId,
-                courseId: registrationList.map(
-                    registration => registration['courseId']),
-              },
-            });
-          }).
-          then(courseQuiz => {
-                if (!courseQuiz) {
-                  throw {
-                    statusCode: 401,
-                    message: `The learner ${learnerUUID} is not registered on the quiz ${quizId}`,
-                  };
-                }
-                return data;
-              },
-          ).
-          catch(error => {
-            throw error;
+export const assertLearnerIsRegisteredOnQuiz = (learnerUUID: string) =>
+  (quiz: Quiz): PromiseLike<Quiz> => {
+    return new Promise<Quiz>((resolve, reject) => {
+      Model.CourseRegistration.findAll(
+        {where: {learnerUuid: learnerUUID}},
+      )
+        .then(registrationList => {
+          return Model.CourseQuiz.findOne({
+            where: {
+              quizId: quiz.id,
+              courseId: registrationList.map(
+                registration => registration.courseId),
+            },
           });
-    };
+        })
+        .then(courseQuiz => {
+            if (!courseQuiz) {
+              throw {
+                statusCode: 401,
+                message: `The learner ${learnerUUID} is not registered on the quiz ${quiz.id}`,
+              };
+            }
 
-module.exports = {
-  assertIsFound,
-  errorHandler,
-  assertIsOwner,
-  assertLearnerIsRegisteredOnQuiz,
-};
+            resolve(quiz);
+          },
+        )
+        .catch(reject);
+    });
+
+  };

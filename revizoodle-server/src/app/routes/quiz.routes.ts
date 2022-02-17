@@ -1,6 +1,8 @@
-module.exports = app => {
+import * as express from "express"
+import * as AuthenticationService from '../services/AuthenticationService'
+
+export default function setupQuizRoute(app: express.Application) {
   const quizController = require('../controllers/Quiz.controller');
-  const AuthenticationService = require('../services/AuthenticationService');
 
   let router = require('express').Router();
 

@@ -1,6 +1,8 @@
-module.exports = app => {
+import * as express from "express"
+import * as AuthenticationService from '../services/AuthenticationService'
+
+export default function setupCourseRoute(app: express.Application) {
   const courseController = require('../controllers/Course.controller');
-  const AuthenticationService = require('../services/AuthenticationService');
 
   let router = require('express').Router();
 
@@ -33,4 +35,4 @@ module.exports = app => {
   );
 
   app.use('/api/course/', router);
-};
+}
