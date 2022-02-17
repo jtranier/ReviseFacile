@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "start": "tsc && node dist/server.js",
-    "test": "test"
+    "test": "jest"
   },
   "author": "Jean-françois Parmentier",
   "license": "ISC",
