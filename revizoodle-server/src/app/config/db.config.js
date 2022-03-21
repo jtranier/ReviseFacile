@@ -38,6 +38,9 @@ module.exports = {
   PASSWORD: "123456",
   DB: "revizoodle-db",
   dialect: "mysql",
+  // dialectOptions: {
+  //   socketPath: '/srv/run/mysqld/mysqld.sock',
+  // },
   pool: {
     max: 5,
     min: 0,

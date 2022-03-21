@@ -51,6 +51,7 @@ const Sequelize = require("sequelize");
 export const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  dialectOptions: dbConfig.dialectOptions,
   operatorsAliases: 0,
   define: {
     charset: 'utf8mb4',
