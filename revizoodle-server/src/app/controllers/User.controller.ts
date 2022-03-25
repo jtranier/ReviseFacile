@@ -36,7 +36,7 @@ import * as express from "express"
 import * as AuthenticationService from '../services/AuthenticationService'
 import CryptoJs from 'crypto-js'
 
-const userConfig = require('../config/user.config.js');
+const userConfig = require('../../../config/user.config.js');
 
 exports.requestTeacherAccess = (req: express.Request, res: express.Response) => {
 

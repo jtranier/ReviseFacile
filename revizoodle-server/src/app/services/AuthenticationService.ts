@@ -36,7 +36,7 @@ import * as express from "express"
 import {validate} from 'uuid'
 import CryptoJs from 'crypto-js'
 
-const userConfig = require('../config/user.config.js');
+const userConfig = require('../../../config/user.config.js');
 
   export const isAuthenticated = (req: express.Request) => {
     return typeof req.headers.uuid === 'string' && validate(req.headers.uuid);
