@@ -75,7 +75,7 @@ setupUserRoute(app);
 
 // Note : force: true is for development mode
 sequelize.sync(/*{force: true}*/).then(() => {
-  console.log("Drop & re-sync db.")
+  console.log("Database ready.")
 });
 
 // Views

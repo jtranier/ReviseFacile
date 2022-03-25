@@ -63,7 +63,9 @@ export const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASS
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
-  }
+  },
+
+  logging: process.env.NODE_ENV !== 'production'
 });
 
 // Load entities

@@ -1,12 +1,12 @@
 {
   "name": "revizoodle-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/server.js",
   "scripts": {
     "compile": "tsc",
     "dev": "ts-node src/server.ts",
-    "start": "node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "test": "test",
     "package:prod": "tsc && node build.js"
   },
@@ -16,6 +16,7 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
