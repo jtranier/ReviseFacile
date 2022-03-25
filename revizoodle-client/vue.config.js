@@ -32,12 +32,12 @@
  * knowledge of the CeCILL-B license and that you accept its terms.
  */
 
-const path = require("path");
-
+const path = require('path');
 
 module.exports = {
   devServer: {
-    port: 8081,
+    proxy: "http://localhost:8080"
+
   },
-  outputDir: path.resolve(__dirname, "../revizoodle-server/app/views"),
-}
+  outputDir: path.resolve(__dirname, '../revizoodle-server/app/views'),
+};
