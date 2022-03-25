@@ -39,5 +39,5 @@ module.exports = {
     proxy: "http://localhost:8080"
 
   },
-  outputDir: path.resolve(__dirname, '../revizoodle-server/app/views'),
+  outputDir: path.resolve(__dirname, '../revizoodle-server/resources/views'),
 };
